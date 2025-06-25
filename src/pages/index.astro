@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DialogAnimation from '../components/DialogAnimation.astro';
+---
+
+<Layout title="Animación con Astro y Tailwind">
+  <main class="w-screen h-screen flex flex-col items-center justify-center space-y-8">
+    
+    {/* Primera Modal: "Hola, este soy yo." */}
+    <button class="px-6 py-4 rounded-xl border-none bg-blue-600 text-white cursor-pointer hover:bg-blue-700" onclick="toggleDialog('my-dialog-1', event)">
+      Abrir Modal 1 (Mi Perfil)
+    </button>
+
+    <DialogAnimation dialogId="my-dialog-1" title="Hola, este soy yo.">
+      <img src="/gatito.webp" alt="Una descripción de tu imagen" class="max-w-full max-h-full object-contain rounded-lg shadow-md">
+    </DialogAnimation>
+
+    {/* Segunda Modal: "Información Adicional" */}
+    <button class="px-6 py-4 rounded-xl border-none bg-green-600 text-white cursor-pointer hover:bg-green-700" onclick="toggleDialog('my-dialog-2', event)">
+      Abrir Modal 2 (Información)
+    </button>
+
+    <DialogAnimation dialogId="my-dialog-2" title="Información Adicional">
+      <p class="text-center text-lg">Aquí puedes poner cualquier tipo de contenido diferente para esta segunda modal.</p>
+      <ul class="list-disc list-inside mt-4">
+        <li>Ítem 1</li>
+        <li>Ítem 2</li>
+        <li>Ítem 3</li>
+      </ul>
+    </DialogAnimation>
+
+    {/* Tercera Modal: "Configuración" */}
+    <div class="absolute bottom-4 right-4"> {/* Botón en una posición diferente */}
+        <button class="px-6 py-4 rounded-xl border-none bg-purple-600 text-white cursor-pointer hover:bg-purple-700" onclick="toggleDialog('my-dialog-3', event)">
+            Abrir Modal 3 (Config)
+        </button>
+    </div>
+
+    <DialogAnimation dialogId="my-dialog-3" title="Ajustes de la Aplicación">
+        <form class="w-full max-w-sm mx-auto">
+            <label for="theme" class="block text-gray-700 text-sm font-bold mb-2">Tema:</label>
+            <select id="theme" name="theme" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option>Claro</option>
+                <option>Oscuro</option>
+                <option>Sistema</option>
+            </select>
+        </form>
+    </DialogAnimation>
+
+  </main>
+</Layout>

@@ -1,0 +1,217 @@
+---
+interface Props {
+  dialogId: string; // Para identificar esta instancia del diálogo
+  title: string;    // Para el título específico de cada modal
+}
+
+const { dialogId, title } = Astro.props;
+---
+<script>
+  // Definimos las clases CSS para las View Transitions, como ya las teníamos
+  const ViewTransitionClass = "vt-element-animation";
+  const ViewTransitionClassClosing = "vt-element-animation-closing";
+
+  // Nueva función para alternar el tamaño del diálogo
+  async function toggleDialogSize(dialogID: string, event: Event) {
+    const dialog = document.getElementById(dialogID) as HTMLDialogElement;
+    const expandButton = event.currentTarget as HTMLElement;
+
+    // Toggle la clase 'expanded' en el diálogo
+    dialog.classList.toggle('expanded');
+
+    // Cambiamos el texto del botón según el estado
+    if (dialog.classList.contains('expanded')) {
+      expandButton.textContent = 'Contraer';
+      expandButton.setAttribute('aria-label', 'Contraer diálogo');
+    } else {
+      expandButton.textContent = 'Expandir';
+      expandButton.setAttribute('aria-label', 'Expandir diálogo');
+    }
+
+    // Preparamos los elementos para la View Transition
+    dialog.style.viewTransitionName = "vt-dialog-size"; // Nombre único para esta transición
+    dialog.style.viewTransitionClass = ViewTransitionClass; // Reutilizamos la clase de animación
+
+    // Iniciamos la View Transition
+    const viewTransition = document.startViewTransition(() => {
+      // No necesitamos cambiar nada en el DOM dentro de la callback
+      // porque ya lo hicimos con classList.toggle()
+    });
+
+    await viewTransition.finished;
+    // Limpiamos los estilos de View Transition después de que termine la animación
+    dialog.style.viewTransitionName = "";
+    dialog.style.viewTransitionClass = "";
+  }
+
+  // Tu función existente para abrir/cerrar el diálogo
+  async function toggleDialog(dialogID: string, event: Event) {
+    if (!dialogID) {
+      const openDialog = document.querySelector("dialog[open]") as HTMLDialogElement;
+      const originElement = document.querySelector("[origin-element]") as HTMLElement;
+
+      // Restablecer el estado del botón y el diálogo al cerrar
+      const expandButton = openDialog.querySelector('.expand-button') as HTMLElement;
+      if (expandButton) {
+        expandButton.textContent = 'Expandir';
+        expandButton.setAttribute('aria-label', 'Expandir diálogo');
+      }
+      openDialog.classList.remove('expanded'); // Asegúrate de que no quede expandido al cerrar
+
+      openDialog.style.viewTransitionName = "vt-shared";
+      openDialog.style.viewTransitionClass = ViewTransitionClassClosing;
+
+      const viewTransition = document.startViewTransition(() => {
+        originElement.style.viewTransitionName = "vt-shared";
+        originElement.style.viewTransitionClass = ViewTransitionClassClosing;
+
+        openDialog.style.viewTransitionName = "";
+        openDialog.style.viewTransitionClass = "";
+
+        openDialog.close();
+      });
+
+      await viewTransition.finished;
+      originElement.style.viewTransitionName = "";
+      originElement.style.viewTransitionClass = "";
+      originElement.removeAttribute("origin-element");
+      
+      return false;
+    }
+
+    const dialog = document.getElementById(dialogID) as HTMLDialogElement;
+    const originElement = event.currentTarget as HTMLElement;
+
+    dialog.style.viewTransitionName = "vt-shared";
+    dialog.style.viewTransitionClass = ViewTransitionClass;
+
+    originElement.style.viewTransitionName = "vt-shared";
+    originElement.style.viewTransitionClass = ViewTransitionClass;
+    originElement.setAttribute("origin-element", "");
+
+    const viewTransition = document.startViewTransition(() => {
+      originElement.style.viewTransitionName = "";
+      originElement.style.viewTransitionClass = "";
+      
+      dialog.showModal();
+    });
+
+    await viewTransition.finished;
+    dialog.style.viewTransitionName = "";
+    dialog.style.viewTransitionClass = "";
+  }
+
+  // Hacer las funciones globales para que sean accesibles desde el HTML de Astro
+  (window as any).toggleDialog = toggleDialog;
+  (window as any).toggleDialogSize = toggleDialogSize;
+</script>
+
+<dialog id={dialogId} class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-gray-200 w-full max-w-3xl h-full max-h-[700px] p-0 transition-all duration-500 ease-in-out">
+  <div class="relative w-full h-full flex flex-col">
+    <div class="flex justify-between items-center p-4 border-b border-gray-200">
+      <h2 class="text-xl font-semibold">{title}</h2> {/* Usamos la prop 'title' */}
+      <div class="flex space-x-2">
+        <button class="close-button p-2 bg-gray-100 rounded-full text-lg hover:bg-gray-200" onclick="toggleDialog('', event)" aria-label="Cerrar diálogo">
+          ❌
+        </button>
+        <button class="expand-button p-2 bg-gray-100 rounded-full text-sm font-medium hover:bg-gray-200" onclick={`toggleDialogSize('${dialogId}', event)`} aria-label="Expandir diálogo">
+          Expandir
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-grow flex items-center justify-center p-6">
+      <slot /> {/* Aquí se renderizará el contenido que pases al componente */}
+    </div>
+  </div>
+</dialog>
+
+<style is:global>
+  /* Aquí mantendremos las reglas CSS específicas para View Transitions */
+  :root {
+    view-transition-name: none;
+  }
+  ::view-transition {
+    pointer-events: none;
+  }
+
+  /* Animación para abrir/cerrar el diálogo (ya la tenías) */
+  ::view-transition-group(.vt-element-animation),
+  ::view-transition-group(.vt-element-animation-closing) {
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.34, 0.49, 0, 1);
+  }
+
+  ::view-transition-old(.vt-element-animation),
+  ::view-transition-new(.vt-element-animation),
+  ::view-transition-old(.vt-element-animation-closing),
+  ::view-transition-new(.vt-element-animation-closing) {
+    height: 100%;
+    min-height: 100%;
+    overflow: clip;
+    object-position: left top;
+  }
+
+  @keyframes vt-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes vt-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  ::view-transition-old(.vt-element-animation) {
+    animation: vt-fade-out 200ms both cubic-bezier(0.34, 0.49, 0, 1);
+  }
+  ::view-transition-new(.vt-element-animation) {
+    animation: vt-fade-in 200ms both cubic-bezier(0.34, 0.49, 0, 1);
+  }
+
+  ::view-transition-old(.vt-element-animation-closing) {
+    animation: vt-fade-out 200ms both cubic-bezier(0.34, 0.49, 0, 1);
+  }
+  ::view-transition-new(.vt-element-animation-closing) {
+    animation: vt-fade-in 200ms both cubic-bezier(0.34, 0.49, 0, 1);
+  }
+
+  /* --- Nuevas reglas para la expansión del diálogo --- */
+
+  /* Estilos específicos para el diálogo expandido */
+  dialog.expanded {
+    max-width: 100vw; /* Casi todo el ancho de la ventana */
+    max-height: 100vh; /* Casi toda la altura de la ventana */
+    border-radius: 0rem; /* Puedes ajustar el border-radius para que sea más sutil al expandir */
+  }
+
+  /* Reglas de View Transition para la animación de tamaño */
+  /* vt-dialog-size es el view-transition-name que asignamos en JS */
+  ::view-transition-group(vt-dialog-size) {
+    animation-duration: 400ms; /* Duración de la animación */
+    animation-timing-function: ease-in-out; /* Curva de animación suave */
+  }
+
+  /* Cuando el diálogo se expande (nueva vista) */
+  ::view-transition-new(vt-dialog-size) {
+    animation: none; /* No queremos animar opacidad, solo la forma */
+    /* Aquí podrías poner animaciones específicas de entrada si quisieras */
+  }
+
+  /* Cuando el diálogo se contrae (vieja vista) */
+  ::view-transition-old(vt-dialog-size) {
+    animation: none; /* No queremos animar opacidad, solo la forma */
+    /* Aquí podrías poner animaciones específicas de salida si quisieras */
+  }
+
+  /* Esto es importante: asegura que los pseudo-elementos cubran el espacio */
+  ::view-transition-old(vt-dialog-size),
+  ::view-transition-new(vt-dialog-size) {
+    width: 100%;
+    height: 100%;
+    contain: layout; /* Optimización para animaciones de tamaño/posición */
+  }
+
+</style>

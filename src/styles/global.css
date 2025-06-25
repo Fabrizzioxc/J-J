@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* View transition global setup */
+:root {
+  view-transition-name: none;
+}
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.vt-element-animation),
+::view-transition-group(.vt-element-animation-closing) {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.34, 0.49, 0, 1);
+}
+
+::view-transition-old(.vt-element-animation),
+::view-transition-new(.vt-element-animation),
+::view-transition-old(.vt-element-animation-closing),
+::view-transition-new(.vt-element-animation-closing) {
+  height: 100%;
+  min-height: 100%;
+  overflow: clip;
+  object-position: left top;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+::view-transition-new(.vt-element-animation) {
+  animation: scaleUp 300ms ease-out both;
+}
+::view-transition-old(.vt-element-animation-closing) {
+  animation: scaleDown 300ms ease-in both;
+}
+
+/* Asegura que el dialog esté oculto si no está abierto */
+dialog:not([open]) {
+  display: none;
+}
