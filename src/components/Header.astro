@@ -1,0 +1,159 @@
+---
+// src/components/Header.astro
+---
+<header class="fixed top-0 left-0 w-full bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-4 z-50">
+    <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="flex-shrink-0">
+            <a href="/" class="text-4xl font-bold text-[var(--color-jj-text-light)]">J&J</a>
+        </div>
+
+        <nav class="hidden md:block">
+            <ul class="flex space-x-8">
+                <li><a href="/" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Inicio</a></li>
+                <li><a href="/nosotros" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Nosotros</a></li>
+                <li><a href="/servicios" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Servicios</a></li>
+                <li><a href="/proyectos" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Proyectos</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex-shrink-0 hidden md:block">
+            <a href="/contacto" class="bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity text-xl">
+                Contacto
+            </a>
+        </div>
+
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-[var(--color-jj-text-light)] text-3xl z-50 relative">
+                <svg id="hamburger-icon" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg id="close-icon" class="w-8 h-8 hidden" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div
+                id="mobile-menu"
+                class="absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40 hidden"
+            >
+                <ul class="flex flex-col space-y-4 text-center">
+                    <li>
+                        <a
+                            href="/"
+                            class="block text-2xl font-semibold py-2 transition-colors
+                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                        >Inicio</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/nosotros"
+                            class="block text-2xl font-semibold py-2 transition-colors
+                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                        >Nosotros</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/servicios"
+                            class="block text-2xl font-semibold py-2 transition-colors
+                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                        >Servicios</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/proyectos"
+                            class="block text-2xl font-semibold py-2 transition-colors
+                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                        >Proyectos</a>
+                    </li>
+                    <li>
+                        <a href="/contacto" class="block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity text-center mt-4 rounded">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Seleccionar elementos del DOM con comprobaciones de nulidad
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        // Asegurarse de que todos los elementos existan antes de proceder
+        if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
+            let isOpen = false; // Estado para controlar si el menú está abierto o cerrado
+
+            // Función para alternar el menú
+            function toggleMobileMenu() {
+                isOpen = !isOpen; // Invierte el estado
+
+                if (isOpen) {
+                    mobileMenu!.classList.remove('hidden'); // Muestra el menú
+                    // Aplica las clases de transición de entrada
+                    mobileMenu!.classList.add('transition', 'ease-out', 'duration-300', 'opacity-100', 'translate-y-0');
+                    mobileMenu!.classList.remove('opacity-0', '-translate-y-4'); // Asegura que las clases de inicio de transición se remuevan
+
+                    hamburgerIcon!.classList.add('hidden'); // Oculta hamburguesa
+                    closeIcon!.classList.remove('hidden'); // Muestra 'X'
+
+                    // Agrega un event listener para cerrar al hacer clic fuera
+                    document.addEventListener('click', closeMenuOnClickOutside);
+                } else {
+                    // Aplica las clases de transición de salida
+                    mobileMenu!.classList.remove('opacity-100', 'translate-y-0');
+                    mobileMenu!.classList.add('opacity-0', '-translate-y-4');
+
+                    // Esperar a que termine la transición antes de ocultar completamente
+                    mobileMenu!.addEventListener('transitionend', function handler() {
+                        mobileMenu!.classList.add('hidden'); // Oculta el menú después de la transición
+                        mobileMenu!.removeEventListener('transitionend', handler); // Limpia el listener para evitar duplicados
+                    }, { once: true }); // Usar { once: true } para que el listener se remueva automáticamente después de ejecutarse una vez
+
+                    hamburgerIcon!.classList.remove('hidden'); // Muestra hamburguesa
+                    closeIcon!.classList.add('hidden'); // Oculta 'X'
+
+                    // Remueve el event listener para evitar problemas
+                    document.removeEventListener('click', closeMenuOnClickOutside);
+                }
+            }
+
+            // Función para cerrar el menú al hacer clic fuera
+            function closeMenuOnClickOutside(event: Event) { // Añadido tipo Event
+                const target = event.target as HTMLElement; // Casting para acceder a propiedades de HTMLElement
+                // Verifica si el clic fue fuera del botón y fuera del menú
+                if (!mobileMenu!.contains(target) && !mobileMenuButton!.contains(target)) {
+                    if (isOpen) { // Solo cierra si está abierto
+                        toggleMobileMenu();
+                    }
+                }
+            }
+
+            // Event listener para el botón del menú
+            mobileMenuButton.addEventListener('click', function(event) {
+                event.stopPropagation(); // Evita que el clic se propague al document y cierre inmediatamente
+                toggleMobileMenu();
+            });
+
+            // Event listeners para los enlaces dentro del menú (para cerrar al hacer clic en un link)
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isOpen) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Opcional: Cerrar menú si la ventana es redimensionada a desktop
+            window.addEventListener('resize', () => {
+                // Comprobación explícita para evitar errores de TypeScript en window.innerWidth
+                if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
+                    toggleMobileMenu();
+                }
+            });
+        }
+    </script>
+</header>
