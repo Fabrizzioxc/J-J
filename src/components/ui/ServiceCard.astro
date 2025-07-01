@@ -1,0 +1,37 @@
+---
+// src/components/ui/ServiceCard.astro
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  title: string;
+  description: string;
+  href: string; // URL del enlace "Ver más"
+  icon: any; // El componente de icono Astro (ej. PaintBrushIcon)
+}
+
+const { title, description, href, icon: IconComponent, class: className, ...attrs } = Astro.props;
+---
+<div class={`bg-[var(--color-jj-text-light)] px-15 py-12 rounded-lg shadow-md flex flex-col justify-between border border-[var(--color-jj-gray)] ${className}`} {...attrs}>
+    {/* Contenedor del Icono y Título */}
+    <div class="mb-10 text-left flex flex-col md:flex-row md:items-center md:flex-wrap">
+        <div class="w-24 h-24 bg-[var(--color-jj-accent)] rounded-full flex items-center justify-center flex-shrink-0 mb-4 md:mb-0 md:mr-5">
+            <IconComponent size="w-12 h-12" color="text-[var(--color-jj-dark)]" />
+        </div>
+        {/* Título: Por defecto (móvil) es un elemento de bloque debajo. En MD, se vuelve flex-grow y min-w-0 para wrapping horizontal. */}
+        <h3 class="text-4xl font-bold text-[var(--color-jj-dark)] text-left md:flex-grow md:min-w-0" set:html={title}></h3>
+    </div>
+
+    {/* Contenedor del Párrafo */}
+    <div class="mb-10">
+        <p class="text-[var(--color-jj-text-dark)] text-left text-xl">
+            {description}
+        </p>
+    </div>
+
+    {/* Botón "Ver más" */}
+    <div class="mt-auto">
+        <a href={href} class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity block w-full text-center text-xl">
+            Ver más
+        </a>
+    </div>
+</div>
