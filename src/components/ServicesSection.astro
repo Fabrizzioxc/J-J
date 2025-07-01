@@ -1,0 +1,44 @@
+---
+// src/components/ServicesSection.astro
+import SectionHeader from './ui/SectionHeader.astro';
+import ServiceCard from './ui/ServiceCard.astro';
+
+import PaintBrushIcon from './icons/PaintBrushIcon.astro';
+import WrenchScrewdriverIcon from './icons/WrenchScrewdriverIcon.astro';
+import BoltIcon from './icons/BoltIcon.astro';
+---
+<section class="py-16 bg-[var(--color-jj-light-bg)]">
+    <div class="container mx-auto px-4 text-center">
+        <SectionHeader label="Servicios" alignment="center" class="mx-auto" />
+        <h2 class="text-4xl font-bold mb-12 text-[var(--color-jj-dark)]">Soluciones Completas para Cada Rincón.</h2>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8"> {/* CAMBIO AQUÍ: de md:grid-cols-3 a lg:grid-cols-3 */}
+            <ServiceCard
+                title="Pintura"
+                description="Renueva y embellece tus ambientes con colores vibrantes y acabados duraderos que reflejan tu estilo."
+                href="/servicios/pintura"
+                icon={PaintBrushIcon}
+            />
+
+            <ServiceCard
+                title="Drywall"
+                description="Transformamos tus espacios con soluciones rápidas, versátiles y de alta calidad en drywall para interiores y exteriores."
+                href="/servicios/drywall"
+                icon={WrenchScrewdriverIcon}
+            />
+
+            <ServiceCard
+                title={'Instalaciones<br />Eléctricas'}
+                description="Garantizamos un sistema eléctrico eficiente y seguro, desde nuevas instalaciones hasta reparaciones y mantenimiento."
+                href="/servicios/electricidad"
+                icon={BoltIcon}
+            />
+        </div>
+
+        <div class="mt-12">
+            <a href="/servicios" class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-8 py-4 text-lg font-semibold hover:opacity-90 transition-opacity">
+                Ver todos los servicios
+            </a>
+        </div>
+    </div>
+</section>
