@@ -1,0 +1,29 @@
+---
+// src/components/SectionTitle.astro
+import CircleDotIcon from './icons/CircleDotIcon.astro';
+
+interface Props {
+    title: string; // El texto del título de la sección
+    iconColorClass?: string; // Clase de color para el icono (ej: 'text-[var(--color-jj-dark)]')
+    textColorClass?: string; // Clase de color para el texto (ej: 'text-[var(--color-jj-dark)]')
+    containerClass?: string; // Clase para el contenedor general del título (ej: 'mb-8')
+    iconSize?: number | string; // Tamaño del icono
+    iconStrokeWidth?: number | string; // Grosor del trazo del icono
+}
+
+const {
+    title,
+    iconColorClass = 'text-[var(--color-jj-dark)]', // Color por defecto para el icono
+    textColorClass = 'text-[var(--color-jj-dark)]', // Color por defecto para el texto
+    containerClass = 'flex items-center gap-2', // Clases por defecto para el contenedor
+    iconSize = 24,
+    iconStrokeWidth = 2
+} = Astro.props;
+---
+<div class={containerClass}>
+    <CircleDotIcon class={iconColorClass} size={iconSize} strokeWidth={iconStrokeWidth} />
+    {/* Añadimos `leading-none` o `leading-tight` para un control más fino del interlineado */}
+    <h2 class={`text-2xl ${textColorClass} leading-tight`}>
+        {title}
+    </h2>
+</div>
