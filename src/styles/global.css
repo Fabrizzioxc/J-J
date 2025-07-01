@@ -1,58 +1,34 @@
 @import "tailwindcss";
 
-/* View transition global setup */
+/* src/styles/global.css */
+
+/* Define tus Custom Properties (variables CSS) */
 :root {
-  view-transition-name: none;
-}
-::view-transition {
-  pointer-events: none;
-}
-
-::view-transition-group(.vt-element-animation),
-::view-transition-group(.vt-element-animation-closing) {
-  animation-duration: 500ms;
-  animation-timing-function: cubic-bezier(0.34, 0.49, 0, 1);
+  --color-jj-dark: #191716;
+  --color-jj-accent: #F1BA38;
+  --color-jj-light-bg: #f9f9f9;
+  --color-jj-text-dark: #333333;
+  --color-jj-text-light: #ffffff;
+  --color-jj-gray: #cccccc;
 }
 
-::view-transition-old(.vt-element-animation),
-::view-transition-new(.vt-element-animation),
-::view-transition-old(.vt-element-animation-closing),
-::view-transition-new(.vt-element-animation-closing) {
-  height: 100%;
-  min-height: 100%;
-  overflow: clip;
-  object-position: left top;
+/* Puedes añadir estilos base globales aquí si lo deseas */
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: var(--color-jj-text-dark); /* Color de texto por defecto */
+  background-color: #ffffff; /* Fondo blanco por defecto */
 }
 
-@keyframes scaleUp {
-  from {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* Estilos base para los botones */
+button,
+a.button-link, /* Si en algún lugar usas enlaces con clase de botón */
+input[type="submit"],
+input[type="reset"] {
+  border-radius: 5px;
 }
-@keyframes scaleDown {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-}
-
-::view-transition-new(.vt-element-animation) {
-  animation: scaleUp 300ms ease-out both;
-}
-::view-transition-old(.vt-element-animation-closing) {
-  animation: scaleDown 300ms ease-in both;
-}
-
-/* Asegura que el dialog esté oculto si no está abierto */
-dialog:not([open]) {
-  display: none;
+button,
+a[href].bg-\[var\(--color-jj-dark\)\], /* para los botones con bg-jj-dark */
+a[href].border-\[var\(--color-jj-dark\)\] /* para los botones con border-jj-dark */
+{
+  border-radius: 5px;
 }

@@ -1,25 +1,32 @@
 ---
- import './src/styles/global.css'
----
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+	title: string;
+    description?: string;
+}
+
+// Desestructura las props para usarlas en el HTML
+const { title, description = 'Servicios de construcción y acabados profesionales: Drywall, Pintura, Electricidad.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | J&J Servicios Generales</title>
+</head>
+<body class="font-sans text-[var(--color-jj-text-dark)] bg-[var(--color-jj-text-light)]">
+    {/*
+        El <slot /> es donde se inyectará el contenido de las páginas
+        que usen este layout. Por ejemplo, el contenido de index.astro
+        irá aquí.
+    */}
+    <slot />
+    
+</body>
+</html>
