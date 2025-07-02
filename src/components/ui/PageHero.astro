@@ -1,0 +1,38 @@
+---
+// src/components/PageHero.astro
+
+interface Props {
+  title: string;
+  breadcrumb?: string; // Opcional, para el "Inicio / Nosotros"
+  heightClass?: string; // Para controlar la altura del hero
+  paddingTopClass?: string; // Para empujar el contenido hacia abajo si el header es sticky
+}
+
+const { title, breadcrumb, heightClass = 'h-64 md:h-80 lg:h-96', paddingTopClass = 'pt-16' } = Astro.props;
+---
+
+<section class:list={["bg-[var(--color-jj-dark)] text-white flex items-center justify-center text-center", heightClass, paddingTopClass]}>
+    <div class="container mx-auto px-4">
+        {/* Título de la página */}
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white">
+            {title}
+        </h1>
+        
+        {/* Breadcrumb (si existe) */}
+        {breadcrumb && (
+            <p class="text-lg md:text-xl text-white">
+                Inicio / <span class="text-[var(--color-jj-accent)] font-semibold">{breadcrumb}</span>
+            </p>
+        )}
+    </div>
+</section>
+
+<style>
+    /* Estilos opcionales si necesitas un fondo de imagen o patrones, etc. */
+    /* .hero-background {
+        background-image: url('/path/to/your/background-image.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    } */
+</style>
