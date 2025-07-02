@@ -1,0 +1,81 @@
+---
+// src/components/Footer.astro
+import { Image } from 'astro:assets';
+
+// Asumo que tienes un logo para el footer
+import footerLogo from '../assets/jj-logo-light.png'; // AJUSTA ESTA RUTA A TU LOGO BLANCO/CLARO
+
+// Importa los iconos de redes sociales
+import FacebookIcon from './icons/FacebookIcon.astro';
+import InstagramIcon from './icons/InstagramIcon.astro';
+// Asumo que crearás estos iconos. Usaré placeholders si no los tienes aún.
+import WhatsappIcon from './icons/WhatsappIcon.astro';
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+---
+
+<footer class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-16 lg:py-20">
+    <div class="container mx-auto px-4">
+        <!-- Contenido principal del footer - Grid para columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8 lg:gap-16 mb-12">
+            <!-- Columna 1: Logo y Descripción -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="/" class="mb-4">
+                    <Image
+                        src={footerLogo}
+                        alt="Logo J&J Servicios Generales"
+                        width={100}
+                        height={40}
+                        loading="lazy"
+                    />
+                </a>
+                <p class="text-base leading-relaxed mb-6 max-w-sm">
+                    Especialistas en instalación de Drywall, pintura profesional y servicios eléctricos. Calidad garantizada para tu hogar o negocio.
+                </p>
+                <!-- Íconos de redes sociales del logo (si son diferentes a los de la lista de Redes Sociales) -->
+                <div class="flex gap-4">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <FacebookIcon class="text-[var(--color-jj-accent)] hover:text-white transition-colors" size={24} />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <InstagramIcon class="text-[var(--color-jj-accent)] hover:text-white transition-colors" size={24} />
+                    </a>
+                    <!-- Añade más íconos si los necesitas aquí para el área del logo -->
+                </div>
+            </div>
+
+            <!-- Columna 2: Navegación -->
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-6 text-[var(--color-jj-accent)]">Navegación</h3>
+                <ul class="space-y-3">
+                    <li><a href="/nosotros" class="hover:text-[var(--color-jj-accent)] transition-colors">Nosotros</a></li>
+                    <li><a href="/servicios" class="hover:text-[var(--color-jj-accent)] transition-colors">Servicios</a></li>
+                    <li><a href="/proyectos" class="hover:text-[var(--color-jj-accent)] transition-colors">Proyectos</a></li>
+                    <li><a href="/contacto" class="hover:text-[var(--color-jj-accent)] transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Redes Sociales -->
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-6 text-[var(--color-jj-accent)]">Redes Sociales</h3>
+                <ul class="space-y-3">
+                    <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">WhatsApp</a></li>
+                    <li><a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">Instagram</a></li>
+                    <li><a href="https://linkedin.com/in/tu_perfil" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">LinkedIn</a></li>
+                    <li><a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Separador -->
+        <hr class="border-[var(--color-jj-gray)] mb-8" />
+
+        <!-- Sección de Copyright y Políticas -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-sm gap-4 md:gap-0">
+            <p>&copy; Copyright {new Date().getFullYear()} Desarrollado y Diseñado por Fabrizio Zambrano</p>
+            <div class="flex gap-6">
+                <a href="/privacy-policy" class="hover:text-[var(--color-jj-accent)] transition-colors">Privacy & Policy</a>
+                <a href="/terms-condition" class="hover:text-[var(--color-jj-accent)] transition-colors">Terms & Condition</a>
+            </div>
+        </div>
+    </div>
+</footer>
