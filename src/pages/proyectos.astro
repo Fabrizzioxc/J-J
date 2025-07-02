@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 import Header from '../components/Header.astro';
+import ServicesBanner from '../components/ui/ServicesBanner.astro'; // Ajusta la ruta si es necesario
 ---
 
-{/* Envuelve el contenido de la página con el Layout y pasa la prop 'title' */}
-    <Layout title="Inicio">
-        <Header />
-    </Layout>
+<Layout title="Servicios - J&J Servicios Generales">
+  <Header />
+  <ServicesBanner className="pt-16 md:pt-20 lg:pt-24" />
+</Layout>
