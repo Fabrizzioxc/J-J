@@ -2,9 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import ServicesBanner from '../components/ui/ServicesBanner.astro'; // Ajusta la ruta si es necesario
+import PageHero from '../components/ui/PageHero.astro';
 ---
 
 <Layout title="Servicios - J&J Servicios Generales">
   <Header />
-  <ServicesBanner className="pt-16 md:pt-20 lg:pt-24" />
+    <PageHero title="Nosotros" breadcrumb="Nosotros" />
+  <ServicesBanner/>
 </Layout>
