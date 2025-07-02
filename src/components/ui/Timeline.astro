@@ -1,0 +1,83 @@
+---
+import DocumentIcon from '../icons/DocumentIcon.astro';
+import RulerPencilIcon from '../icons/RulerPencilIcon.astro';
+import WrenchHammerIcon from '../icons/WrenchHammerIcon.astro';
+import SmilingFaceIcon from '../icons/SmilingFaceIcon.astro';
+
+// Puedes definir los pasos en un array para que sea más fácil de mantener
+const processSteps = [
+    {
+        number: '01',
+        icon: DocumentIcon, // ¡Aquí solo referenciamos el componente!
+        title: 'Cotización',
+        description: 'Te ofrecemos un presupuesto claro y detallado, adaptado a tus necesidades y sin compromiso.'
+    },
+    {
+        number: '02',
+        icon: RulerPencilIcon,
+        title: 'Planificación',
+        description: 'Juntos, definimos cada detalle. Desarrollamos un plan de trabajo y cronograma para tu tranquilidad.'
+    },
+    {
+        number: '03',
+        icon: WrenchHammerIcon,
+        title: 'Construcción',
+        description: 'Nuestro equipo experto ejecuta el proyecto con máxima calidad y seguridad, supervisando cada fase.'
+    },
+    {
+        number: '04',
+        icon: SmilingFaceIcon,
+        title: 'Entrega',
+        description: 'Recibe un espacio transformado, listo para disfrutar. Tu completa satisfacción es nuestra garantía.'
+    }
+];
+---
+
+<div class="relative flex flex-col items-center">
+    <div class="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-x-12 lg:gap-x-16">
+        {processSteps.map((step, index) => {
+            const IconComponent = step.icon; // Asignamos el componente a una variable capitalizada
+            return (
+                <div class="flex flex-col items-center text-center relative z-10">
+                    {/* Círculo con número e icono */}
+                    <div class="relative w-24 h-24 rounded-full bg-[var(--color-jj-accent)] flex items-center justify-center mb-4 border-[6px] border-white shadow-lg">
+                        <span class="absolute -top-3 -right-3 text-sm font-bold text-[var(--color-jj-dark)] bg-white rounded-full w-8 h-8 flex items-center justify-center border border-[var(--color-jj-accent)]">
+                            {step.number}
+                        </span>
+                        {/* ¡La corrección clave aquí! Renderizamos el componente directamente */}
+                        <IconComponent className="text-[var(--color-jj-dark)]" size="48" />
+                    </div>
+
+                    {/* Línea horizontal entre círculos (solo en desktop, y no para el último) */}
+                    {index < processSteps.length - 1 && (
+                        <div class="hidden lg:block absolute top-1/2 left-[calc(100%+0.5rem)] -translate-y-1/2 w-[calc(var(--spacing-lg-gap))] h-1 bg-[var(--color-jj-dark)] z-0"></div>
+                    )}
+                    {/* Línea vertical para mobile/tablet (entre elementos apilados) */}
+                    {index < processSteps.length - 1 && (
+                        <div class="lg:hidden absolute top-[calc(100%+2rem)] left-1/2 -translate-x-1/2 w-1 h-16 bg-[var(--color-jj-dark)] z-0"></div>
+                    )}
+
+                    {/* Título del paso */}
+                    <h3 class="text-xl md:text-2xl font-bold mb-2 text-[var(--color-jj-dark)]">
+                        {step.title}
+                    </h3>
+
+                    {/* Descripción del paso */}
+                    <p class="text-base text-[var(--color-jj-dark)] leading-relaxed">
+                        {step.description}
+                    </p>
+                </div>
+            )
+        })}
+    </div>
+</div>
+
+<style>
+    /* Definimos una variable CSS para el cálculo del espacio entre columnas para la línea horizontal */
+    /* Esto depende de tu 'gap-x' en Tailwind. lg:gap-x-16 es 64px. */
+    /* Si el gap es 64px, la línea va entre los items. */
+    /* Puedes ajustar 'var(--spacing-lg-gap)' basado en la configuración de tu Tailwind si usas rems */
+    :root {
+        --spacing-lg-gap: 64px; /* O el valor de tu lg:gap-x-16 */
+    }
+</style>
