@@ -1,0 +1,38 @@
+---
+// src/components/ui/ServicesBanner.astro
+import AsteriskIcon from '../icons/AsteriskIcon.astro'; // Ajusta la ruta del icono
+---
+
+{/* Eliminamos el 'container mx-auto px-4' del div interior para que ocupe todo el ancho */}
+<section class="bg-[var(--color-jj-accent)] py-4 text-[var(--color-jj-dark)] w-full overflow-hidden">
+  <div class="flex flex-wrap justify-center items-center gap-x-25 gap-y-2 text-xl md:text-2xl font-bold px-4"> {/* Añadimos px-4 aquí si queremos un padding mínimo en los extremos cuando se apilan en móvil */}
+    {/* Pintura */}
+    <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
+    <div class="flex items-center gap-2"> {/* Mantengo flex items-center gap-2 para la alineación del texto y el icono */}
+      <span class="whitespace-nowrap">Pintura</span> {/* Texto del servicio */}
+    </div>
+
+    {/* Remodelaciones */}
+    <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
+    <div class="flex items-center gap-2">
+      <span class="whitespace-nowrap">Remodelaciones</span>
+    </div>
+
+    {/* Drywall */}
+    <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
+    <div class="flex items-center gap-2">
+      <span class="whitespace-nowrap">Drywall</span>
+    </div>
+
+    {/* Electricidad */}
+    <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
+    <div class="flex items-center gap-2">
+      <span class="whitespace-nowrap">Electricidad</span>
+    </div>
+<AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
+    {/* Acabados */}
+    <div class="flex items-center gap-2">
+      <span class="whitespace-nowrap">Acabados</span>
+    </div>
+  </div>
+</section>
