@@ -1,0 +1,36 @@
+---
+// src/components/WorkProcessSection.astro
+import SectionTitle from './SectionTitle.astro';
+import Timeline from './ui/Timeline.astro'; // ¡Importa el componente Timeline aquí!
+---
+
+<section class="py-16 bg-white text-[var(--color-jj-dark)]">
+    <div class="container mx-auto px-4">
+        {/* Contenedor central para el Label, Título y Párrafo */}
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            {/* Label de la sección "Proceso de trabajo" */}
+            <div class="mb-4 flex justify-center">
+                <SectionTitle
+                    title="Proceso de trabajo"
+                    iconColorClass="text-[var(--color-jj-dark)]"
+                    textColorClass="text-[var(--color-jj-dark)]"
+                    containerClass="flex items-center gap-2 py-[5px]"
+                    iconSize={24}
+                />
+            </div>
+
+            {/* Título principal de la sección */}
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                El Camino a un Proyecto Exitoso
+            </h2>
+
+            {/* Párrafo descriptivo */}
+            <p class="text-lg md:text-xl leading-relaxed">
+                Explora nuestra gama de servicios profesionales. Te brindamos soluciones expertas para cada fase de tu proyecto.
+            </p>
+        </div>
+
+        {/* Aquí se incluye el componente Timeline */}
+        <Timeline />
+    </div>
+</section>
