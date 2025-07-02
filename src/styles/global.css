@@ -18,17 +18,3 @@ body {
   color: var(--color-jj-text-dark); /* Color de texto por defecto */
   background-color: #ffffff; /* Fondo blanco por defecto */
 }
-
-/* Estilos base para los botones */
-button,
-a.button-link, /* Si en algún lugar usas enlaces con clase de botón */
-input[type="submit"],
-input[type="reset"] {
-  border-radius: 5px;
-}
-button,
-a[href].bg-\[var\(--color-jj-dark\)\], /* para los botones con bg-jj-dark */
-a[href].border-\[var\(--color-jj-dark\)\] /* para los botones con border-jj-dark */
-{
-  border-radius: 5px;
-}
