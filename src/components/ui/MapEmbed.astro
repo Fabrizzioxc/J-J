@@ -1,0 +1,29 @@
+---
+// src/components/ui/MapEmbed.astro
+interface Props {
+  height?: string; // Por ejemplo, "450px" o "50vh"
+  class?: string;
+}
+
+const { height = '450px', class: className } = Astro.props;
+
+// Reemplaza esta URL con el iframe real de tu ubicación de Google Maps
+const googleMapsEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d627.6747449553186!2d-77.10903743649742!3d-11.998951442985206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cdd357599b53%3A0xe15f8f18206f4100!2sINVEGAR%20SAC!5e0!3m2!1ses!2spe!4v1751523320032!5m2!1ses!2spe";
+---
+
+<section class:list={["w-full bg-white text-[var(--color-jj-dark)] py-8 md:py-12", className]}>
+  <div class="container mx-auto px-4">
+    <div class="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-lg shadow-lg">
+      <iframe
+        src={googleMapsEmbedUrl}
+        width="100%"
+        height={height}
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de J&J Servicios Generales"
+      ></iframe>
+    </div>
+  </div>
+</section>
