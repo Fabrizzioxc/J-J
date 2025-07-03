@@ -1,0 +1,55 @@
+---
+// src/components/ContactSection.astro
+import { Image } from 'astro:assets';
+import SectionTitle from './SectionTitle.astro';
+import ContactFormAndInfo from './ui/ContactFormAndInfo.astro';
+
+// Importa tu logo
+import jjLogoDark from '../assets/jj-logo-dark.png';
+
+interface Props {
+  paddingTopClass?: string;
+}
+
+const { paddingTopClass = 'pt-16 md:pt-20' } = Astro.props;
+---
+
+<section class:list={["bg-white text-[var(--color-jj-dark)] relative z-10", paddingTopClass]}>
+    {/* Contenedor del Encabezado */}
+    <div class="container mx-auto px-4 py-8 md:py-12 flex flex-col md:flex-row items-center md:justify-between gap-8 md:gap-4">
+        {/* Contenedor Izquierdo: Label y Título */}
+        <div class="text-center md:text-left flex-grow">
+            {/* Label de la sección "Servicios" */}
+            <div class="mb-4 flex justify-center md:justify-start">
+                <SectionTitle
+                    title="Servicios"
+                    iconColorClass="text-[var(--color-jj-dark)]"
+                    textColorClass="text-[var(--color-jj-dark)]"
+                    containerClass="flex items-center gap-2 py-[5px]"
+                    iconSize={24}
+                />
+            </div>
+
+            {/* Título principal */}
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+                Contáctanos, Cotizamos<br />Completamente Gratis
+            </h1>
+        </div>
+
+        {/* Contenedor Derecho: Logo de la Empresa - APLICACIÓN DE CLASES HIDDEN/MD:BLOCK */}
+        <div class="hidden md:block flex-shrink-0 mt-6 md:mt-0"> {/* <-- CAMBIO AQUÍ */}
+            <Image
+                src={jjLogoDark}
+                alt="Logo J&J Servicios Generales"
+                width={150}
+                height={150}
+                loading="eager"
+            />
+        </div>
+    </div>
+
+    {/* Contenedor de la Grilla de Formulario e Información */}
+    <div class="py-12 md:py-16">
+        <ContactFormAndInfo />
+    </div>
+</section>
