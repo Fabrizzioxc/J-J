@@ -1,0 +1,87 @@
+---
+// src/components/ui/ContactFormAndInfo.astro
+
+// Importa tus iconos necesarios para esta sección
+import WhatsappIcon from '../icons/WhatsappIcon.astro';
+import LinkedinIcon from '../icons/LinkedinIcon.astro';
+import FacebookIcon from '../icons/FacebookIcon.astro';
+---
+
+<div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+    {/* Columna Izquierda: Formulario de Contacto */}
+    <div>
+        <form class="bg-white rounded-lg p-6 md:p-8">
+            <div class="mb-6">
+                <label for="fullName" class="block text-sm font-medium text-gray-700 sr-only">Nombre Completo *</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Nombre Completo *"
+                    required
+                    class="mt-1 block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)]"
+                />
+            </div>
+            <div class="mb-6">
+                <label for="phoneNumber" class="block text-sm font-medium text-gray-700 sr-only">Número Telefónico *</label>
+                <input
+                    type="tel"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="Número Telefónico *"
+                    required
+                    class="mt-1 block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)]"
+                />
+            </div>
+            <div class="mb-6">
+                <label for="message" class="block text-sm font-medium text-gray-700 sr-only">Mensaje</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Mensaje"
+                    class="mt-1 block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)]"
+                ></textarea>
+            </div>
+            <div>
+                <button
+                    type="submit"
+                    class="w-full bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 border border-transparent text-lg font-semibold shadow-sm hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-jj-accent)]"
+                >
+                    Solicitar Cotizacion
+                </button>
+            </div>
+        </form>
+    </div>
+
+    {/* Columna Derecha: Información de Contacto (Contenedor Amarillo) */}
+    <div class="bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] rounded-lg p-6 md:p-10 flex flex-col justify-between">
+        <div>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Direccion:</h3>
+            <p class="text-lg mb-6">Mz. P Lote 11 Urbanizacion El Alamo Callao</p>
+
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Contacto:</h3>
+            <p class="text-lg mb-2">Telefono: 992198415</p>
+            <p class="text-lg mb-6">Email: <a href="mailto:invegarsac93@gmail.com" class="hover:underline">invegarsac93@gmail.com</a></p>
+
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Horario de Atencion:</h3>
+            <p class="text-lg mb-6">Lunes - Viernes: 8:00am - 5:00pm</p>
+        </div>
+
+        {/* Redes Sociales con Íconos */}
+        <div>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4">Nuestras Redes</h3>
+            <div class="flex gap-4">
+                <a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <WhatsappIcon className="text-[var(--color-jj-dark)] hover:opacity-80 transition-opacity" />
+                </a>
+                <a href="https://linkedin.com/company/your-company" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <LinkedinIcon class="text-[var(--color-jj-dark)] hover:opacity-80 transition-opacity" size={40} fill="currentColor" />
+                </a>
+                <a href="https://facebook.com/your-company" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <FacebookIcon class="text-[var(--color-jj-dark)] hover:opacity-80 transition-opacity" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
