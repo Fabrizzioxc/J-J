@@ -3,10 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import ServicesBanner from '../components/ui/ServicesBanner.astro'; // Ajusta la ruta si es necesario
 import PageHero from '../components/ui/PageHero.astro';
+import Footer from '../components/Footer.astro';
+import MaintenanceComingSoon from '../components/ui/MaintenanceComingSoon.astro';
 ---
 
 <Layout title="Servicios - J&J Servicios Generales">
   <Header />
   <PageHero title="Contacto" breadcrumb="Contacto" />
   <ServicesBanner/>
+  <MaintenanceComingSoon />
+  <ServicesBanner/>
+  <Footer />
 </Layout>
