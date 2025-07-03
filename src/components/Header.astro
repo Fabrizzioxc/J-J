@@ -1,27 +1,84 @@
 ---
 // src/components/Header.astro
+
+// Obtenemos la ruta actual directamente del objeto global de Astro
+const currentPath = Astro.url.pathname;
+
+// Función helper para determinar si un enlace está activo
+function isActive(path: string): boolean {
+  // Manejo especial para la página de inicio, que puede ser '/' o '/index.html'
+  if (path === '/' && (currentPath === '/' || currentPath === '/index.html')) {
+    return true;
+  }
+  // Para todas las demás páginas, la comparación directa es suficiente
+  return currentPath === path;
+}
 ---
 <header class="fixed top-0 left-0 w-full bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-4 z-50">
     <div class="container mx-auto px-4 flex items-center justify-between">
         <div class="flex-shrink-0">
+            {/* El logo J&J siempre estará activo en su propia página */}
             <a href="/" class="text-4xl font-bold text-[var(--color-jj-text-light)]">J&J</a>
         </div>
 
+        {/* Navegación de Escritorio */}
         <nav class="hidden md:block">
             <ul class="flex space-x-8">
-                <li><a href="/" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Inicio</a></li>
-                <li><a href="/nosotros" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Nosotros</a></li>
-                <li><a href="/servicios" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Servicios</a></li>
-                <li><a href="/proyectos" class="text-xl font-semibold hover:text-[var(--color-jj-accent)] transition-colors">Proyectos</a></li>
+                <li>
+                  <a
+                    href="/"
+                    class:list={[
+                      "text-xl font-semibold transition-colors",
+                      isActive('/') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                    ]}
+                  >Inicio</a>
+                </li>
+                <li>
+                  <a
+                    href="/nosotros"
+                    class:list={[
+                      "text-xl font-semibold transition-colors",
+                      isActive('/nosotros') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                    ]}
+                  >Nosotros</a>
+                </li>
+                <li>
+                  <a
+                    href="/servicios"
+                    class:list={[
+                      "text-xl font-semibold transition-colors",
+                      isActive('/servicios') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                    ]}
+                  >Servicios</a>
+                </li>
+                <li>
+                  <a
+                    href="/proyectos"
+                    class:list={[
+                      "text-xl font-semibold transition-colors",
+                      isActive('/proyectos') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                    ]}
+                  >Proyectos</a>
+                </li>
             </ul>
         </nav>
 
+        {/* Botón de Contacto de Escritorio */}
         <div class="flex-shrink-0 hidden md:block">
-            <a href="/contacto" class="bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity text-xl">
+            <a
+              href="/contacto"
+              class:list={[
+                "px-6 py-3 font-semibold text-xl",
+                isActive('/contacto')
+                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                  : "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity"
+              ]}
+            >
                 Contacto
             </a>
         </div>
 
+        {/* Menú Móvil (Botón e Íconos) */}
         <div class="md:hidden">
             <button id="mobile-menu-button" class="text-[var(--color-jj-text-light)] text-3xl z-50 relative">
                 <svg id="hamburger-icon" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
@@ -32,6 +89,7 @@
                 </svg>
             </button>
 
+            {/* Contenedor del Menú Móvil */}
             <div
                 id="mobile-menu"
                 class="absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40 hidden"
@@ -40,33 +98,57 @@
                     <li>
                         <a
                             href="/"
-                            class="block text-2xl font-semibold py-2 transition-colors
-                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                            class:list={[
+                                "block text-2xl font-semibold py-2 rounded transition-colors",
+                                isActive('/')
+                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                            ]}
                         >Inicio</a>
                     </li>
                     <li>
                         <a
                             href="/nosotros"
-                            class="block text-2xl font-semibold py-2 transition-colors
-                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                            class:list={[
+                                "block text-2xl font-semibold py-2 rounded transition-colors",
+                                isActive('/nosotros')
+                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                            ]}
                         >Nosotros</a>
                     </li>
                     <li>
                         <a
                             href="/servicios"
-                            class="block text-2xl font-semibold py-2 transition-colors
-                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                            class:list={[
+                                "block text-2xl font-semibold py-2 rounded transition-colors",
+                                isActive('/servicios')
+                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                            ]}
                         >Servicios</a>
                     </li>
                     <li>
                         <a
                             href="/proyectos"
-                            class="block text-2xl font-semibold py-2 transition-colors
-                                   hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)] rounded"
+                            class:list={[
+                                "block text-2xl font-semibold py-2 rounded transition-colors",
+                                isActive('/proyectos')
+                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                            ]}
                         >Proyectos</a>
                     </li>
                     <li>
-                        <a href="/contacto" class="block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity text-center mt-4 rounded">
+                        <a
+                          href="/contacto"
+                          class:list={[
+                            "block px-6 py-3 font-semibold text-center mt-4 rounded",
+                            isActive('/contacto')
+                              ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                              : "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity"
+                          ]}
+                        >
                             Contacto
                         </a>
                     </li>
@@ -75,85 +157,74 @@
         </div>
     </div>
 
+    {/* Tu script de JavaScript para el menú móvil se mantiene igual */}
     <script>
-        // Seleccionar elementos del DOM con comprobaciones de nulidad
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
 
-        // Asegurarse de que todos los elementos existan antes de proceder
-        if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
-            let isOpen = false; // Estado para controlar si el menú está abierto o cerrado
+            if (mobileMenuButton && mobileMenu && hamburgerIcon && closeIcon) {
+                let isOpen = false;
 
-            // Función para alternar el menú
-            function toggleMobileMenu() {
-                isOpen = !isOpen; // Invierte el estado
+                function toggleMobileMenu() {
+                    isOpen = !isOpen;
 
-                if (isOpen) {
-                    mobileMenu!.classList.remove('hidden'); // Muestra el menú
-                    // Aplica las clases de transición de entrada
-                    mobileMenu!.classList.add('transition', 'ease-out', 'duration-300', 'opacity-100', 'translate-y-0');
-                    mobileMenu!.classList.remove('opacity-0', '-translate-y-4'); // Asegura que las clases de inicio de transición se remuevan
+                    if (isOpen) {
+                        mobileMenu!.classList.remove('hidden');
+                        mobileMenu!.classList.add('transition', 'ease-out', 'duration-300', 'opacity-100', 'translate-y-0');
+                        mobileMenu!.classList.remove('opacity-0', '-translate-y-4');
 
-                    hamburgerIcon!.classList.add('hidden'); // Oculta hamburguesa
-                    closeIcon!.classList.remove('hidden'); // Muestra 'X'
+                        hamburgerIcon!.classList.add('hidden');
+                        closeIcon!.classList.remove('hidden');
 
-                    // Agrega un event listener para cerrar al hacer clic fuera
-                    document.addEventListener('click', closeMenuOnClickOutside);
-                } else {
-                    // Aplica las clases de transición de salida
-                    mobileMenu!.classList.remove('opacity-100', 'translate-y-0');
-                    mobileMenu!.classList.add('opacity-0', '-translate-y-4');
+                        document.addEventListener('click', closeMenuOnClickOutside);
+                    } else {
+                        mobileMenu!.classList.remove('opacity-100', 'translate-y-0');
+                        mobileMenu!.classList.add('opacity-0', '-translate-y-4');
 
-                    // Esperar a que termine la transición antes de ocultar completamente
-                    mobileMenu!.addEventListener('transitionend', function handler() {
-                        mobileMenu!.classList.add('hidden'); // Oculta el menú después de la transición
-                        mobileMenu!.removeEventListener('transitionend', handler); // Limpia el listener para evitar duplicados
-                    }, { once: true }); // Usar { once: true } para que el listener se remueva automáticamente después de ejecutarse una vez
+                        mobileMenu!.addEventListener('transitionend', function handler() {
+                            mobileMenu!.classList.add('hidden');
+                            mobileMenu!.removeEventListener('transitionend', handler);
+                        }, { once: true });
 
-                    hamburgerIcon!.classList.remove('hidden'); // Muestra hamburguesa
-                    closeIcon!.classList.add('hidden'); // Oculta 'X'
+                        hamburgerIcon!.classList.remove('hidden');
+                        closeIcon!.classList.add('hidden');
 
-                    // Remueve el event listener para evitar problemas
-                    document.removeEventListener('click', closeMenuOnClickOutside);
-                }
-            }
-
-            // Función para cerrar el menú al hacer clic fuera
-            function closeMenuOnClickOutside(event: Event) { // Añadido tipo Event
-                const target = event.target as HTMLElement; // Casting para acceder a propiedades de HTMLElement
-                // Verifica si el clic fue fuera del botón y fuera del menú
-                if (!mobileMenu!.contains(target) && !mobileMenuButton!.contains(target)) {
-                    if (isOpen) { // Solo cierra si está abierto
-                        toggleMobileMenu();
+                        document.removeEventListener('click', closeMenuOnClickOutside);
                     }
                 }
-            }
 
-            // Event listener para el botón del menú
-            mobileMenuButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Evita que el clic se propague al document y cierre inmediatamente
-                toggleMobileMenu();
-            });
+                function closeMenuOnClickOutside(event: Event) {
+                    const target = event.target as HTMLElement;
+                    if (!mobileMenu!.contains(target) && !mobileMenuButton!.contains(target)) {
+                        if (isOpen) {
+                            toggleMobileMenu();
+                        }
+                    }
+                }
 
-            // Event listeners para los enlaces dentro del menú (para cerrar al hacer clic en un link)
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (isOpen) {
+                mobileMenuButton.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    toggleMobileMenu();
+                });
+
+                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (isOpen) {
+                            toggleMobileMenu();
+                        }
+                    });
+                });
+
+                window.addEventListener('resize', () => {
+                    if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
                         toggleMobileMenu();
                     }
                 });
-            });
-
-            // Opcional: Cerrar menú si la ventana es redimensionada a desktop
-            window.addEventListener('resize', () => {
-                // Comprobación explícita para evitar errores de TypeScript en window.innerWidth
-                if (typeof window !== 'undefined' && window.innerWidth >= 768 && isOpen) {
-                    toggleMobileMenu();
-                }
-            });
-        }
+            }
+        });
     </script>
 </header>
