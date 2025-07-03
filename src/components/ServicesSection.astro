@@ -9,15 +9,14 @@ import SectionTitle from './SectionTitle.astro';
 ---
 {/* Sección de Servicios:
   - pt-16: Padding superior de la sección (64px).
-  - pb-28: Un padding inferior más generoso (112px). "pb-30" no es estándar de Tailwind; 
-           pb-28 o pb-32 son buenas alternativas estándar que te dan un espacio amplio. 
-           Si tienes pb-30 personalizado y te gusta, úsalo, pero pb-28 es un valor común.
+  - pb-28: Un padding inferior más generoso (112px).
   - bg-[var(--color-jj-light-bg)]: Color de fondo.
+  - min-h-screen: ¡NUEVO! Hace que la sección ocupe al menos la altura completa de la pantalla.
 */}
-<section class="pt-16 pb-28 bg-[var(--color-jj-light-bg)]"> 
+<section class="min-h-screen pt-16 bg-[var(--color-jj-light-bg)]"> 
     {/* Contenedor principal de la sección:
       - container mx-auto: Centra el contenido y aplica max-width por defecto de Tailwind.
-      - px-4: Padding lateral de la sección (16px), lo que asegura que el contenido no se pegue a los bordes.
+      - px-4: Padding lateral de la sección (16px).
     */}
     <div class="container mx-auto px-4"> 
 
@@ -26,7 +25,6 @@ import SectionTitle from './SectionTitle.astro';
           - md:items-end: Alinea los elementos al final (botón abajo).
           - md:justify-between: Espacia el título y el botón.
           - mb-24: Margen inferior estándar (96px) para separar el encabezado de las tarjetas.
-                   "mb-26" no es estándar de Tailwind; mb-24 es el valor estándar más cercano y generoso.
         */}
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-24"> 
 
@@ -42,7 +40,7 @@ import SectionTitle from './SectionTitle.astro';
                     iconSize={28}
                 />
                 {/* Título Principal:
-                  - text-6xl: Tamaño del título. Podrías considerar un tamaño responsive como text-5xl md:text-6xl si se ve muy grande en móviles pequeños.
+                  - text-6xl: Tamaño del título. Considera responsive como text-5xl md:text-6xl si es muy grande en móviles pequeños.
                   - font-bold text-[var(--color-jj-dark)]: Estilos de texto.
                 */}
                 <h2 class="text-6xl font-bold text-[var(--color-jj-dark)]">Soluciones Completas <br> para Cada Rincón</h2>
@@ -61,8 +59,7 @@ import SectionTitle from './SectionTitle.astro';
 
         {/* Contenedor de las Service Cards:
           - grid grid-cols-1 xl:grid-cols-3: Configuración de la grilla (1 columna en móvil, 3 en XL).
-          - gap-12: Espaciado entre las cards (48px) -- esto se mantiene como querías.
-          - No se necesitan max-w-7xl ni mx-auto aquí, ya que el `container` padre lo controla.
+          - gap-12: Espaciado entre las cards (48px).
         */}
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-12"> 
             <ServiceCard
