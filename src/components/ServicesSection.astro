@@ -2,23 +2,37 @@
 // src/components/ServicesSection.astro
 
 import ServiceCard from './ui/ServiceCard.astro';
-
-// Importa los iconos que ya tienes
 import PaintBrushIcon from './icons/PaintBrushIcon.astro';
 import WrenchScrewdriverIcon from './icons/WrenchScrewdriverIcon.astro';
 import BoltIcon from './icons/BoltIcon.astro';
-
-// ¡Importa el nuevo componente SectionTitle!
-import SectionTitle from './SectionTitle.astro'; // Ajusta la ruta si SectionTitle.astro está en otra carpeta
+import SectionTitle from './SectionTitle.astro'; 
 ---
-<section class="py-16 bg-[var(--color-jj-light-bg)]">
-    <div class="container mx-auto px-4">
+{/* Sección de Servicios:
+  - pt-16: Padding superior de la sección (64px).
+  - pb-28: Un padding inferior más generoso (112px). "pb-30" no es estándar de Tailwind; 
+           pb-28 o pb-32 son buenas alternativas estándar que te dan un espacio amplio. 
+           Si tienes pb-30 personalizado y te gusta, úsalo, pero pb-28 es un valor común.
+  - bg-[var(--color-jj-light-bg)]: Color de fondo.
+*/}
+<section class="pt-16 pb-28 bg-[var(--color-jj-light-bg)]"> 
+    {/* Contenedor principal de la sección:
+      - container mx-auto: Centra el contenido y aplica max-width por defecto de Tailwind.
+      - px-4: Padding lateral de la sección (16px), lo que asegura que el contenido no se pegue a los bordes.
+    */}
+    <div class="container mx-auto px-4"> 
 
-        {/* Contenedor principal para el Label, Título principal y Botón "Ver todos los servicios" */}
-        {/* Cambiado de justify-between a items-end en md para alinear el botón abajo a la derecha */}
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        {/* Contenedor del encabezado (Título principal y Botón "Ver todos los servicios"):
+          - flex flex-col md:flex-row: Columna en móvil, fila en MD.
+          - md:items-end: Alinea los elementos al final (botón abajo).
+          - md:justify-between: Espacia el título y el botón.
+          - mb-24: Margen inferior estándar (96px) para separar el encabezado de las tarjetas.
+                   "mb-26" no es estándar de Tailwind; mb-24 es el valor estándar más cercano y generoso.
+        */}
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-24"> 
 
-            {/* Contenedor para el SectionTitle y el Título principal (lado izquierdo) */}
+            {/* Contenedor del SectionTitle y el Título principal:
+              - text-center md:text-left: Alineación del texto.
+            */}
             <div class="text-center md:text-left mb-8 md:mb-0">
                 <SectionTitle
                     title="servicios"
@@ -27,23 +41,35 @@ import SectionTitle from './SectionTitle.astro'; // Ajusta la ruta si SectionTit
                     containerClass="flex items-center gap-2 mb-10 justify-center md:justify-start"
                     iconSize={28}
                 />
+                {/* Título Principal:
+                  - text-6xl: Tamaño del título. Podrías considerar un tamaño responsive como text-5xl md:text-6xl si se ve muy grande en móviles pequeños.
+                  - font-bold text-[var(--color-jj-dark)]: Estilos de texto.
+                */}
                 <h2 class="text-6xl font-bold text-[var(--color-jj-dark)]">Soluciones Completas <br> para Cada Rincón</h2>
             </div>
 
-            {/* Botón "Ver todos los servicios" - A la derecha en desktop, y en su propia línea abajo */}
-            <div class="w-full md:w-auto flex justify-center md:justify-end"> {/* Ajuste clave aquí */}
+            {/* Botón "Ver todos los servicios":
+              - w-full md:w-auto: Ocupa todo el ancho en móvil, ancho automático en MD.
+              - flex justify-center md:justify-end: Centra el botón en móvil, lo alinea a la derecha en MD.
+            */}
+            <div class="w-full md:w-auto flex justify-center md:justify-end">
                 <a href="/servicios" class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-8 py-4 text-lg font-semibold hover:opacity-90 transition-opacity rounded">
                     Ver todos los servicios
                 </a>
             </div>
         </div>
 
-        {/* Las Service Cards se mantienen igual */}
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        {/* Contenedor de las Service Cards:
+          - grid grid-cols-1 xl:grid-cols-3: Configuración de la grilla (1 columna en móvil, 3 en XL).
+          - gap-12: Espaciado entre las cards (48px) -- esto se mantiene como querías.
+          - No se necesitan max-w-7xl ni mx-auto aquí, ya que el `container` padre lo controla.
+        */}
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12"> 
             <ServiceCard
                 title="Pintura"
                 description="Renueva y embellece tus ambientes con colores vibrantes y acabados duraderos que reflejan tu estilo."
                 href="/servicios/pintura"
+                class="min-h-[480px]"
                 icon={PaintBrushIcon}
             />
 
@@ -51,13 +77,15 @@ import SectionTitle from './SectionTitle.astro'; // Ajusta la ruta si SectionTit
                 title="Drywall"
                 description="Transformamos tus espacios con soluciones rápidas, versátiles y de alta calidad en drywall para interiores y exteriores."
                 href="/servicios/drywall"
+                class="min-h-[480px]"
                 icon={WrenchScrewdriverIcon}
             />
 
             <ServiceCard
-                title={'Instalaciones<br />Eléctricas'}
+                title={'Electricidad'}
                 description="Garantizamos un sistema eléctrico eficiente y seguro, desde nuevas instalaciones hasta reparaciones y mantenimiento."
                 href="/servicios/electricidad"
+                class="min-h-[480px]"
                 icon={BoltIcon}
             />
         </div>
