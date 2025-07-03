@@ -1,38 +1,13 @@
 ---
-// src/components/CtaSection.astro
-import { Image } from 'astro:assets';
+
 import SectionTitle from './SectionTitle.astro';
 
-// Importamos la única imagen de brocha
-import brushImage from '../assets/bg-cta.png'; // AJUSTA ESTA RUTA SI ES NECESARIO
 ---
 
 <section class="py-16">
     <div class="container mx-auto px-4">
         <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] rounded-lg py-16 px-8 md:px-16 lg:px-24 overflow-hidden">
             
-            {/* Imagen de brocha superior derecha */}
-            <div class="hidden md:block absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 rotate-45 opacity-30 lg:opacity-50 z-0"> 
-                <Image
-                    src={brushImage}
-                    alt="Brocha de pintura decorativa"
-                    width={200}
-                    height={200}
-                    loading="lazy"
-                />
-            </div>
-
-            {/* Imagen de brocha inferior izquierda */}
-            <div class="hidden md:block absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4 -rotate-45 opacity-30 lg:opacity-50 z-0">
-                <Image
-                    src={brushImage}
-                    alt="Brocha de pintura decorativa"
-                    width={200}
-                    height={200}
-                    loading="lazy"
-                />
-            </div>
-
             {/* Contenido centrado de la CTA */}
             <div class="relative z-10 max-w-3xl mx-auto text-center">
                 {/* Label de la sección "Contacto" */}
