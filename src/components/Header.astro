@@ -68,7 +68,7 @@ function isActive(path: string): boolean {
             <a
               href="/contacto"
               class:list={[
-                "px-6 py-3 font-semibold text-xl",
+                "px-6 py-2 font-semibold text-xl",
                 isActive('/contacto')
                   ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
                   : "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity"
@@ -119,7 +119,7 @@ function isActive(path: string): boolean {
                     </li>
                     <li>
                         <a
-                            href="/servicios"
+                            href="/servicios/index"
                             class:list={[
                                 "block text-2xl font-semibold py-2 rounded transition-colors",
                                 isActive('/servicios')
