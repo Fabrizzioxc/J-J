@@ -1,14 +1,26 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'; // Tus estilos globales de Tailwind
 import { ClientRouter } from 'astro:transitions';
 
+// Importa componentes comunes para el layout (ej. Header, Footer)
+// Asegúrate de que las rutas a tus componentes Header y Footer sean correctas
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
-	title: string;
+    // El título de la página. Es crucial para el SEO.
+    title: string;
+    // La meta descripción de la página. Crucial para el SEO.
     description?: string;
+    // Opcional: Una clase adicional para el body si la página tiene un estilo de fondo diferente.
+    bodyClass?: string;
 }
 
-// Desestructura las props para usarlas en el HTML
-const { title, description = 'Servicios de construcción y acabados profesionales: Drywall, Pintura, Electricidad.' } = Astro.props;
+const {
+    title,
+    description = 'Servicios de construcción y acabados profesionales en Drywall, Pintura y Electricidad en Lima, Perú.',
+    bodyClass
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -19,11 +31,14 @@ const { title, description = 'Servicios de construcción y acabados profesionale
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | J&J Servicios Generales</title>
+    <title>{title} | J&J Servicios Generales</title> {/* Agregamos el nombre de tu empresa para SEO */}
     <ClientRouter />
 </head>
-<body class="font-sans text-[var(--color-jj-text-dark)] bg-[var(--color-jj-text-light)]">
-    <slot />
-    
+<body class={`font-sans text-[var(--color-jj-text-dark)] bg-[var(--color-jj-light-bg)] ${bodyClass || ''}`}>
+    <Header /> {/* Tu componente de encabezado */}
+    <main>
+        <slot /> {/* Aquí se insertará el contenido específico de cada página */}
+    </main>
+    <Footer /> {/* Tu componente de pie de página */}
 </body>
 </html>
