@@ -6,12 +6,21 @@ const currentPath = Astro.url.pathname;
 
 // Función helper para determinar si un enlace está activo
 function isActive(path: string): boolean {
-  // Manejo especial para la página de inicio, que puede ser '/' o '/index.html'
-  if (path === '/' && (currentPath === '/' || currentPath === '/index.html')) {
-    return true;
-  }
-  // Para todas las demás páginas, la comparación directa es suficiente
-  return currentPath === path;
+    // Manejo especial para la página de inicio, que puede ser '/' o '/index.html'
+    if (path === '/' && (currentPath === '/' || currentPath === '/index.html')) {
+        return true;
+    }
+
+    // *** NUEVA LÓGICA PARA LA PÁGINA DE SERVICIOS Y SUS SUBPÁGINAS ***
+    if (path === '/servicios') {
+        // Verifica si la ruta actual es exactamente '/servicios'
+        // O si la ruta actual comienza con '/servicios/' (para subpáginas como /servicios/drywall)
+        return currentPath === '/servicios' || currentPath.startsWith('/servicios/');
+    }
+    // *** FIN DE LA NUEVA LÓGICA ***
+
+    // Para todas las demás páginas, la comparación directa es suficiente
+    return currentPath === path;
 }
 ---
 <header class="fixed top-0 left-0 w-full bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-4 z-50">
@@ -25,40 +34,41 @@ function isActive(path: string): boolean {
         <nav class="hidden md:block">
             <ul class="flex space-x-8">
                 <li>
-                  <a
-                    href="/"
-                    class:list={[
-                      "text-xl font-semibold transition-colors",
-                      isActive('/') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
-                    ]}
-                  >Inicio</a>
+                    <a
+                        href="/"
+                        class:list={[
+                            "text-xl font-semibold transition-colors",
+                            isActive('/') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                        ]}
+                    >Inicio</a>
                 </li>
                 <li>
-                  <a
-                    href="/nosotros"
-                    class:list={[
-                      "text-xl font-semibold transition-colors",
-                      isActive('/nosotros') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
-                    ]}
-                  >Nosotros</a>
+                    <a
+                        href="/nosotros"
+                        class:list={[
+                            "text-xl font-semibold transition-colors",
+                            isActive('/nosotros') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                        ]}
+                    >Nosotros</a>
                 </li>
                 <li>
-                  <a
-                    href="/servicios"
-                    class:list={[
-                      "text-xl font-semibold transition-colors",
-                      isActive('/servicios') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
-                    ]}
-                  >Servicios</a>
+                    <a
+                        href="/servicios"
+                        class:list={[
+                            "text-xl font-semibold transition-colors",
+                            // La función isActive ahora maneja las subpáginas de servicios
+                            isActive('/servicios') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                        ]}
+                    >Servicios</a>
                 </li>
                 <li>
-                  <a
-                    href="/proyectos"
-                    class:list={[
-                      "text-xl font-semibold transition-colors",
-                      isActive('/proyectos') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
-                    ]}
-                  >Proyectos</a>
+                    <a
+                        href="/proyectos"
+                        class:list={[
+                            "text-xl font-semibold transition-colors",
+                            isActive('/proyectos') ? "text-[var(--color-jj-accent)]" : "hover:text-[var(--color-jj-accent)]"
+                        ]}
+                    >Proyectos</a>
                 </li>
             </ul>
         </nav>
@@ -68,7 +78,7 @@ function isActive(path: string): boolean {
             <a
               href="/contacto"
               class:list={[
-                "px-6 py-2 font-semibold text-xl",
+                "px-6 py-2 font-semibold text-xl rounded-md", // Añadido rounded-md para consistencia
                 isActive('/contacto')
                   ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
                   : "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity"
@@ -101,8 +111,8 @@ function isActive(path: string): boolean {
                             class:list={[
                                 "block text-2xl font-semibold py-2 rounded transition-colors",
                                 isActive('/')
-                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
-                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                                    ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                    : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
                             ]}
                         >Inicio</a>
                     </li>
@@ -112,19 +122,20 @@ function isActive(path: string): boolean {
                             class:list={[
                                 "block text-2xl font-semibold py-2 rounded transition-colors",
                                 isActive('/nosotros')
-                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
-                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                                    ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                    : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
                             ]}
                         >Nosotros</a>
                     </li>
                     <li>
                         <a
-                            href="/servicios/index"
+                            href="/servicios"
                             class:list={[
                                 "block text-2xl font-semibold py-2 rounded transition-colors",
+                                // La función isActive ahora maneja las subpáginas de servicios
                                 isActive('/servicios')
-                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
-                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                                    ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                    : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
                             ]}
                         >Servicios</a>
                     </li>
@@ -134,8 +145,8 @@ function isActive(path: string): boolean {
                             class:list={[
                                 "block text-2xl font-semibold py-2 rounded transition-colors",
                                 isActive('/proyectos')
-                                  ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
-                                  : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
+                                    ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
+                                    : "hover:bg-[var(--color-jj-accent)] hover:text-[var(--color-jj-dark)]"
                             ]}
                         >Proyectos</a>
                     </li>
@@ -143,7 +154,7 @@ function isActive(path: string): boolean {
                         <a
                           href="/contacto"
                           class:list={[
-                            "block px-6 py-3 font-semibold text-center mt-4 rounded",
+                            "block px-6 py-3 font-semibold text-center mt-4 rounded", // Añadido rounded para consistencia
                             isActive('/contacto')
                               ? "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)]"
                               : "bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity"
