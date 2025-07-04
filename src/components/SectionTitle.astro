@@ -22,12 +22,11 @@ const {
 
 // Clases por defecto para el badge
 const defaultBadgeTextColor = 'text-gray-800';
-const defaultBadgePadding = 'px-3 py-1.5';
 const defaultBadgeRounded = 'rounded-md';
 const defaultIconColor = 'text-gray-800';
 ---
 
-<div class={`${containerClass} ${defaultBadgePadding} ${defaultBadgeRounded}`}>
+<div class={`${containerClass} ${defaultBadgeRounded}`}>
     <CircleDotIcon class={iconColorClass || defaultIconColor} size={iconSize} strokeWidth={iconStrokeWidth} />
     <h2 class={`font-semibold text-2xl ${textColorClass || defaultBadgeTextColor}`}>
         {title}
