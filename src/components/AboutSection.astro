@@ -9,26 +9,14 @@ import ClockIcon from './icons/ClockIcon.astro';
 import ShieldIcon from './icons/ShieldIcon.astro';
 ---
 
-{/* Sección principal:
-    - bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)]: Colores de fondo y texto.
-    - py-20 lg:py-24: Padding vertical para espaciado superior e inferior, incluso con min-h-screen.
-    - min-h-screen: Asegura que la sección ocupe al menos el 100% de la altura del viewport.
-    - flex items-center: Centra el contenido (div.container) verticalmente dentro de la sección.
-*/}
+{/* Sección principal */}
 <section class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-20 lg:py-24 min-h-screen flex items-center">
   <div class="container mx-auto px-4">
     <div class="flex flex-col lg:flex-row items-center gap-12">
 
-      {/* Contenedor de la Imagen:
-          - w-full lg:w-1/2: Ocupa todo el ancho en móvil, la mitad en LG.
-          - flex justify-center lg:justify-start items-center: Centra la imagen en móvil, la alinea a la izquierda en LG, y centra verticalmente.
-          - mb-12 lg:mb-0: Margen inferior solo en móviles para separar la imagen del texto. En LG, no hay margen inferior porque están en filas.
-      */}
-      <div class="relative w-full lg:w-1/2 flex justify-center lg:justify-start items-center mb-12 lg:mb-0">
-        {/* Contenedor interno para la imagen con tamaño controlado:
-            - max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl: Controla el ancho máximo de la imagen.
-            - relative z-10: Mantiene la sombra por detrás.
-        */}
+      {/* Contenedor de la Imagen - MODIFICADO */}
+      <div class="relative w-full lg:w-1/2 hidden lg:flex justify-center lg:justify-start items-center mb-12 lg:mb-0">
+        {/* Contenedor interno para la imagen con tamaño controlado */}
         <div class="relative z-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <Image
             src={aboutImage}
@@ -39,14 +27,9 @@ import ShieldIcon from './icons/ShieldIcon.astro';
         </div>
       </div>
 
-      {/* Contenido de Texto (Descripción y Lista):
-          - lg:w-1/2: Ocupa la mitad del ancho en LG.
-          - text-center lg:text-left: Alineación del texto.
-      */}
+      {/* Contenido de Texto (Descripción y Lista) */}
       <div class="lg:w-1/2 text-center lg:text-left">
-        {/* SectionTitle:
-            - mb-8: Margen inferior para separarlo del h2.
-        */}
+        {/* SectionTitle */}
         <SectionTitle
           title="Nosotros"
           iconColorClass="text-[var(--color-jj-text-light)]"
@@ -55,29 +38,18 @@ import ShieldIcon from './icons/ShieldIcon.astro';
           iconSize={24}
         />
 
-        {/* H2 (Título principal):
-            - text-4xl md:text-5xl: Tamaño del título.
-            - font-bold mb-8: Estilos de fuente y margen inferior.
-            - whitespace-normal: Asegura que el texto se rompa de forma normal.
-            - block: Asegura que cada línea se trate como un bloque separado.
-            - lg:max-w-none: Para evitar que el título se rompa innecesariamente en pantallas grandes si no quieres.
-            - Usamos `flex flex-col` para controlar las líneas sin <br>
-        */}
+        {/* H2 (Título principal) */}
         <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">
             <span class="block">Expertos que</span>
             <span class="block">Construyen Confianza.</span>
         </h2>
 
-        {/* Párrafo de Descripción:
-            - mb-8: Margen inferior para separarlo de la lista.
-        */}
+        {/* Párrafo de Descripción */}
         <p class="text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
           En J&J Servicios Generales, contamos con más de 12 años de experiencia transformando espacios. Somos especialistas en Drywall, pintura y electricidad, garantizando soluciones integrales que se adaptan a tu proyecto, con acabados duraderos y seguros.
         </p>
 
-        {/* Lista de Puntos:
-            - mb-12: Margen inferior para separarlo del botón.
-        */}
+        {/* Lista de Puntos */}
         <ul class="space-y-4 mb-12 text-xl font-semibold mx-auto lg:mx-0 max-w-max lg:max-w-none">
           <li class="flex items-center gap-3 justify-center lg:justify-start">
             <CheckCircleIcon className="text-[var(--color-jj-accent)] w-8 h-15"/>
@@ -93,9 +65,7 @@ import ShieldIcon from './icons/ShieldIcon.astro';
           </li>
         </ul>
 
-        {/* Contenedor del Botón:
-            - flex justify-center lg:justify-start: Centra el botón en móvil, lo alinea a la izquierda en LG.
-        */}
+        {/* Contenedor del Botón */}
         <div class="flex justify-center lg:justify-start">
           <a
             href="/nosotros"
