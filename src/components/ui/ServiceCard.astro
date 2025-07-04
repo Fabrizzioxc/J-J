@@ -11,37 +11,58 @@ interface Props extends HTMLAttributes<'div'> {
 
 const { title, description, href, icon: IconComponent, class: className, ...attrs } = Astro.props;
 ---
-<div class={`bg-[var(--color-jj-text-light)] px-12 py-10 rounded-lg shadow-md flex flex-col justify-between border border-[var(--color-jj-gray)] ${className}`} {...attrs}>
-    {/* Contenedor del Icono y Título */}
-    <div class="text-left flex flex-col md:flex-row md:items-center md:flex-wrap mb-4 md:mb-0"> {/* Añadimos mb-4 para móvil, lo quitamos en md */}
-        <div class="w-24 h-24 bg-[var(--color-jj-accent)] rounded-full flex items-center justify-center flex-shrink-0 mb-4 md:mb-0 md:mr-5">
-            <IconComponent size="w-12 h-12" color="text-[var(--color-jj-dark)]" />
-        </div>
-        {/* CAMBIO CLAVE AQUÍ PARA EL H3:
-           - text-3xl en móvil, text-4xl en MD (responsive typography).
-           - mb-4 en móvil (para separarse del párrafo).
-           - md:mb-0: ¡Esto es nuevo! En MD (y superior), no queremos que el h3 tenga un margen inferior propio que lo desplace,
-                      ya que está en una fila con el icono y `md:items-center` lo centrará.
-                      El espaciado del párrafo se manejará en el div del párrafo.
+
+<div class={`bg-[var(--color-jj-text-light)] px-10 py-12 shadow-md flex flex-col justify-between border border-[var(--color-jj-gray)] rounded-none ${className}`} {...attrs}>
+
+    {/* Contenedor Superior: Icono y Título
+        - flex flex-col: Asegura que Icono y Título estén siempre apilados verticalmente.
+        - items-start: **NUEVO**: Alinea el contenido a la izquierda (icono y título).
+        - text-left: **NUEVO**: Asegura que el texto (título) esté alineado a la izquierda.
+        - mb-6: Margen inferior para separar de la descripción.
+    */}
+    <div class="flex flex-col items-start text-left mb-4">
+        {/* Contenedor del Icono CUADRADO:
+            - w-16 h-16: Tamaño fijo y cuadrado (64px x 64px).
+            - bg-[var(--color-jj-accent)]: Color de fondo.
+            - rounded-none: **NUEVO**: Asegura esquinas cuadradas.
+            - flex items-center justify-center: Centra el icono dentro de su cuadrado.
+            - flex-shrink-0: Evita que el contenedor del icono se encoja.
+            - mb-4: Espacio entre el cuadrado del icono y el título.
         */}
-        <h3 class="text-3xl md:text-4xl font-bold text-[var(--color-jj-dark)] text-left md:flex-grow md:min-w-0 mb-4 md:mb-0" set:html={title}></h3>
+        <div class="w-20 h-20 bg-[var(--color-jj-accent)] rounded-none flex items-center justify-center flex-shrink-0 mb-10">
+            <IconComponent size="w-10 h-10" color="text-[var(--color-jj-dark)]" /> {/* Tamaño del icono dentro del cuadrado */}
+        </div>
+        {/* Título:
+            - text-3xl md:text-4xl: Tamaño del título.
+            - font-bold text-[var(--color-jj-dark)]: Estilos de fuente.
+            - leading-tight: Ajusta el interlineado.
+        */}
+        <h3 class="text-3xl md:text-4xl font-bold text-[var(--color-jj-dark)] text-left leading-tight" set:html={title}></h3>
     </div>
 
-    {/* Contenedor del Párrafo
-       - mb-6 en móvil, md:mb-8 en MD, lg:mb-10 en LG.
-       - AÑADIMOS mt-4 md:mt-6 lg:mt-8: Este margen superior en el párrafo es CRUCIAL.
-         Ahora que el h3 ya no tiene un mb en MD, el párrafo necesita su propio margen superior
-         para separarse del bloque de icono/título.
+    {/* Contenedor del Párrafo de Descripción:
+        - flex-grow: Permite que este div ocupe el espacio restante, empujando el botón hacia abajo.
+        - text-left: Alinea el párrafo a la izquierda.
+        - mb-8: Margen inferior para separar de el botón.
     */}
-    <div class="mt-4 md:mt-6 lg:mt-8 mb-6 md:mb-8 lg:mb-10">
-        <p class="text-[var(--color-jj-text-dark)] text-left text-lg md:text-xl">
+    <div class="flex-grow text-left mb-16">
+        {/* Párrafo de Descripción:
+            - text-lg md:text-xl: Tamaño responsivo.
+            - leading-relaxed: Para mejorar la legibilidad del texto de la descripción.
+        */}
+        <p class="text-[var(--color-jj-text-dark)] text-lg md:text-xl leading-relaxed">
             {description}
         </p>
     </div>
 
-    {/* Botón "Ver más" */}
-    <div class="mt-auto md:mt-0">
-        <a href={href} class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity block w-full text-center text-lg md:text-xl">
+    {/* Botón "Ver más":
+        - w-full: Ocupa todo el ancho.
+        - text-center: Centra el texto del botón.
+        - rounded-none: Asegura bordes cuadrados para el botón también.
+        - px-6 py-3: Padding del botón.
+    */}
+    <div>
+        <a href={href} class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity block w-full text-center text-lg md:text-xl rounded-none">
             Ver más
         </a>
     </div>
