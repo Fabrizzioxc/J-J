@@ -32,19 +32,25 @@ import SectionTitle from './SectionTitle.astro';
               - text-center md:text-left: Alineación del texto.
             */}
             <div class="text-center md:text-left mb-8 md:mb-0">
-                <SectionTitle
-                    title="Servicios"
-                    iconColorClass="text-[var(--color-jj-dark)]"
-                    textColorClass="text-[var(--color-jj-dark)]"
-                    containerClass="flex items-center gap-2 mb-10 justify-center md:justify-start"
-                    iconSize={28}
-                />
-                {/* Título Principal:
-                  - text-6xl: Tamaño del título. Considera responsive como text-5xl md:text-6xl si es muy grande en móviles pequeños.
-                  - font-bold text-[var(--color-jj-dark)]: Estilos de texto.
-                */}
-                <h2 class="text-6xl font-bold text-[var(--color-jj-dark)]">Soluciones Completas <br> para Cada Rincón</h2>
-            </div>
+            <SectionTitle
+                title="Servicios"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-4 justify-center md:justify-start"
+                iconSize={28}
+            />
+            {/* Título Principal:
+                - text-6xl: Tamaño del título. Considera responsive como text-5xl md:text-6xl si es muy grande en móviles pequeños.
+                - font-bold text-[var(--color-jj-dark)]: Estilos de texto.
+                - flex flex-col: Para que las líneas (spans) se apilen verticalmente.
+                - items-center justify-center: Centra el texto en móvil.
+                - md:items-start md:justify-start: Alinea el texto a la izquierda en desktop.
+            */}
+            <h2 class="text-6xl font-bold text-[var(--color-jj-dark)] flex flex-col items-center justify-center md:items-start md:justify-start">
+                <span class="block">Soluciones Completas</span>
+                <span class="block">para Cada Rincón</span>
+            </h2>
+        </div>
 
             {/* Botón "Ver todos los servicios":
               - w-full md:w-auto: Ocupa todo el ancho en móvil, ancho automático en MD.
