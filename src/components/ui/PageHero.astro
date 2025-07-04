@@ -2,16 +2,14 @@
 // src/components/PageHero.astro
 
 interface BreadcrumbItem {
-    label: string; // El texto a mostrar (ej: "Servicios", "Pintura")
-    // Eliminamos 'href' de aquí, ya que no serán enlaces
+    label: string;
 }
 
 interface Props {
     title: string;
-    // Ahora 'breadcrumbs' es un array de BreadcrumbItem (solo con label)
     breadcrumbs?: BreadcrumbItem[]; 
-    heightClass?: string; // Para controlar la altura del hero
-    paddingTopClass?: string; // Para empujar el contenido hacia abajo si el header es sticky
+    heightClass?: string;
+    paddingTopClass?: string;
 }
 
 const { 
@@ -57,11 +55,5 @@ const {
             </nav>
         )}
     </div>
-    
-    <div class="absolute inset-0 bg-black opacity-30 z-0"></div>
 
 </section>
-
-<style>
-    /* Estilos opcionales si necesitas un fondo de imagen o patrones, etc. */
-</style>
