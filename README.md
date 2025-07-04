@@ -1,7 +1,7 @@
 # J&J Servicios Generales 🛠️
 
 <p align="center">
-  <img src="assets/254shots_so.png" alt="Vista previa del sitio de J&J Servicios Generales" width="100%" />
+  <img src="../jyj/src/assets/254shots_so.png" alt="Vista previa del sitio de J&J Servicios Generales" width="100%" />
 </p>
 
 ## Descripción del Proyecto
