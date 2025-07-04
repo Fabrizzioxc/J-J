@@ -1,0 +1,51 @@
+---
+// src/pages/servicios/index.astro
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/ui/PageHero.astro'; // Usar el PageHero actualizado
+import SectionTitle from '@components/SectionTitle.astro';
+import ServicesSection from '@components/ServicesSection.astro';
+
+// Datos de tus servicios
+const services = [
+    { title: 'Drywall', description: 'Expertos en instalación, reparación y acabados de Drywall para espacios modernos y seguros.', href: '/servicios/drywall', imageUrl: '/images/drywall-service.jpg' },
+    { title: 'Pintura', description: 'Transformamos tus ambientes con pintura de alta calidad, garantizando acabados impecables en interiores y exteriores.', href: '/servicios/pintura', imageUrl: '/images/painting-service.jpg' },
+    { title: 'Electricidad', description: 'Instalaciones eléctricas seguras, mantenimiento y soluciones eficientes para hogares y empresas.', href: '/servicios/electricidad', imageUrl: '/images/electrical-service.jpg' },
+];
+---
+
+<Layout
+    title="Servicios | J&J Servicios Generales"
+    description="Descubre todos nuestros servicios profesionales de Drywall, Pintura y Electricidad en Lima. Soluciones integrales, calidad garantizada para tu hogar o negocio."
+>
+    <PageHero
+        title="Servicios"
+        breadcrumbs={[
+            { label: 'Inicio' },
+            { label: 'Servicios' },
+        ]}
+    />
+
+    <section class="py-16 md:py-20 bg-[var(--color-jj-light-bg)]">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Explora nuestras especialidades"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] mb-12 leading-tight">
+                <span class="block">Soluciones Completas</span>
+                <span class="block">para Cada Rincón</span>
+            </h2>
+            
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-16">
+                En J&J Servicios Generales, transformamos tus proyectos con un equipo de profesionales altamente calificados. Nuestra experiencia abarca desde el diseño y la planificación hasta la ejecución impecable, garantizando acabados que superan tus expectativas.
+            </p>
+
+            <ServicesSection />
+        </div>
+    </section>
+
+</Layout>

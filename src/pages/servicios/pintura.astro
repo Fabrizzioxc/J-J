@@ -1,0 +1,54 @@
+---
+// src/pages/servicios/pintura.astro
+import Layout from '@layouts/Layout.astro'; // Tu layout principal
+import PageHero from '@components/ui/PageHero.astro'; // Tu componente PageHero actualizado
+import SectionTitle from '@components/SectionTitle.astro'; // Tu componente de título de sección
+
+// Importa aquí cualquier componente o imagen específica para esta página
+---
+
+<Layout
+    title="Servicio de Pintura Profesional | J&J Servicios Generales"
+    description="Ofrecemos servicios de pintura interior y exterior de alta calidad en Lima. Acabados impecables, durabilidad y colores que inspiran para tu hogar o negocio. ¡Pide tu cotización!"
+>
+    <PageHero
+        title="Pintura"
+        breadcrumbs={[
+            { label: 'Inicio' },      // Solo el label
+            { label: 'Servicios' },   // Solo el label
+            { label: 'Pintura' },     // Solo el label
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Acabados de Color que Inspiran"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Pintura Profesional</h1> {/* H1 oculto para SEO si PageHero ya muestra el título */}
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                Transforma tus espacios con nuestro servicio de pintura profesional. Utilizamos materiales de primera calidad y técnicas avanzadas para garantizar acabados impecables y duraderos, tanto en interiores como en exteriores. Nuestro equipo de pintores expertos se encarga de todo, desde la preparación de superficies hasta el último retoque, asegurando resultados que superan tus expectativas.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">¿Por qué elegir nuestro servicio de pintura?</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Materiales de alta calidad y eco-amigables para mayor durabilidad y mejor acabado.</li>
+                <li>Pintores profesionales certificados con años de experiencia en todo tipo de superficies.</li>
+                <li>Preparación meticulosa de superficies: lijado, masillado y limpieza profunda.</li>
+                <li>Limpieza y cuidado extremos durante y después del proyecto.</li>
+                <li>Asesoramiento experto en elección de colores, texturas y tipos de pintura para tu espacio.</li>
+                <li>Cumplimiento estricto de plazos y presupuesto acordado.</li>
+            </ul>
+
+            <div class="mt-16">
+                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity rounded-md">
+                    ¡Solicita tu cotización de Pintura!
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

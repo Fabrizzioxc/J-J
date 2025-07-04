@@ -1,0 +1,40 @@
+---
+// src/pages/servicios/electricidad.astro
+import Layout from '@layouts/Layout.astro'; // Tu layout principal
+import PageHero from '@components/ui/PageHero.astro'; // Tu componente PageHero actualizado
+import SectionTitle from '@components/SectionTitle.astro'; // Tu componente de título de sección
+
+// Importa aquí cualquier componente o imagen específica para esta página
+---
+
+<Layout
+    title="Servicio de Electricidad Certificada | J&J Servicios Generales"
+    description="Instalaciones y mantenimiento eléctrico seguro y confiable en Lima. Soluciones para hogares y empresas, reparaciones, iluminación y más. ¡Garantizamos tu seguridad!"
+>
+    <PageHero
+        title="Electricidad"
+        breadcrumbs={[
+            { label: 'Inicio' },      // Solo el label
+            { label: 'Servicios' },   // Solo el label
+            { label: 'Electricidad' },// Solo el label
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Energía Segura y Eficiente para tu Espacio"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Electricidad Certificada</h1> {/* H1 oculto para SEO si PageHero ya muestra el título */}
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                En J&J Servicios Generales, ofrecemos soluciones eléctricas integrales para hogares y empresas, garantizando instalaciones seguras, eficientes y conformes a las normativas vigentes. Desde reparaciones menores hasta instalaciones completas, nuestro equipo de electricistas certificados te brinda tranquilidad y un servicio de alta calidad.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">¿Por qué elegir nuestro servicio de Electricidad?</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Electricistas certificados y con amplia experiencia.</li>
+                <li>Servicios de instalación, reparación, mantenimiento

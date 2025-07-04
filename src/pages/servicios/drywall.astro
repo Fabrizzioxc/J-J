@@ -1,0 +1,54 @@
+---
+// src/pages/servicios/drywall.astro
+import Layout from '@layouts/Layout.astro'; // Tu layout principal
+import PageHero from '@components/ui/PageHero.astro'; // Tu componente PageHero actualizado
+import SectionTitle from '@components/SectionTitle.astro'; // Tu componente de título de sección
+
+// Importa aquí cualquier componente o imagen específica para esta página
+---
+
+<Layout
+    title="Servicio de Drywall Profesional | J&J Servicios Generales"
+    description="Especialistas en instalación y reparación de Drywall en Lima. Soluciones rápidas, limpias y eficientes para divisiones, techos y diseños personalizados. ¡Pide tu presupuesto!"
+>
+    <PageHero
+        title="Drywall"
+        breadcrumbs={[
+            { label: 'Inicio' },      // Solo el label
+            { label: 'Servicios' },   // Solo el label
+            { label: 'Drywall' },     // Solo el label
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Experiencia y Precisión en Drywall"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Drywall Profesional</h1> {/* H1 oculto para SEO si PageHero ya muestra el título */}
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                En J&J Servicios Generales, somos expertos en la instalación y reparación de Drywall, ofreciendo soluciones rápidas, limpias y versátiles para la creación de nuevos espacios, divisiones de ambientes, cielorrasos y diseños personalizados. Trabajamos con los más altos estándares de calidad y seguridad para garantizar estructuras resistentes y acabados impecables.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">¿Por qué elegir nuestro servicio de Drywall?</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Instalación rápida y eficiente con mínimo desorden.</li>
+                <li>Materiales de Drywall de primera calidad, resistentes y duraderos.</li>
+                <li>Equipo especializado en montaje de estructuras y acabados finos.</li>
+                <li>Soluciones versátiles para cualquier diseño y necesidad de espacio.</li>
+                <li>Asesoramiento experto en diseño y funcionalidad de tus ambientes.</li>
+                <li>Cumplimiento estricto de plazos y presupuesto acordado.</li>
+            </ul>
+
+            <div class="mt-16">
+                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity rounded-md">
+                    ¡Cotiza tu proyecto de Drywall!
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

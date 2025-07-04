@@ -9,7 +9,13 @@ import MaintenanceComingSoon from '../components/ui/MaintenanceComingSoon.astro'
 
 <Layout title="Servicios - J&J Servicios Generales">
   <Header />
-    <PageHero title="Nosotros" breadcrumb="Nosotros" />
+    <PageHero
+        title="Nosotros"
+        breadcrumbs={[
+            { label: 'Inicio' },
+            { label: 'Nosotros' },
+        ]}
+    />
   <ServicesBanner/>
   <MaintenanceComingSoon />
   <ServicesBanner/>

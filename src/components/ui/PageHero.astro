@@ -1,38 +1,67 @@
 ---
 // src/components/PageHero.astro
 
-interface Props {
-  title: string;
-  breadcrumb?: string; // Opcional, para el "Inicio / Nosotros"
-  heightClass?: string; // Para controlar la altura del hero
-  paddingTopClass?: string; // Para empujar el contenido hacia abajo si el header es sticky
+interface BreadcrumbItem {
+    label: string; // El texto a mostrar (ej: "Servicios", "Pintura")
+    // Eliminamos 'href' de aquí, ya que no serán enlaces
 }
 
-const { title, breadcrumb, heightClass = 'h-64 md:h-80 lg:h-96', paddingTopClass = 'pt-16' } = Astro.props;
+interface Props {
+    title: string;
+    // Ahora 'breadcrumbs' es un array de BreadcrumbItem (solo con label)
+    breadcrumbs?: BreadcrumbItem[]; 
+    heightClass?: string; // Para controlar la altura del hero
+    paddingTopClass?: string; // Para empujar el contenido hacia abajo si el header es sticky
+}
+
+const { 
+    title, 
+    breadcrumbs, 
+    heightClass = 'h-64 md:h-80 lg:h-96', 
+    paddingTopClass = 'pt-16' 
+} = Astro.props;
 ---
 
-<section class:list={["bg-[var(--color-jj-dark)] text-white flex items-center justify-center text-center", heightClass, paddingTopClass]}>
-    <div class="container mx-auto px-4">
+<section class:list={["bg-[var(--color-jj-dark)] text-white flex items-center justify-center text-center relative overflow-hidden", heightClass, paddingTopClass]}>
+    <div class="container mx-auto px-4 relative z-10">
+
         {/* Título de la página */}
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white">
             {title}
         </h1>
         
         {/* Breadcrumb (si existe) */}
-        {breadcrumb && (
-            <p class="text-lg md:text-xl text-white">
-                Inicio / <span class="text-[var(--color-jj-accent)] font-semibold">{breadcrumb}</span>
-            </p>
+        {breadcrumbs && breadcrumbs.length > 0 && (
+            <nav aria-label="breadcrumb" class="mb-4 text-sm md:text-base">
+                <ol class="flex justify-center space-x-1 sm:space-x-2">
+                    {breadcrumbs.map((item, index) => (
+                        <li class="flex items-center">
+                            {/* Ahora usamos <span> en lugar de <a> */}
+                            <span
+                                class={`
+                                    ${index === breadcrumbs.length - 1
+                                    ? 'text-[var(--color-jj-accent)] font-semibold' // Último item (activo)
+                                    : 'text-white'} 
+                                    whitespace-nowrap // Evita que el texto se rompa en varias líneas
+                                `}
+                                aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
+                            >
+                                {item.label}
+                            </span>
+                            {index < breadcrumbs.length - 1 && (
+                                <span class="mx-1 sm:mx-2 text-white">/</span>
+                            )}
+                        </li>
+                    ))}
+                </ol>
+            </nav>
         )}
     </div>
+    
+    <div class="absolute inset-0 bg-black opacity-30 z-0"></div>
+
 </section>
 
 <style>
     /* Estilos opcionales si necesitas un fondo de imagen o patrones, etc. */
-    /* .hero-background {
-        background-image: url('/path/to/your/background-image.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    } */
 </style>
