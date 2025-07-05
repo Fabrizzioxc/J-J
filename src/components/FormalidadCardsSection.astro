@@ -1,0 +1,83 @@
+---
+// src/components/FormalidadCardsSection.astro
+import SectionTitle from './SectionTitle.astro';
+import MoneyIcon from './icons/MoneyIcon.astro';
+import ShieldIcon from './icons/ShieldIcon.astro';
+
+interface CardItem {
+    iconComponent: any;
+    iconBgClass: string;
+    iconColorClass: string;
+    title: string;
+    paragraph: string;
+    buttonText: string;
+}
+
+interface Props {
+    title: string;
+    label?: string; // NUEVO: para el subtítulo encima del título principal
+    cards: CardItem[];
+}
+
+const { title, label = 'Nuestra Trayectoria', cards } = Astro.props;
+
+// Estilos
+const sectionBgClass = 'bg-white';
+const cardBorderClass = 'border border-gray-200';
+const cardBgClass = 'bg-white'; // Cambiado de gris claro a blanco
+const buttonBgClass = 'bg-[var(--color-jj-dark)]';
+const buttonTextColorClass = 'text-white';
+const cardTitleColorClass = 'text-[var(--color-jj-dark)]';
+const cardParagraphColorClass = 'text-gray-800';
+
+const sectionTitleIconColorClass = 'text-[var(--color-jj-dark)]';
+const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
+---
+<section class={`py-16 md:py-12  ${sectionBgClass}`}>
+  <div class="container mx-auto px-4 text-center">
+    
+    {/* Label arriba del título */}
+    <SectionTitle
+      title={label}
+      iconColorClass={sectionTitleIconColorClass}
+      textColorClass={sectionTitleTextColorClass}
+      containerClass="flex items-center gap-2 justify-center mb-2"
+      iconSize="20"
+      iconStrokeWidth="2"
+    />
+
+    {/* Título principal */}
+    <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] mb-16">{title}</h2>
+
+    {/* Tarjetas */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:py-4">
+      {cards.map(card => (
+        <div class={`p-8  ${cardBgClass} ${cardBorderClass} flex flex-col items-start text-left`}>
+          
+          {/* Icono */}
+          <div class="w-16 h-16 flex items-center justify-center mb-6 ">
+            <div class={`w-full h-full flex items-center justify-center ${card.iconBgClass}`}>
+              <card.iconComponent size="w-8 h-8" className={card.iconColorClass} />
+            </div>
+          </div>
+
+          {/* Título */}
+          <h3 class={`text-3xl font-bold mb-4 ${cardTitleColorClass}`}>{card.title}</h3>
+
+          {/* Párrafo con padding horizontal */}
+          <p class={`text-lg leading-relaxed mb-10 ${cardParagraphColorClass}`}>
+            {card.paragraph}
+          </p>
+
+          {/* Botón */}
+            <button
+            class={`px-16 py-3 font-semibold ${buttonBgClass} ${buttonTextColorClass} hover:opacity-90 transition-opacity mx-auto`}
+            style="border-radius: 0;"
+            >
+            {card.buttonText}
+            </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
