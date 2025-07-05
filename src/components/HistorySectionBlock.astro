@@ -1,0 +1,61 @@
+---
+// src/components/HistorySectionBlock.astro
+import { Image } from 'astro:assets';
+import SectionTitle from './SectionTitle.astro'; // Importamos tu SectionTitle existente
+
+interface Props {
+    imageSrc: ImageMetadata;
+    imageAlt: string;
+    label: string; // "Nuestra Trayectoria" - se pasará como 'title' al SectionTitle
+    mainTitle: string; // "Más de una Década Construyendo Confianza" - será un h2 separado
+    paragraph: string;
+}
+
+const {
+    imageSrc,
+    imageAlt,
+    label,
+    mainTitle,
+    paragraph
+} = Astro.props;
+
+// Clases de color para el SectionTitle (label) y el mainTitle/paragraph
+const labelIconColorClass = 'text-[var(--color-jj-dark)]'; // Color para el icono del SectionTitle
+const labelTextColorClass = 'text-[var(--color-jj-dark)]';   // Color para el texto del SectionTitle (el 'label')
+const mainTitleColorClass = 'text-[var(--color-jj-dark)]'; // Color para el h2 principal de la sección
+const paragraphColorClass = 'text-[var(--color-jj-dark)]'; // Color para el párrafo
+---
+
+<section class="py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+        {/* Sección de la Imagen - Izquierda */}
+        <div class="md:w-1/2 w-full flex-shrink-0">
+            <Image
+                src={imageSrc}
+                alt={imageAlt}
+                class="w-full h-auto object-cover border-l-8 border-b-8 border-[var(--color-jj-accent)]"
+                widths={[300, 600, 900]}
+            />
+        </div>
+
+        {/* Contenido */}
+        <div class="md:w-1/2 w-full">
+            {/* Etiqueta "Nuestra Trayectoria" */}
+            <SectionTitle
+                title={label}
+                iconColorClass={labelIconColorClass}
+                textColorClass={labelTextColorClass}
+                containerClass="flex items-center gap-2 mb-2"
+                iconSize="20"
+                iconStrokeWidth="2"
+            />
+
+
+            {/* Título Principal de la Sección) */}
+            <h2 class={`text-4xl md:text-5xl font-bold leading-tight mb-6 ${mainTitleColorClass}`}>{mainTitle}</h2>
+
+            {/* Párrafo Principal de la Sección */}
+            <p class={`text-lg leading-relaxed ${paragraphColorClass}`}>{paragraph}</p>
+        </div>
+    </div>
+</section>
