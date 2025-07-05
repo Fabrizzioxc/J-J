@@ -1,13 +1,79 @@
 ---
+// src/pages/nosotros.astro
 import Layout from '@layouts/Layout.astro';
-import Header from '@components/Header.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro'; // Ajusta la ruta si es necesario
 import PageHero from '@components/ui/PageHero.astro';
-import Footer from '@components/Footer.astro';
-import MaintenanceComingSoon from '@components/ui/MaintenanceComingSoon.astro';
+import HistorySectionBlock from '@components/HistorySectionBlock.astro';
+import MissionVisionSection from '@components/MissionVisionSection.astro';
+import QuoteSection from '@components/QuoteSection.astro'; // Nuevo componente
+import FormalidadCardsSection from '@components/FormalidadCardsSection.astro'; // Nuevo componente
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
+
+// Iconos
+import RocketIcon from '@components/icons/RocketIcon.astro';
+import EyeIcon from '@components/icons/EyeIcon.astro';
+import MoneyIcon from '@components/icons/MoneyIcon.astro';
+import ShieldIcon from '@components/icons/ShieldIcon.astro';
+import CheckCircleIcon from '@components/icons/CheckCircleIcon.astro';
+
+// Importación de la imagen de historia
+import historiaImage from '@assets/nosotros-historia.png';
+
+
+// Contenido para la Sección de Historia
+const historyParagraph = `Desde hace más de una década, J&J Servicios Generales ha sido sinónimo de experiencia, solidez y calidad en el sector de la construcción y los servicios generales en Lima. Lo que comenzó como un firme compromiso con la excelencia, hoy es una trayectoria consolidada, transformando innumerables espacios y construyendo relaciones de confianza duraderas con cada proyecto, grande o pequeño. Somos especialistas en la construcción con sistema Drywall, ejecutando obras con la precisión y el conocimiento acumulado en años de experiencia.`;
+
+// Contenido para Misión y Visión
+const missionContent = {
+    title: 'Nuestra Misión',
+    iconComponent: RocketIcon,
+    paragraph: 'Transformar los espacios de nuestros clientes con soluciones integrales. Nos comprometemos a entregar resultados de primer nivel, superando expectativas mediante la calidad, eficiencia y la experiencia de nuestro equipo, asegurando la plena satisfacción y la durabilidad en cada proyecto.'
+};
+
+const visionContent = {
+    title: 'Nuestra Visión',
+    iconComponent: EyeIcon,
+    paragraph: 'Ser la empresa líder y referente en servicios generales de construcción en el Perú, reconocida por nuestra excelencia operativa e innovación constante que generamos al convertir cada visión de nuestros clientes en una realidad tangible. Aspiramos a ser el socio de confianza preferido para cualquier proyecto.'
+};
+
+// Contenido para la sección de la Frase Destacada
+const quoteContent = {
+    quote: 'Deje que un Trabajo Profesional lo Hagan los Profesionales',
+    author: '- Jose Velasquez Altamirano'
+};
+
+// Contenido para las 3 Cards de Formalidad y Excelencia
+const formalidadCards = [
+    {
+        iconComponent: CheckCircleIcon, // Asumo ShieldIcon para 'Formalidad' como sustituto
+        iconBgClass: 'bg-[var(--color-jj-accent)]',
+        iconColorClass: 'text-[var(--color-jj-dark)]',
+        title: 'Formalidad & Transparencia',
+        paragraph: 'Operamos con total formalidad y transparencia, avalados por nuestra inscripción en el OSCE. Su confianza es nuestra garantía.',
+        buttonText: 'Ver más'
+    },
+    {
+        iconComponent: MoneyIcon,
+        iconBgClass: 'bg-[var(--color-jj-accent)]',
+        iconColorClass: 'text-[var(--color-jj-dark)]',
+        title: 'Inversión Inteligente',
+        paragraph: 'Ofrecemos costos competitivos y calidad superior, asegurando una inversión inteligente. Su proyecto, duradero y rentable.',
+        buttonText: 'Ver más'
+    },
+    {
+        iconComponent: ShieldIcon, // Asumo ShieldIcon para 'Calidad' como sustituto
+        iconBgClass: 'bg-[var(--color-jj-accent)]',
+        iconColorClass: 'text-[var(--color-jj-dark)]',
+        title: 'Calidad & Seguridad',
+        paragraph: 'Priorizamos la calidad superior y la seguridad, trabajando bajo estrictas normas técnicas. Su satisfacción es nuestro compromiso.',
+        buttonText: 'Ver más'
+    }
+];
 ---
 
-<Layout title="Servicios - J&J Servicios Generales">
+<Layout
+    title="Nosotros | Conoce a J&J Servicios Generales"
+    description="Más de una década de experiencia en construcción, drywall, pintura y electricidad en Lima. Conoce nuestra misión, visión y por qué somos tu socio de confianza."
+>
     <PageHero
         title="Nosotros"
         breadcrumbs={[
@@ -15,7 +81,33 @@ import MaintenanceComingSoon from '@components/ui/MaintenanceComingSoon.astro';
             { label: 'Nosotros' },
         ]}
     />
-  <ServicesBanner/>
-  <MaintenanceComingSoon />
-  <ServicesBanner/>
+
+    <main>
+        <ServicesBanner />
+
+        <HistorySectionBlock
+            imageSrc={historiaImage}
+            imageAlt="Trabajador de J&J Servicios Generales aplicando masilla en una pared."
+            label="Nuestra Trayectoria"
+            mainTitle="Más de una Década Construyendo Confianza"
+            paragraph={historyParagraph}
+        />
+
+        <MissionVisionSection
+            mission={missionContent}
+            vision={visionContent}
+        />
+
+        <QuoteSection
+            quote={quoteContent.quote}
+            author={quoteContent.author}
+        />
+
+        <FormalidadCardsSection
+            title="Formalidad y Excelencia"
+            cards={formalidadCards}
+        />
+
+        <ServicesBanner />
+    </main>
 </Layout>
