@@ -1,0 +1,50 @@
+---
+// src/components/MissionVisionSection.astro
+import RocketIcon from './icons/RocketIcon.astro';
+import EyeIcon from './icons/EyeIcon.astro';
+
+interface CardProps {
+  title: string;
+  iconComponent: any;
+  paragraph: string;
+}
+
+interface Props {
+  mission: CardProps;
+  vision: CardProps;
+}
+
+const { mission, vision } = Astro.props;
+
+// Clases
+const sectionBgClass = 'bg-[var(--color-jj-light-gray)]';
+const cardBgClass = 'bg-white';
+const iconBgClass = 'bg-[var(--color-jj-accent)]';
+const iconColorClass = 'text-[var(--color-jj-dark)]';
+const titleColorClass = 'text-[var(--color-jj-dark)]';
+const paragraphColorClass = 'text-[var(--color-jj-dark)]';
+---
+
+<section class={`py-16 md:py-24 ${sectionBgClass}`}>
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    {/* Misión */}
+    <div class={`p-8 ${cardBgClass} flex flex-col items-start text-left`}>
+      <div class={`w-16 h-16 flex items-center justify-center mb-6 ${iconBgClass}`}>
+        <mission.iconComponent size="w-8 h-8" className={iconColorClass} />
+      </div>
+      <h3 class={`text-4xl font-bold mb-4 ${titleColorClass}`}>{mission.title}</h3>
+      <p class={`text-lg leading-relaxed ${paragraphColorClass}`}>{mission.paragraph}</p>
+    </div>
+
+    {/* Visión */}
+    <div class={`p-8 ${cardBgClass} flex flex-col items-start text-left`}>
+      <div class={`w-16 h-16 flex items-center justify-center mb-6 ${iconBgClass}`}>
+        <vision.iconComponent size="w-8 h-8" className={iconColorClass} />
+      </div>
+      <h3 class={`text-4xl font-bold mb-4 ${titleColorClass}`}>{vision.title}</h3>
+      <p class={`text-lg leading-relaxed ${paragraphColorClass}`}>{vision.paragraph}</p>
+    </div>
+
+  </div>
+</section>
