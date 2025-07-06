@@ -16,7 +16,8 @@ import ShieldIcon from '@components/icons/ShieldIcon.astro';
 import CheckCircleIcon from '@components/icons/CheckCircleIcon.astro';
 
 // Importación de la imagen de historia
-import historiaImage from '@assets/nosotros-historia.png';
+import historiaImage from '@assets/nosotros-historia.webp';
+import CTABanner from '@components/CTABanner.astro';
 
 
 // Contenido para la Sección de Historia
@@ -44,7 +45,7 @@ const quoteContent = {
 // Contenido para las 3 Cards de Formalidad y Excelencia
 const formalidadCards = [
     {
-        iconComponent: CheckCircleIcon, // Asumo ShieldIcon para 'Formalidad' como sustituto
+        iconComponent: CheckCircleIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
         title: 'Formalidad & Transparencia',
@@ -60,7 +61,7 @@ const formalidadCards = [
         buttonText: 'Ver más'
     },
     {
-        iconComponent: ShieldIcon, // Asumo ShieldIcon para 'Calidad' como sustituto
+        iconComponent: ShieldIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
         title: 'Calidad & Seguridad',
@@ -68,6 +69,14 @@ const formalidadCards = [
         buttonText: 'Ver más'
     }
 ];
+
+// Contenido para el nuevo CTABanner
+const ctaContent = {
+    title: 'Tu Próximo Proyecto Comienza Aquí',
+    buttonText: 'Solicitar Asesoria Gratuita',
+    buttonLink: '/contacto'
+};
+
 ---
 
 <Layout
@@ -106,6 +115,12 @@ const formalidadCards = [
         <FormalidadCardsSection
             title="Formalidad y Excelencia"
             cards={formalidadCards}
+        />
+
+        <CTABanner
+            title={ctaContent.title}
+            buttonText={ctaContent.buttonText}
+            buttonLink={ctaContent.buttonLink}
         />
 
         <ServicesBanner />
