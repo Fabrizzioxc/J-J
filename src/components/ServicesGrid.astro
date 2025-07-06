@@ -1,0 +1,64 @@
+---
+// src/components/ServicesGrid.astro
+import Image from 'astro/components/Image.astro';
+
+interface ServiceCard {
+    id: string;
+    imageSrc: ImageMetadata;
+    imageAlt: string;
+    title: string;
+    paragraph: string;
+    buttonText: string;
+    link: string;
+}
+
+interface Props {
+    services: ServiceCard[];
+}
+
+const { services } = Astro.props;
+
+// Clases de color y estilo para las cards
+const sectionBgClass = 'bg-white';
+const cardBgClass = 'bg-white'; 
+const cardBorderClass = 'border border-gray-200'; 
+const titleColorClass = 'text-[var(--color-jj-dark)]';
+const paragraphColorClass = 'text-gray-700';
+const buttonBgClass = 'bg-[var(--color-jj-accent)]';
+const buttonTextColorClass = 'text-[var(--color-jj-dark)]';
+---
+
+<section class={`py-16 md:py-20 ${sectionBgClass}`}>
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {services.map(service => (
+                <div class={`flex flex-col ${cardBgClass} ${cardBorderClass} overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300`}>
+                    <div class="w-full h-60 md:h-72 overflow-hidden">
+                        <Image
+                            src={service.imageSrc}
+                            alt={service.imageAlt}
+                            widths={[320, 640, 960, 1280]}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            loading="lazy"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    <div class="p-6 flex flex-col justify-between flex-grow">
+                        <h3 class={`text-2xl font-bold mb-3 ${titleColorClass}`}>
+                            {service.title}
+                        </h3>
+
+                        <p class={`text-base leading-relaxed mb-6 ${paragraphColorClass}`}>
+                            {service.paragraph}
+                        </p>
+
+                        <a href={service.link} class={`mt-auto inline-block text-center px-8 py-3 font-semibold ${buttonBgClass} ${buttonTextColorClass} hover:opacity-90 transition-opacity`} style="border-radius: 0;">
+                            {service.buttonText}
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
