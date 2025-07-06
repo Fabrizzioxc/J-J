@@ -1,12 +1,10 @@
 ---
 // src/components/HeroSection.astro
-// Importa el componente Image de astro:assets
 import { Image } from 'astro:assets';
-// Importa tu imagen local. Astro requiere que las imágenes se importen para poder optimizarlas.
-import heroImage from '../assets/hero-drywall-jj.png';
+import heroImage from '../assets/hero-drywall-jj.webp';
 
 interface Props {
-  class?: string; // Para permitir clases adicionales pasadas desde el layout
+  class?: string; 
 }
 
 const { class: additionalClass } = Astro.props;
