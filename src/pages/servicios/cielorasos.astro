@@ -1,0 +1,54 @@
+---
+// src/pages/servicios/cielorasos.astro
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/ui/PageHero.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+
+// Puedes importar imágenes o componentes específicos para cielorrasos aquí si los tienes
+---
+
+<Layout
+    title="Servicio de Cielorrasos | J&J Servicios Generales"
+    description="Instalación y diseño profesional de cielorrasos y falsos techos en Lima. Soluciones estéticas y funcionales en Drywall, PVC, y más. ¡Mejora la apariencia de tus ambientes!"
+>
+    <PageHero
+        title="Cielorrasos"
+        breadcrumbs={[
+            { label: 'Inicio' },
+            { label: 'Servicios' },
+            { label: 'Cielorrasos' },
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Diseño y Funcionalidad en tus Cielorrasos"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Cielorrasos Profesionales</h1>
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                En J&J Servicios Generales, transformamos tus espacios con la instalación profesional de cielorrasos y falsos techos. Ofrecemos soluciones estéticas y funcionales que no solo mejoran la apariencia de tus ambientes, sino que también permiten la integración de iluminación, sistemas de aire acondicionado y aislamiento acústico, adaptándonos a tus necesidades y diseño.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">¿Por qué elegir nuestros cielorrasos?</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Diseños personalizados y adaptados a cada ambiente.</li>
+                <li>Materiales de alta calidad como Drywall, PVC o fibra mineral.</li>
+                <li>Instalación rápida y con acabados de primera.</li>
+                <li>Mejora la estética y el confort térmico/acústico.</li>
+                <li>Oculta imperfecciones y facilita el paso de instalaciones.</li>
+                <li>Asesoramiento experto para la mejor solución en tu proyecto.</li>
+            </ul>
+
+            <div class="mt-16">
+                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity rounded-md">
+                    ¡Pide tu presupuesto para Cielorrasos!
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>
