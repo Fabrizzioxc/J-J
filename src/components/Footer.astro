@@ -3,14 +3,11 @@
 import { Image } from 'astro:assets';
 
 // Asumo que tienes un logo para el footer
-import footerLogo from '../assets/jj-logo-light.png'; // AJUSTA ESTA RUTA A TU LOGO BLANCO/CLARO
+import footerLogo from '../assets/jj-logo-light.webp';
 
 // Importa los iconos de redes sociales
 import FacebookIcon from './icons/FacebookIcon.astro';
 import InstagramIcon from './icons/InstagramIcon.astro';
-// Asumo que crearás estos iconos. Usaré placeholders si no los tienes aún.
-import WhatsappIcon from './icons/WhatsappIcon.astro';
-import LinkedinIcon from './icons/LinkedinIcon.astro';
 ---
 
 <footer class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-16 lg:py-20">
@@ -34,10 +31,10 @@ import LinkedinIcon from './icons/LinkedinIcon.astro';
                 <!-- Íconos de redes sociales del logo (si son diferentes a los de la lista de Redes Sociales) -->
                 <div class="flex gap-4">
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <FacebookIcon class="text-[var(--color-jj-accent)] hover:text-white transition-colors" size={24} />
+                        <FacebookIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors"/>
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <InstagramIcon class="text-[var(--color-jj-accent)] hover:text-white transition-colors" size={24} />
+                        <InstagramIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors"/>
                     </a>
                     <!-- Añade más íconos si los necesitas aquí para el área del logo -->
                 </div>
