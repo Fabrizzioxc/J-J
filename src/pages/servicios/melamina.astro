@@ -1,0 +1,54 @@
+---
+// src/pages/servicios/melamina.astro
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/ui/PageHero.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+
+// Puedes importar imágenes o componentes específicos para melamina aquí
+---
+
+<Layout
+    title="Fabricación y Muebles de Melamina | J&J Servicios Generales"
+    description="Diseño y fabricación a medida de muebles de melamina en Lima. Armarios, cocinas, escritorios y soluciones personalizadas para optimizar tu espacio. ¡Calidad y acabados modernos!"
+>
+    <PageHero
+        title="Melamina"
+        breadcrumbs={[
+            { label: 'Inicio' },
+            { label: 'Servicios' },
+            { label: 'Melamina' },
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Mobiliario a Medida en Melamina"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Muebles de Melamina</h1>
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                En J&J Servicios Generales, diseñamos y fabricamos muebles de melamina a medida que se adaptan perfectamente a tus espacios y necesidades. Desde cocinas integrales y armarios empotrados hasta escritorios y estanterías, te ofrecemos soluciones funcionales, estéticas y duraderas con una amplia gama de colores y acabados modernos.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">Nuestros trabajos en Melamina:</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Diseño personalizado para cada ambiente del hogar u oficina.</li>
+                <li>Fabricación con melamina de alta calidad, resistente a la humedad y el uso diario.</li>
+                <li>Variedad de colores, texturas y acabados modernos.</li>
+                <li>Optimización del espacio y soluciones de almacenamiento inteligentes.</li>
+                <li>Acabados impecables y montaje profesional.</li>
+                <li>Muebles funcionales y duraderos con garantía.</li>
+            </ul>
+
+            <div class="mt-16">
+                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity rounded-md">
+                    ¡Diseñemos tus muebles de Melamina!
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>
