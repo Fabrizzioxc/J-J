@@ -33,7 +33,7 @@ export const servicesCardsData = [
         title: 'Cielo Rasos',
         paragraph: 'Instalación y diseño de cielorrasos modernos y funcionales. Soluciones estéticas y acústicas para todo tipo de ambientes.',
         buttonText: 'Ver Servicio',
-        link: '/servicios/cielo-rasos'
+        link: '/servicios/cielorasos'
     },
     {
         id: 'aire-acondicionado',
@@ -42,7 +42,7 @@ export const servicesCardsData = [
         title: 'Aire Acondicionado',
         paragraph: 'Venta, instalación y mantenimiento de sistemas de aire acondicionado. Confort térmico garantizado para tu hogar u oficina.',
         buttonText: 'Ver Servicio',
-        link: '/servicios/aire-acondicionado'
+        link: '/servicios/aireacondicionado'
     },
     {
         id: 'electricidad',
