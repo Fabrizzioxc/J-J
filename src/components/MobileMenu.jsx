@@ -1,23 +1,23 @@
-// src/components/MobileMenu.jsx (ejemplo con Preact/React)
-import { useState, useEffect, useRef } from 'preact/hooks'; // o 'react' para React
+// src/components/MobileMenu.jsx (Preact)
+import { useState, useEffect, useRef } from 'preact/hooks';
 
 export default function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
-    const menuRef = useRef(null); // Para el menú
-    const buttonRef = useRef(null); // Para el botón
+    const menuRef = useRef(null);
+    const buttonRef = useRef(null);
 
     // Efecto para controlar el scroll del body
     useEffect(() => {
         document.body.style.overflow = isOpen ? 'hidden' : '';
-        // Limpieza del efecto cuando el componente se desmonte
         return () => {
             document.body.style.overflow = '';
         };
-    }, [isOpen]); // Dependencia en isOpen
+    }, [isOpen]);
 
     // Efecto para cerrar el menú al hacer clic fuera o redimensionar
     useEffect(() => {
         function handleClickOutside(event) {
+            // Asegúrate de que el clic no sea en el botón o en el menú
             if (menuRef.current && !menuRef.current.contains(event.target) &&
                 buttonRef.current && !buttonRef.current.contains(event.target)) {
                 setIsOpen(false);
@@ -30,22 +30,19 @@ export default function MobileMenu() {
             }
         }
 
+        // Solo añade los listeners cuando el menú está abierto
         if (isOpen) {
             document.addEventListener('mousedown', handleClickOutside);
             window.addEventListener('resize', handleResize);
-        } else {
-            document.removeEventListener('mousedown', handleClickOutside);
-            window.removeEventListener('resize', handleResize);
         }
 
-        // Limpieza: eliminar event listeners cuando el componente se desmonta o isOpen cambia
+        // Limpieza: siempre remueve los listeners al desmontar o cuando isOpen cambia
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
             window.removeEventListener('resize', handleResize);
         };
     }, [isOpen]); // Dependencia en isOpen
 
-    // Función para cerrar el menú al hacer clic en un enlace (dentro del menú)
     const closeMenuOnLinkClick = () => {
         if (isOpen) {
             setIsOpen(false);
@@ -58,45 +55,53 @@ export default function MobileMenu() {
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-[var(--color-jj-text-light)] text-3xl z-50 relative"
+                aria-expanded={isOpen ? "true" : "false"} // Para accesibilidad
+                aria-controls="mobile-menu-content" // ID del contenedor del menú
             >
-                <svg className={`w-8 h-8 ${isOpen ? 'hidden' : ''}`} fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
+                {/* Renderizar AMBOS SVGs siempre y controlar visibilidad con CSS */}
+                <svg className={`w-8 h-8 absolute top-0 left-0 transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                <svg className={`w-8 h-8 ${isOpen ? '' : 'hidden'}`} fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
+                <svg className={`w-8 h-8 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
+                {/* Asegúrate de que los SVGs tengan un texto alternativo o sean aria-hidden */}
+                <span className="sr-only">{isOpen ? 'Cerrar menú' : 'Abrir menú'}</span>
             </button>
 
-            {isOpen && (
-                <div
-                    ref={menuRef}
-                    id="mobile-menu" // Este ID es solo por si lo necesitas para CSS externo
-                    className="absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40 transition-all ease-out duration-300"
-                    style={{
-                        opacity: isOpen ? 1 : 0,
-                        transform: isOpen ? 'translateY(0)' : 'translateY(-16px)',
-                        visibility: isOpen ? 'visible' : 'hidden' // Mejor que 'hidden' para animaciones
-                    }}
-                >
-                    <ul className="flex flex-col space-y-4 text-center">
-                        <li>
-                            <a href="/" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="/nosotros" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Nosotros</a>
-                        </li>
-                        <li>
-                            <a href="/servicios" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Servicios</a>
-                        </li>
-                        <li>
-                            <a href="/proyectos" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Proyectos</a>
-                        </li>
-                        <li>
-                            <a href="/contacto" onClick={closeMenuOnLinkClick} className="block px-6 py-3 font-semibold text-center mt-4">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            )}
+            {/* El menú siempre está en el DOM, pero su visibilidad es controlada por clases */}
+            <div
+                ref={menuRef}
+                id="mobile-menu-content" // ID para aria-controls
+                className={`absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40
+                           transition-all ease-out duration-300 md:hidden
+                           ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-16 opacity-0 invisible'}`}
+                // Añadir role y aria-hidden para accesibilidad cuando está oculto
+                role="dialog"
+                aria-modal="true"
+                aria-hidden={!isOpen}
+            >
+                <ul className="flex flex-col space-y-4 text-center">
+                    <li>
+                        <a href="/" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="/nosotros" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="/servicios" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Servicios</a>
+                    </li>
+                    <li>
+                        <a href="/proyectos" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Proyectos</a>
+                    </li>
+                    <li>
+                        <a href="/contacto" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="/contacto" onClick={closeMenuOnLinkClick} className="block px-6 py-3 font-semibold text-center mt-4 bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity">Contacto</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     );
 }
