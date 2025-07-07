@@ -7,14 +7,14 @@ import footerLogo from '../assets/jj-logo-light.webp';
 
 // Importa los iconos de redes sociales
 import FacebookIcon from './icons/FacebookIcon.astro';
-import InstagramIcon from './icons/InstagramIcon.astro';
+import WhatsAppOut from './icons/WhatsAppOut.astro';
+import LinkedinIcon from './icons/LinkedinIcon.astro';
+
 ---
 
 <footer class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-16 lg:py-20">
     <div class="container mx-auto px-4">
-        <!-- Contenido principal del footer - Grid para columnas -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8 lg:gap-16 mb-12">
-            <!-- Columna 1: Logo y Descripción -->
             <div class="flex flex-col items-center md:items-start text-center md:text-left">
                 <a href="/" class="mb-4">
                     <Image
@@ -28,19 +28,19 @@ import InstagramIcon from './icons/InstagramIcon.astro';
                 <p class="text-base leading-relaxed mb-6 max-w-sm">
                     Especialistas en instalación de Drywall, pintura profesional y servicios eléctricos. Calidad garantizada para tu hogar o negocio.
                 </p>
-                <!-- Íconos de redes sociales del logo (si son diferentes a los de la lista de Redes Sociales) -->
                 <div class="flex gap-4">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <FacebookIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors"/>
+                    <a href="https://www.facebook.com/profile.php?id=100049409715226" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <FacebookIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors w-6 h-6"/>
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <InstagramIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors"/>
+                    <a href="https://wa.me/c/51992198415" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <WhatsAppOut className="text-[var(--color-jj-accent)] hover:text-white transition-colors w-6 h-6"/>
                     </a>
-                    <!-- Añade más íconos si los necesitas aquí para el área del logo -->
+                    <a href="https://www.linkedin.com/in/invegar-sac-sistema-drywall-11546a10a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <LinkedinIcon className="text-[var(--color-jj-accent)] hover:text-white transition-colors w-6 h-6"/>
+                    </a>
                 </div>
             </div>
 
-            <!-- Columna 2: Navegación -->
             <div class="text-center md:text-left">
                 <h3 class="text-xl font-semibold mb-6 text-[var(--color-jj-accent)]">Navegación</h3>
                 <ul class="space-y-3">
@@ -51,22 +51,18 @@ import InstagramIcon from './icons/InstagramIcon.astro';
                 </ul>
             </div>
 
-            <!-- Columna 3: Redes Sociales -->
             <div class="text-center md:text-left">
                 <h3 class="text-xl font-semibold mb-6 text-[var(--color-jj-accent)]">Redes Sociales</h3>
                 <ul class="space-y-3">
-                    <li><a href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">WhatsApp</a></li>
-                    <li><a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">Instagram</a></li>
-                    <li><a href="https://linkedin.com/in/tu_perfil" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">LinkedIn</a></li>
-                    <li><a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">Facebook</a></li>
+                    <li><a href="https://wa.me/c/51992198415" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">WhatsApp</a></li>
+                    <li><a href="https://www.linkedin.com/in/invegar-sac-sistema-drywall-11546a10a/" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=100049409715226" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-jj-accent)] transition-colors">Facebook</a></li>
                 </ul>
             </div>
         </div>
 
-        <!-- Separador -->
         <hr class="border-[var(--color-jj-gray)] mb-8" />
 
-        <!-- Sección de Copyright y Políticas -->
         <div class="flex flex-col md:flex-row justify-between items-center text-sm gap-4 md:gap-0">
             <p>&copy; Copyright {new Date().getFullYear()} Desarrollado y Diseñado por Fabrizio Zambrano</p>
             <div class="flex gap-6">
