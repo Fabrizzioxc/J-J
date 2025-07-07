@@ -1,20 +1,13 @@
 ---
-// src/pages/servicios.astro
+// src/pages/servicios/index.astro
 import Layout from '@layouts/Layout.astro';
 import PageHero from '@components/ui/PageHero.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro'; // Tu banner de navegación de servicios
-import ServicesGrid from '@components/ServicesGrid.astro';         // El nuevo componente de cuadrícula
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import ServicesGrid from '@components/ServicesGrid.astro';
 
 // Importa los datos de tus servicios
 import { servicesCardsData } from '@data/servicesData';
 
-// Puedes añadir un CTA al final de la página de servicios si lo deseas
-// import CTABanner from '@components/CTABanner.astro';
-// const ctaContent = {
-//     title: 'Listo para Empezar tu Proyecto?',
-//     buttonText: 'Contáctanos',
-//     buttonLink: '/contacto'
-// };
 ---
 
 <Layout
