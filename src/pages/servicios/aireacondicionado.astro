@@ -1,0 +1,54 @@
+---
+// src/pages/servicios/aireacondicionado.astro
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/ui/PageHero.astro';
+import SectionTitle from '@components/SectionTitle.astro';
+
+// Puedes importar imágenes o componentes específicos para aire acondicionado aquí
+---
+
+<Layout
+    title="Servicio de Aire Acondicionado | J&J Servicios Generales"
+    description="Instalación, mantenimiento y reparación de sistemas de aire acondicionado en Lima. Soluciones para hogares y oficinas, garantizando confort térmico y eficiencia."
+>
+    <PageHero
+        title="Aire Acondicionado"
+        breadcrumbs={[
+            { label: 'Inicio' },
+            { label: 'Servicios' },
+            { label: 'Aire Acondicionado' },
+        ]}
+    />
+
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 text-center">
+            <SectionTitle
+                title="Confort Climático para tu Espacio"
+                iconColorClass="text-[var(--color-jj-dark)]"
+                textColorClass="text-[var(--color-jj-dark)]"
+                containerClass="flex items-center gap-2 mb-10 justify-center"
+                iconSize={28}
+            />
+            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Aire Acondicionado</h1>
+            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
+                En J&J Servicios Generales, ofrecemos soluciones integrales en sistemas de aire acondicionado para hogares, oficinas y locales comerciales. Desde la instalación inicial hasta el mantenimiento preventivo y la reparación, nuestro equipo especializado asegura un ambiente confortable y una óptima calidad del aire, con equipos eficientes y duraderos.
+            </p>
+
+            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">Nuestros servicios de Aire Acondicionado incluyen:</h2>
+            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
+                <li>Instalación profesional de equipos splits, centrales y más.</li>
+                <li>Mantenimiento preventivo para prolongar la vida útil y eficiencia.</li>
+                <li>Diagnóstico y reparación de fallas en sistemas de climatización.</li>
+                <li>Recarga de gas refrigerante y limpieza de filtros.</li>
+                <li>Asesoramiento para la elección del equipo adecuado a tus necesidades.</li>
+                <li>Atención rápida y servicio técnico garantizado.</li>
+            </ul>
+
+            <div class="mt-16">
+                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity rounded-md">
+                    ¡Consulta por tu Aire Acondicionado!
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>
