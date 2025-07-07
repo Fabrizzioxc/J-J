@@ -1,19 +1,38 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // Aquí defines tus alias
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"], // Para tus imágenes u otros assets
-      "@data/*": ["src/data/*"],     // Si decides crear un archivo de datos
-      "@ui/*": ["src/components/ui/*"], // Para componentes de UI como PageHero
-      "@icons/*": ["src/components/icons/*"] // Específico para tus iconos
-    }
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@data/*": [
+        "src/data/*"
+      ],
+      "@ui/*": [
+        "src/components/ui/*"
+      ],
+      "@icons/*": [
+        "src/components/icons/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
-  
 }
