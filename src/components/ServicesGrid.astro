@@ -8,7 +8,7 @@ interface ServiceCard {
     imageAlt: string;
     title: string;
     paragraph: string;
-    buttonText: string;
+    // Eliminamos buttonText ya que no habrá un botón explícito
     link: string;
 }
 
@@ -20,19 +20,22 @@ const { services } = Astro.props;
 
 // Clases de color y estilo para las cards
 const sectionBgClass = 'bg-white';
-const cardBgClass = 'bg-white'; 
-const cardBorderClass = 'border border-gray-200'; 
+const cardBgClass = 'bg-white';
+const cardBorderClass = 'border border-gray-200';
 const titleColorClass = 'text-[var(--color-jj-dark)]';
 const paragraphColorClass = 'text-gray-700';
-const buttonBgClass = 'bg-[var(--color-jj-accent)]';
-const buttonTextColorClass = 'text-[var(--color-jj-dark)]';
+// Ya no necesitamos buttonBgClass ni buttonTextColorClass si eliminamos el botón explícito
 ---
 
 <section class={`py-16 md:py-20 ${sectionBgClass}`}>
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {services.map(service => (
-                <div class={`flex flex-col ${cardBgClass} ${cardBorderClass} overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300`}>
+                <a
+                    href={service.link}
+                    class={`flex flex-col ${cardBgClass} ${cardBorderClass} overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group relative`}
+                    aria-label={`Ver detalles del servicio: ${service.title}`}
+                >
                     <div class="w-full h-60 md:h-72 overflow-hidden">
                         <Image
                             src={service.imageSrc}
@@ -40,7 +43,7 @@ const buttonTextColorClass = 'text-[var(--color-jj-dark)]';
                             widths={[320, 640, 960, 1280]}
                             sizes="(max-width: 768px) 100vw, 50vw"
                             loading="lazy"
-                            class="w-full h-full object-cover"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
                         />
                     </div>
 
@@ -49,15 +52,11 @@ const buttonTextColorClass = 'text-[var(--color-jj-dark)]';
                             {service.title}
                         </h3>
 
-                        <p class={`text-base leading-relaxed mb-6 ${paragraphColorClass}`}>
+                        <p class={`text-base leading-relaxed mb-0 ${paragraphColorClass}`}> {/* Removido mb-6 ya que no hay botón debajo */}
                             {service.paragraph}
                         </p>
-
-                        <a href={service.link} class={`mt-auto inline-block text-center px-8 py-3 font-semibold ${buttonBgClass} ${buttonTextColorClass} hover:opacity-90 transition-opacity`} style="border-radius: 0;">
-                            {service.buttonText}
-                        </a>
                     </div>
-                </div>
+                </a>
             ))}
         </div>
     </div>
