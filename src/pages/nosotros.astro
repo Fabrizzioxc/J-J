@@ -45,28 +45,46 @@ const quoteContent = {
 // Contenido para las 3 Cards de Formalidad y Excelencia
 const formalidadCards = [
     {
+        id: 'formalidad-transparencia', // Este ID ya lo tenías, ahora lo usaremos para el dialogId
+        dialogId: 'dialog-formalidad', // ✅ ID único para el diálogo
         iconComponent: CheckCircleIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
         title: 'Formalidad & Transparencia',
         paragraph: 'Operamos con total formalidad y transparencia, avalados por nuestra inscripción en el OSCE. Su confianza es nuestra garantía.',
-        buttonText: 'Ver más'
+        buttonText: 'Ver más',
+        expandedContent: `
+            <p>Nuestra inscripción en el Organismo Supervisor de las Contrataciones del Estado (OSCE) no es solo un trámite, es un reflejo de nuestro compromiso inquebrantable con la **formalidad y la transparencia**. En J&J Servicios Generales, cada contrato, cada presupuesto y cada etapa de su proyecto se maneja con la máxima claridad.</p>
+            <p>Entendemos que la confianza es la base de cualquier relación comercial sólida, y por eso, garantizamos que todos nuestros procesos están alineados con las normativas vigentes, ofreciéndole la tranquilidad de que su inversión está en manos seguras y responsables. No ocultamos nada; lo que ve es lo que obtiene: un servicio profesional, ético y de alta calidad.</p>
+        ` // Contenido más detallado para el modal
     },
     {
+        id: 'inversion-inteligente',
+        dialogId: 'dialog-inversion', // ✅ ID único para el diálogo
         iconComponent: MoneyIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
         title: 'Inversión Inteligente',
         paragraph: 'Ofrecemos costos competitivos y calidad superior, asegurando una inversión inteligente. Su proyecto, duradero y rentable.',
-        buttonText: 'Ver más'
+        buttonText: 'Ver más',
+        expandedContent: `
+            <p>En J&J Servicios Generales, creemos que la **calidad no tiene por qué ser inaccesible**. Nuestra filosofía es ofrecer soluciones de construcción y acabados que no solo cumplan, sino que superen sus expectativas en términos de durabilidad y estética, sin comprometer su presupuesto.</p>
+            <p>Analizamos cada proyecto meticulosamente para optimizar los recursos, garantizando que usted obtenga el máximo valor por su dinero. Esto se traduce en costos competitivos y una ejecución eficiente que minimiza desperdicios y maximiza la vida útil de su inversión. Con nosotros, su proyecto es una inversión inteligente que le rendirá frutos a largo plazo, tanto en funcionalidad como en valor de propiedad.</p>
+        `
     },
     {
+        id: 'calidad-seguridad',
+        dialogId: 'dialog-calidad', // ✅ ID único para el diálogo
         iconComponent: ShieldIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
         title: 'Calidad & Seguridad',
         paragraph: 'Priorizamos la calidad superior y la seguridad, trabajando bajo estrictas normas técnicas. Su satisfacción es nuestro compromiso.',
-        buttonText: 'Ver más'
+        buttonText: 'Ver más',
+        expandedContent: `
+            <p>La **calidad y la seguridad** son los pilares fundamentales de cada proyecto que emprendemos en J&J Servicios Generales. No solo nos adherimos a las más estrictas normas técnicas y de seguridad de la industria, sino que las superamos constantemente.</p>
+            <p>Nuestro equipo está altamente capacitado y comprometido con la excelencia en cada detalle, desde la selección de materiales de primera calidad hasta la implementación de las técnicas de construcción más avanzadas. La seguridad en el lugar de trabajo es una prioridad innegociable, protegiendo a nuestro personal y a nuestros clientes. Nos enorgullece entregar resultados que no solo son estéticamente impecables, sino también duraderos, seguros y confiables, garantizando su completa satisfacción.</p>
+        `
     }
 ];
 
