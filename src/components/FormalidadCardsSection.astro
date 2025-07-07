@@ -1,8 +1,6 @@
 ---
 // src/components/FormalidadCardsSection.astro
 import SectionTitle from './SectionTitle.astro';
-import MoneyIcon from './icons/MoneyIcon.astro';
-import ShieldIcon from './icons/ShieldIcon.astro';
 
 interface CardItem {
     iconComponent: any;
@@ -15,7 +13,7 @@ interface CardItem {
 
 interface Props {
     title: string;
-    label?: string; // NUEVO: para el subtítulo encima del título principal
+    label?: string;
     cards: CardItem[];
 }
 
@@ -24,7 +22,7 @@ const { title, label = 'Nuestra Trayectoria', cards } = Astro.props;
 // Estilos
 const sectionBgClass = 'bg-white';
 const cardBorderClass = 'border border-gray-200';
-const cardBgClass = 'bg-white'; // Cambiado de gris claro a blanco
+const cardBgClass = 'bg-white';
 const buttonBgClass = 'bg-[var(--color-jj-dark)]';
 const buttonTextColorClass = 'text-white';
 const cardTitleColorClass = 'text-[var(--color-jj-dark)]';
