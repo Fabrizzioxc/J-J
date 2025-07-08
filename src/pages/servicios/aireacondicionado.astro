@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import PageHero from '@components/ui/PageHero.astro';
 import aireAcondicionadoImage from '@assets/servicios/aire-acondicionado.webp'; // Asegura que esta ruta es correcta
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
 <Layout
@@ -17,6 +18,7 @@ import aireAcondicionadoImage from '@assets/servicios/aire-acondicionado.webp'; 
         ]}
     />
 
+    <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -49,4 +51,5 @@ import aireAcondicionadoImage from '@assets/servicios/aire-acondicionado.webp'; 
             </div>
         </div>
     </section>
+    <ServicesBanner />
 </Layout>

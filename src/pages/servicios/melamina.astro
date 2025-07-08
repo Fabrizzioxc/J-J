@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import PageHero from '@components/ui/PageHero.astro';
 import melaminaImage from '@assets/servicios/melamina.webp'; // Asegura que esta ruta es correcta
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
 <Layout
@@ -16,7 +17,7 @@ import melaminaImage from '@assets/servicios/melamina.webp'; // Asegura que esta
             { label: 'Trabajos en Melamina' },
         ]}
     />
-
+            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -49,4 +50,5 @@ import melaminaImage from '@assets/servicios/melamina.webp'; // Asegura que esta
             </div>
         </div>
     </section>
+    <ServicesBanner />
 </Layout>

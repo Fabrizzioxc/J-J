@@ -6,6 +6,7 @@ import PageHero from '@components/ui/PageHero.astro';
 
 // Importa la imagen específica para este servicio
 import drywallImage from '@assets/servicios/drywall.webp';
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
 
 ---
 
@@ -21,7 +22,7 @@ import drywallImage from '@assets/servicios/drywall.webp';
             { label: 'Drywall' },
         ]}
     />
-
+            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             {/* Se elimina el SectionTitle según tu petición */}
@@ -57,4 +58,5 @@ import drywallImage from '@assets/servicios/drywall.webp';
             </div>
         </div>
     </section>
+    <ServicesBanner />
 </Layout>

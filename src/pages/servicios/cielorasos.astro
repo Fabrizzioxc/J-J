@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro';
 import PageHero from '@components/ui/PageHero.astro';
 import cielorasosImage from '@assets/servicios/cielorasos.webp'; // Asegura que esta ruta es correcta
+import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
 <Layout
@@ -16,7 +17,7 @@ import cielorasosImage from '@assets/servicios/cielorasos.webp'; // Asegura que 
             { label: 'Cielo Rasos' },
         ]}
     />
-
+            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -49,4 +50,5 @@ import cielorasosImage from '@assets/servicios/cielorasos.webp'; // Asegura que 
             </div>
         </div>
     </section>
+    <ServicesBanner />
 </Layout>
