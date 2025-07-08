@@ -11,7 +11,7 @@ export const servicesCardsData = [
         id: 'drywall',
         imageSrc: drywallImage,
         imageAlt: 'Servicio de Construcción con Sistema Drywall',
-        title: 'Construcción Drywall',
+        title: 'Drywall',
         paragraph: 'Expertos en tabiquería, muros y estructuras con sistema Drywall. Soluciones rápidas, limpias y versátiles para tus proyectos.',
         link: '/servicios/drywall'
     },
