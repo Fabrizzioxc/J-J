@@ -8,7 +8,6 @@ interface ServiceCard {
     imageAlt: string;
     title: string;
     paragraph: string;
-    // Eliminamos buttonText ya que no habrá un botón explícito
     link: string;
 }
 
@@ -24,7 +23,6 @@ const cardBgClass = 'bg-white';
 const cardBorderClass = 'border border-gray-200';
 const titleColorClass = 'text-[var(--color-jj-dark)]';
 const paragraphColorClass = 'text-gray-700';
-// Ya no necesitamos buttonBgClass ni buttonTextColorClass si eliminamos el botón explícito
 ---
 
 <section class={`py-16 md:py-20 ${sectionBgClass}`}>
@@ -52,7 +50,7 @@ const paragraphColorClass = 'text-gray-700';
                             {service.title}
                         </h3>
 
-                        <p class={`text-base leading-relaxed mb-0 ${paragraphColorClass}`}> {/* Removido mb-6 ya que no hay botón debajo */}
+                        <p class={`text-base leading-relaxed mb-0 ${paragraphColorClass}`}>
                             {service.paragraph}
                         </p>
                     </div>
