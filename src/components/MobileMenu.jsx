@@ -95,9 +95,6 @@ export default function MobileMenu() {
                         <a href="/proyectos" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Proyectos</a>
                     </li>
                     <li>
-                        <a href="/contacto" onClick={closeMenuOnLinkClick} className="block text-2xl font-semibold py-2 rounded transition-colors">Contacto</a>
-                    </li>
-                    <li>
                         <a href="/contacto" onClick={closeMenuOnLinkClick} className="block px-6 py-3 font-semibold text-center mt-4 bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] hover:opacity-90 transition-opacity">Contacto</a>
                     </li>
                 </ul>
