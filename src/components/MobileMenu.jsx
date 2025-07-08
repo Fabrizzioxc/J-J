@@ -71,11 +71,11 @@ export default function MobileMenu() {
 
             {/* El menú siempre está en el DOM, pero su visibilidad es controlada por clases */}
             <div
-                ref={menuRef}
-                id="mobile-menu-content" // ID para aria-controls
-                className={`absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40
-                           transition-all ease-out duration-300 md:hidden
-                           ${isOpen ? 'translate-y-0 opacity-100 visible' : '-translate-y-16 opacity-0 invisible'}`}
+  ref={menuRef}
+  id="mobile-menu-content"
+  className={`absolute top-0 left-0 w-full bg-[var(--color-jj-dark)] p-4 pt-16 shadow-lg z-40
+             transition-opacity duration-300 md:hidden
+             ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 // Añadir role y aria-hidden para accesibilidad cuando está oculto
                 role="dialog"
                 aria-modal="true"
