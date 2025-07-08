@@ -1,10 +1,12 @@
 ---
 // src/pages/servicios/drywall.astro
-import Layout from '@layouts/Layout.astro'; // Tu layout principal
-import PageHero from '@components/ui/PageHero.astro'; // Tu componente PageHero actualizado
-import SectionTitle from '@components/SectionTitle.astro'; // Tu componente de título de sección
+import Layout from '@layouts/Layout.astro';
+import PageHero from '@components/ui/PageHero.astro';
+// No necesitamos SectionTitle aquí, lo eliminamos
 
-// Importa aquí cualquier componente o imagen específica para esta página
+// Importa la imagen específica para este servicio
+import drywallImage from '@assets/servicios/drywall.webp';
+
 ---
 
 <Layout
@@ -14,21 +16,25 @@ import SectionTitle from '@components/SectionTitle.astro'; // Tu componente de t
     <PageHero
         title="Drywall"
         breadcrumbs={[
-            { label: 'Inicio' },   
+            { label: 'Inicio' },
             { label: 'Servicios' },
-            { label: 'Drywall' },  
+            { label: 'Drywall' },
         ]}
     />
 
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
-            <SectionTitle
-                title="Experiencia y Precisión en Drywall"
-                iconColorClass="text-[var(--color-jj-dark)]"
-                textColorClass="text-[var(--color-jj-dark)]"
-                containerClass="flex items-center gap-2 mb-10 justify-center"
-                iconSize={28}
+            {/* Se elimina el SectionTitle según tu petición */}
+            
+            {/* Aquí va la imagen principal del servicio con el view-transition-name */}
+            <img
+                src={drywallImage.src}
+                alt="Servicio de Drywall de J&J Servicios Generales"
+                class="w-full max-w-4xl mx-auto rounded-lg shadow-lg mb-12"
+                data-astro-transition-name="service-image-drywall"
+                style="view-transition-name: service-image-drywall;"
             />
+
             <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Drywall Profesional</h1> {/* H1 oculto para SEO si PageHero ya muestra el título */}
             <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
                 En J&J Servicios Generales, somos expertos en la instalación y reparación de Drywall, ofreciendo soluciones rápidas, limpias y versátiles para la creación de nuevos espacios, divisiones de ambientes, cielorrasos y diseños personalizados. Trabajamos con los más altos estándares de calidad y seguridad para garantizar estructuras resistentes y acabados impecables.
