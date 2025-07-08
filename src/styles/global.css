@@ -19,3 +19,6 @@ body {
   background-color: #ffffff; /* Fondo blanco por defecto */
 }
 
+::view-transition-group(header) {
+  z-index: 1000; /* más alto que cualquier otro contenido */
+}
