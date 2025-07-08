@@ -1,9 +1,10 @@
 ---
 // src/components/FormalidadCardsSection.astro
+
 import SectionTitle from './SectionTitle.astro';
-// Importa tu componente de diálogo existente
 import DialogAnimation from '@components/ui/DialogAnimation.astro';
 
+// ✅ FIX 1: Se ha añadido la interfaz para tipar las 'cards'
 interface CardItem {
     iconComponent: any;
     iconBgClass: string;
@@ -11,9 +12,7 @@ interface CardItem {
     title: string;
     paragraph: string;
     buttonText: string;
-    // ✅ Nuevo: contenido expandido para el diálogo
     expandedContent: string;
-    // ✅ Nuevo: un ID único para cada diálogo, basado en el ID de la tarjeta
     dialogId: string;
 }
 
@@ -25,7 +24,7 @@ interface Props {
 
 const { title, label = 'Nuestra Trayectoria', cards } = Astro.props;
 
-// Estilos (sin cambios aquí)
+// ✅ FIX 2: Se han restaurado las constantes con las clases de CSS
 const sectionBgClass = 'bg-white';
 const cardBorderClass = 'border border-gray-200';
 const cardBgClass = 'bg-white';
@@ -33,7 +32,6 @@ const buttonBgClass = 'bg-[var(--color-jj-dark)]';
 const buttonTextColorClass = 'text-white';
 const cardTitleColorClass = 'text-[var(--color-jj-dark)]';
 const cardParagraphColorClass = 'text-gray-800';
-
 const sectionTitleIconColorClass = 'text-[var(--color-jj-dark)]';
 const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
 ---
@@ -52,9 +50,9 @@ const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
         <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] mb-16">{title}</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:py-4">
-            {cards.map(card => (
+            {/* ✅ FIX 3: Se ha añadido el tipo (card: CardItem) */}
+            {cards.map((card: CardItem) => (
                 <div class={`p-8 ${cardBgClass} ${cardBorderClass} flex flex-col items-start text-left`}>
-
                     <div class="w-16 h-16 flex items-center justify-center mb-6 ">
                         <div class={`w-full h-full flex items-center justify-center ${card.iconBgClass}`}>
                             <card.iconComponent size="w-8 h-8" className={card.iconColorClass} />
@@ -67,7 +65,6 @@ const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
                         {card.paragraph}
                     </p>
 
-                    {/* Botón que abrirá el diálogo. Ahora usamos el `onclick` global de tu script */}
                     <button
                         class={`px-16 py-3 font-semibold ${buttonBgClass} ${buttonTextColorClass} hover:opacity-90 transition-opacity mx-auto`}
                         style="border-radius: 0;"
@@ -82,10 +79,14 @@ const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
         </div>
     </div>
 
-
-    {cards.map(card => (
-        <DialogAnimation dialogId={card.dialogId} title={card.title}>
-            <div set:html={card.expandedContent} class="prose max-w-none w-full text-left"></div>
+    {/* ✅ FIX 3: Se ha añadido el tipo (card: CardItem) también aquí */}
+    {cards.map((card: CardItem) => (
+        <DialogAnimation
+            client:idle
+            dialogId={card.dialogId}
+            title={card.title}
+        >
+            <p>{card.expandedContent}</p>
         </DialogAnimation>
     ))}
 </section>
