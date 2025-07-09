@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import AsteriskIcon from '@icons/AsteriskIcon.jsx'; // Asegúrate que esté disponible como JSX
+import AsteriskIcon from '@icons/AsteriskIcon.jsx';
 
 const services = ["Pintura", "Remodelaciones", "Drywall", "Electricidad", "Acabados"];
 
@@ -19,7 +19,7 @@ export default function ScrollingBanner() {
     const containerWidth = container.offsetWidth;
 
     // Asegura que el contenido sea mínimo el doble del ancho del contenedor
-    const neededClones = Math.ceil((containerWidth * 2) / singleContentWidth);
+    const neededClones = Math.ceil((containerWidth * 10) / singleContentWidth);
     setClones(neededClones);
   }, []);
 
@@ -32,7 +32,7 @@ export default function ScrollingBanner() {
     let x = 0;
 
     const step = () => {
-      x += 0.1;
+      x += 0.1; // Velocidad de desplazamiento
       if (x >= scroll.scrollWidth / 2) {
         x = 0;
       }
@@ -44,7 +44,7 @@ export default function ScrollingBanner() {
     return () => cancelAnimationFrame(animationId);
   }, [clones]);
 
-  // Construye los elementos duplicados
+  // Construye los elementos duplicados (ahora pares de icono y palabra)
   const fullList = Array.from({ length: clones }, () => services).flat();
 
   return (
@@ -52,14 +52,22 @@ export default function ScrollingBanner() {
       <div ref={containerRef} class="relative w-full overflow-hidden">
         <div
           ref={scrollRef}
+          // El 'gap-x-8' ahora aplica el espacio entre *cada* elemento directo dentro de este div
           class="flex whitespace-nowrap font-bold text-xl md:text-2xl gap-x-8 will-change-transform"
         >
           {fullList.map((service, idx) => (
-            
-            <div key={idx} class="flex items-center gap-2 px-4">
-              <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
-              <span class="whitespace-nowrap">{service}</span>
-            </div>
+            // Aquí puedes decidir si quieres que cada "icono + palabra" sea un grupo lógicamente
+            // Si quieres el icono y la palabra completamente separados con el gap entre ellos:
+            <>
+              {/* Icono separado */}
+              <div key={`icon-${idx}`} class="flex items-center flex-shrink-0">
+                <AsteriskIcon class="text-[var(--color-jj-dark)]" size={24} />
+              </div>
+              {/* Palabra separada */}
+              <div key={`service-${idx}`} class="flex items-center flex-shrink-0">
+                <span class="whitespace-nowrap">{service}</span>
+              </div>
+            </>
           ))}
         </div>
       </div>
