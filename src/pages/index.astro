@@ -6,7 +6,8 @@ import ServicesSection from '@components/ServicesSection.astro';
 import AboutSection from '@components/AboutSection.astro';
 import WorkProcessSection from '@components/WorkProcessSection.astro';
 import CtaSection from '@components/CtaSection.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import ScrollingBanner from '@components/ScrollingBanner';
+
 ---
 
 {/* Envuelve el contenido de la página con el Layout y pasa la prop 'title' */}
@@ -19,5 +20,5 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
         <AboutSection />
         <WorkProcessSection />
         <CtaSection />
-        <ServicesBanner />
+        <ScrollingBanner client:load />
     </Layout>
