@@ -1,32 +1,20 @@
 ---
 // src/pages/servicios/index.astro
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
 import ServicesGrid from '@components/ServicesGrid.astro';
-
-// Importa los datos de tus servicios
-import { servicesCardsData } from '@data/servicesData';
-
+import { servicesCardsData } from '@data/servicesData'; 
 ---
 
-<Layout
+<PageLayout
     title="Servicios | J&J Servicios Generales"
     description="Descubre todos los servicios de construcción, remodelación, electricidad y más que J&J Servicios Generales ofrece en Lima."
+    pageHeroTitle="Servicios" {/* Título para el PageHero */}
+    breadcrumbs={[ 
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+    ]}
 >
-    <PageHero
-        title="Servicios"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-        ]}
-    />
+    {/* El contenido específico de la página de servicios va aquí */}
+    <ServicesGrid services={servicesCardsData} />
 
-    <main>
-        <ServicesBanner />
-
-        <ServicesGrid services={servicesCardsData} />
-
-        <ServicesBanner />
-    </main>
-</Layout>
+</PageLayout>

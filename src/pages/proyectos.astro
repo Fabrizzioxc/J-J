@@ -1,22 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro'; // Ajusta la ruta si es necesario
-import PageHero from '@components/ui/PageHero.astro';
+// src/pages/proyectos.astro
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
 import MaintenanceComingSoon from '@components/ui/MaintenanceComingSoon.astro';
+
 ---
 
-<Layout
+<PageLayout
     title="Nuestros Proyectos | Próximamente - J&J Servicios Generales"
     description="Descubre los proyectos realizados por J&J Servicios Generales en Drywall, Pintura y Electricidad en Lima. ¡Próximamente estaremos compartiendo nuestras obras más destacadas!"
+    pageHeroTitle="Proyectos" {/* Título para el PageHero */}
+    breadcrumbs={[ 
+        { label: 'Inicio' },
+        { label: 'Proyectos' },
+    ]}
 >
-    <PageHero
-        title="Proyectos"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Proyectos' },
-        ]}
-    />
-  <ServicesBanner/>
-  <MaintenanceComingSoon />
-  <ServicesBanner/>
-</Layout>
+    {/* El contenido específico de la página de proyectos va aquí */}
+    <MaintenanceComingSoon />
+
+</PageLayout>

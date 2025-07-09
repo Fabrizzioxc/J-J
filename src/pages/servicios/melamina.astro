@@ -1,23 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import melaminaImage from '@assets/servicios/melamina.webp'; // Asegura que esta ruta es correcta
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+import melaminaImage from '@assets/servicios/melamina.webp';
+// ServicesBanner se elimina de aquí
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
-<Layout
+<PageLayout
     title="Servicio de Trabajos en Melamina | J&J Servicios Generales"
     description="Diseño y fabricación de muebles a medida en melamina. Soluciones prácticas y estéticas para cocinas, closets, escritorios y más."
+    pageHeroTitle="Trabajos en Melamina"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+        { label: 'Trabajos en Melamina' },
+    ]}
 >
-    <PageHero
-        title="Trabajos en Melamina"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-            { label: 'Trabajos en Melamina' },
-        ]}
-    />
-            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -50,5 +47,4 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
             </div>
         </div>
     </section>
-    <ServicesBanner />
-</Layout>
+</PageLayout>

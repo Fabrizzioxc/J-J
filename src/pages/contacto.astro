@@ -1,25 +1,22 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
-import PageHero from '@components/ui/PageHero.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
 import ContactSection from '@components/ContactSection.astro';
 import MapEmbed from '@components/ui/MapEmbed.astro';
 
 ---
 
-<Layout
+<PageLayout
     title="Contacto | J&J Servicios Generales en Lima, Perú"
     description="Contáctanos para servicios de construcción, Drywall, Pintura y Electricidad en Lima. Solicita una cotización o asesoría gratuita con J&J Servicios Generales."
+    pageHeroTitle="Contacto"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Contacto' },
+    ]}
 >
-  <PageHero
-        title="Contacto"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Contacto' },
-        ]}
-    />
-  <ServicesBanner/>
-  <ContactSection />
-  <MapEmbed />
-  <ServicesBanner/>
-</Layout>
+    {/* El contenido específico de la página de contacto va aquí */}
+    <ContactSection />
+    <MapEmbed />
+
+    {/* Si ServicesBanner no es parte del layout genérico, lo mantienes aquí */}
+    </PageLayout>

@@ -1,24 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import aireAcondicionadoImage from '@assets/servicios/aire-acondicionado.webp'; // Asegura que esta ruta es correcta
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+import aireAcondicionadoImage from '@assets/servicios/aire-acondicionado.webp';
+// ServicesBanner se elimina de aquí, ya que no lo necesitas o no está en el PageLayout
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
-<Layout
+<PageLayout
     title="Servicio de Aire Acondicionado | J&J Servicios Generales"
     description="Instalación, mantenimiento y reparación de sistemas de aire acondicionado en Lima. Soluciones eficientes para hogares y oficinas, garantizando confort térmico."
+    pageHeroTitle="Aire Acondicionado"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+        { label: 'Aire Acondicionado' },
+    ]}
 >
-    <PageHero
-        title="Aire Acondicionado"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-            { label: 'Aire Acondicionado' },
-        ]}
-    />
-
-    <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -51,5 +47,4 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
             </div>
         </div>
     </section>
-    <ServicesBanner />
-</Layout>
+</PageLayout>

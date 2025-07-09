@@ -1,23 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import cielorasosImage from '@assets/servicios/cielorasos.webp'; // Asegura que esta ruta es correcta
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+import cielorasosImage from '@assets/servicios/cielorasos.webp';
+// ServicesBanner se elimina de aquí
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
-<Layout
+<PageLayout
     title="Instalación y Diseño de Cielo Rasos | J&J Servicios Generales"
     description="Expertos en instalación y diseño de cielorrasos modernos y funcionales. Soluciones estéticas y acústicas para todo tipo de ambientes."
+    pageHeroTitle="Cielo Rasos"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+        { label: 'Cielo Rasos' },
+    ]}
 >
-    <PageHero
-        title="Cielo Rasos"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-            { label: 'Cielo Rasos' },
-        ]}
-    />
-            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -50,5 +47,4 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
             </div>
         </div>
     </section>
-    <ServicesBanner />
-</Layout>
+</PageLayout>

@@ -1,23 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import pinturaImage from '@assets/servicios/pintura.webp'; // Asegura que esta ruta es correcta
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+import pinturaImage from '@assets/servicios/pintura.webp';
+// ServicesBanner se elimina de aquí
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
-<Layout
+<PageLayout
     title="Servicio de Pintura General | J&J Servicios Generales"
     description="Renovamos tus espacios con acabados de alta calidad. Pintura de interiores, exteriores, fachadas y texturas decorativas."
+    pageHeroTitle="Pintura General" 
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+        { label: 'Pintura General' },
+    ]}
 >
-    <PageHero
-        title="Pintura General"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-            { label: 'Pintura General' },
-        ]}
-    />
-            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -50,5 +47,4 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
             </div>
         </div>
     </section>
-    <ServicesBanner />
-</Layout>
+</PageLayout>

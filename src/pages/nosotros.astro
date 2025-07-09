@@ -1,12 +1,12 @@
 ---
 // src/pages/nosotros.astro
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
 import HistorySectionBlock from '@components/HistorySectionBlock.astro';
 import MissionVisionSection from '@components/MissionVisionSection.astro';
 import QuoteSection from '@components/QuoteSection.astro';
 import FormalidadCardsSection from '@components/FormalidadCardsSection.astro';
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+// Si ServicesBanner no es parte del PageLayout o no lo necesitas aquí, puedes eliminarlo
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 
 // Iconos
 import RocketIcon from '@components/icons/RocketIcon.astro';
@@ -45,8 +45,8 @@ const quoteContent = {
 // Contenido para las 3 Cards de Formalidad y Excelencia
 const formalidadCards = [
     {
-        id: 'formalidad-transparencia', // Este ID ya lo tenías, ahora lo usaremos para el dialogId
-        dialogId: 'dialog-formalidad', // ✅ ID único para el diálogo
+        id: 'formalidad-transparencia',
+        dialogId: 'dialog-formalidad',
         iconComponent: CheckCircleIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
@@ -56,11 +56,11 @@ const formalidadCards = [
         expandedContent: `
             <p>Nuestra inscripción en el Organismo Supervisor de las Contrataciones del Estado (OSCE) no es solo un trámite, es un reflejo de nuestro compromiso inquebrantable con la **formalidad y la transparencia**. En J&J Servicios Generales, cada contrato, cada presupuesto y cada etapa de su proyecto se maneja con la máxima claridad.</p>
             <p>Entendemos que la confianza es la base de cualquier relación comercial sólida, y por eso, garantizamos que todos nuestros procesos están alineados con las normativas vigentes, ofreciéndole la tranquilidad de que su inversión está en manos seguras y responsables. No ocultamos nada; lo que ve es lo que obtiene: un servicio profesional, ético y de alta calidad.</p>
-        ` // Contenido más detallado para el modal
+        `
     },
     {
         id: 'inversion-inteligente',
-        dialogId: 'dialog-inversion', // ✅ ID único para el diálogo
+        dialogId: 'dialog-inversion',
         iconComponent: MoneyIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
@@ -74,7 +74,7 @@ const formalidadCards = [
     },
     {
         id: 'calidad-seguridad',
-        dialogId: 'dialog-calidad', // ✅ ID único para el diálogo
+        dialogId: 'dialog-calidad',
         iconComponent: ShieldIcon,
         iconBgClass: 'bg-[var(--color-jj-accent)]',
         iconColorClass: 'text-[var(--color-jj-dark)]',
@@ -97,50 +97,43 @@ const ctaContent = {
 
 ---
 
-<Layout
+<PageLayout
     title="Nosotros | Conoce a J&J Servicios Generales"
     description="Más de una década de experiencia en construcción, Drywall, pintura y electricidad en Lima. Conoce nuestra misión, visión y por qué somos tu socio de confianza."
+    pageHeroTitle="Nosotros"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Nosotros' },
+    ]}
 >
-    <PageHero
-        title="Nosotros"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Nosotros' },
-        ]}
+    {/* El contenido específico de la página de nosotros va aquí */}
+    <HistorySectionBlock
+        imageSrc={historiaImage}
+        imageAlt="Trabajador de J&J Servicios Generales aplicando masilla en una pared."
+        label="Nuestra Trayectoria"
+        mainTitle="Más de una Década Construyendo Confianza"
+        paragraph={historyParagraph}
     />
 
-    <main>
-        <ServicesBanner />
+    <MissionVisionSection
+        mission={missionContent}
+        vision={visionContent}
+    />
 
-        <HistorySectionBlock
-            imageSrc={historiaImage}
-            imageAlt="Trabajador de J&J Servicios Generales aplicando masilla en una pared."
-            label="Nuestra Trayectoria"
-            mainTitle="Más de una Década Construyendo Confianza"
-            paragraph={historyParagraph}
-        />
+    <QuoteSection
+        quote={quoteContent.quote}
+        author={quoteContent.author}
+    />
 
-        <MissionVisionSection
-            mission={missionContent}
-            vision={visionContent}
-        />
+    <FormalidadCardsSection
+        title="Formalidad y Excelencia"
+        cards={formalidadCards}
+    />
 
-        <QuoteSection
-            quote={quoteContent.quote}
-            author={quoteContent.author}
-        />
+    <CTABanner
+        title={ctaContent.title}
+        buttonText={ctaContent.buttonText}
+        buttonLink={ctaContent.buttonLink}
+    />
 
-        <FormalidadCardsSection
-            title="Formalidad y Excelencia"
-            cards={formalidadCards}
-        />
-
-        <CTABanner
-            title={ctaContent.title}
-            buttonText={ctaContent.buttonText}
-            buttonLink={ctaContent.buttonLink}
-        />
-
-        <ServicesBanner />
-    </main>
-</Layout>
+    </PageLayout>

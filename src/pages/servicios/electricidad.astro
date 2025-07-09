@@ -1,23 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import PageHero from '@components/ui/PageHero.astro';
-import electricidadImage from '@assets/servicios/electricidad.webp'; // Asegura que esta ruta es correcta
-import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+import electricidadImage from '@assets/servicios/electricidad.webp';
+// ServicesBanner se elimina de aquí
+// import ServicesBanner from '@components/ui/ServicesBanner.astro';
 ---
 
-<Layout
+<PageLayout
     title="Servicio de Instalaciones Eléctricas | J&J Servicios Generales"
     description="Instalaciones y mantenimiento eléctrico seguro y confiable en Lima. Soluciones para hogares y empresas, reparaciones, iluminación y más. ¡Garantizamos tu seguridad!"
+    pageHeroTitle="Instalaciones Eléctricas"
+    breadcrumbs={[ // Breadcrumbs para el PageHero
+        { label: 'Inicio' },
+        { label: 'Servicios' },
+        { label: 'Instalaciones Eléctricas' },
+    ]}
 >
-    <PageHero
-        title="Instalaciones Eléctricas"
-        breadcrumbs={[
-            { label: 'Inicio' },
-            { label: 'Servicios' },
-            { label: 'Instalaciones Eléctricas' },
-        ]}
-    />
-            <ServicesBanner />
     <section class="py-16 md:py-20">
         <div class="container mx-auto px-4 text-center">
             <img
@@ -50,5 +47,4 @@ import ServicesBanner from '@components/ui/ServicesBanner.astro';
             </div>
         </div>
     </section>
-    <ServicesBanner />
-</Layout>
+</PageLayout>
