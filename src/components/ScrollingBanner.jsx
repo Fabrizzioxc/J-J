@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-
+import AsteriskIcon from '@icons/AsteriskIcon.jsx'; // Asegúrate que esté disponible como JSX
 
 const services = ["Pintura", "Remodelaciones", "Drywall", "Electricidad", "Acabados"];
 
@@ -19,7 +19,7 @@ export default function ScrollingBanner() {
     const containerWidth = container.offsetWidth;
 
     // Asegura que el contenido sea mínimo el doble del ancho del contenedor
-    const neededClones = Math.ceil((containerWidth * 10) / singleContentWidth);
+    const neededClones = Math.ceil((containerWidth * 2) / singleContentWidth);
     setClones(neededClones);
   }, []);
 
@@ -32,7 +32,7 @@ export default function ScrollingBanner() {
     let x = 0;
 
     const step = () => {
-      x += 0.2;
+      x += 0.1;
       if (x >= scroll.scrollWidth / 2) {
         x = 0;
       }
@@ -55,8 +55,9 @@ export default function ScrollingBanner() {
           class="flex whitespace-nowrap font-bold text-xl md:text-2xl gap-x-8 will-change-transform"
         >
           {fullList.map((service, idx) => (
+            
             <div key={idx} class="flex items-center gap-2 px-4">
-             
+              <AsteriskIcon class="text-[var(--color-jj-dark)] flex-shrink-0" size={24} />
               <span class="whitespace-nowrap">{service}</span>
             </div>
           ))}
