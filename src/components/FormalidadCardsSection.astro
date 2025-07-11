@@ -37,14 +37,16 @@ const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
 <section class={`py-16 md:py-12 ${sectionBgClass}`}>
     <div class="container mx-auto px-4 text-center">
 
-        <SectionTitle
-            title={label}
-            iconColorClass={sectionTitleIconColorClass}
-            textColorClass={sectionTitleTextColorClass}
-            containerClass="flex items-center gap-2 justify-center mb-2"
-            iconSize="20"
-            iconStrokeWidth="2"
-        />
+        <div class="flex justify-center w-full">
+            <SectionTitle
+                title={label}
+                iconColorClass={sectionTitleIconColorClass}
+                textColorClass={sectionTitleTextColorClass}
+                containerClass="flex items-center gap-2 justify-center mb-2"
+                iconSize="20"
+                iconStrokeWidth="2"
+            />
+        </div>
 
         <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] mb-16">{title}</h2>
 
