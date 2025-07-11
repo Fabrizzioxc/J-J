@@ -26,7 +26,7 @@ const defaultBadgeRounded = 'rounded-md';
 const defaultIconColor = 'text-gray-800';
 ---
 
-<div class={`${containerClass} ${defaultBadgeRounded}`}>
+<div class={`${containerClass} ${defaultBadgeRounded} justify-center md:justify-start`}>
     <CircleDotIcon class={iconColorClass || defaultIconColor} size={iconSize} strokeWidth={iconStrokeWidth} />
     <h2 class={`font-semibold text-2xl ${textColorClass || defaultBadgeTextColor}`}>
         {title}

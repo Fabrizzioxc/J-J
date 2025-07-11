@@ -12,7 +12,7 @@ interface Props extends HTMLAttributes<'div'> {
 const { title, description, href, icon: IconComponent, class: className, ...attrs } = Astro.props;
 ---
 
-<div class={`bg-[var(--color-jj-text-light)] px-10 py-12 shadow-md flex flex-col justify-between border border-[var(--color-jj-gray)] rounded-none ${className}`} {...attrs}>
+<div class={`bg-[var(--color-jj-text-light)] px-8 py-10 shadow-md flex flex-col justify-between border border-[var(--color-jj-gray)] rounded-none ${className}`} {...attrs}>
 
     {/* Contenedor Superior: Icono y Título
         - flex flex-col: Asegura que Icono y Título estén siempre apilados verticalmente.
@@ -37,7 +37,7 @@ const { title, description, href, icon: IconComponent, class: className, ...attr
             - font-bold text-[var(--color-jj-dark)]: Estilos de fuente.
             - leading-tight: Ajusta el interlineado.
         */}
-        <h3 class="text-3xl md:text-4xl font-bold text-[var(--color-jj-dark)] text-left leading-tight" set:html={title}></h3>
+        <h3 class="text-4xl md:text-4xl font-bold text-[var(--color-jj-dark)] text-left leading-tight" set:html={title}></h3>
     </div>
 
     {/* Contenedor del Párrafo de Descripción:
@@ -45,7 +45,7 @@ const { title, description, href, icon: IconComponent, class: className, ...attr
         - text-left: Alinea el párrafo a la izquierda.
         - mb-8: Margen inferior para separar de el botón.
     */}
-    <div class="flex-grow text-left mb-16">
+    <div class="flex-grow text-left">
         {/* Párrafo de Descripción:
             - text-lg md:text-xl: Tamaño responsivo.
             - leading-relaxed: Para mejorar la legibilidad del texto de la descripción.
@@ -62,7 +62,7 @@ const { title, description, href, icon: IconComponent, class: className, ...attr
         - px-6 py-3: Padding del botón.
     */}
     <div>
-        <a href={href} class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity block w-full text-center text-lg md:text-xl rounded-none">
+        <a href={href} class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-6 py-3 font-semibold hover:opacity-90 transition-opacity block w-full text-center text-lg md:text-xl">
             Ver más
         </a>
     </div>
