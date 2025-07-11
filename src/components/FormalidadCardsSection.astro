@@ -4,7 +4,6 @@
 import SectionTitle from './SectionTitle.astro';
 import DialogAnimation from '@components/ui/DialogAnimation.astro';
 
-// ✅ FIX 1: Se ha añadido la interfaz para tipar las 'cards'
 interface CardItem {
     iconComponent: any;
     iconBgClass: string;
@@ -82,7 +81,6 @@ const sectionTitleTextColorClass = 'text-[var(--color-jj-dark)]';
     {/* ✅ FIX 3: Se ha añadido el tipo (card: CardItem) también aquí */}
     {cards.map((card: CardItem) => (
         <DialogAnimation
-            client:idle
             dialogId={card.dialogId}
             title={card.title}
         >
