@@ -128,13 +128,6 @@ const { dialogId, title } = Astro.props;
 </dialog>
 
 <style is:global>
-  /* Aquí mantendremos las reglas CSS específicas para View Transitions */
-  :root {
-    view-transition-name: none;
-  }
-  ::view-transition {
-    pointer-events: none;
-  }
 
   /* Animación para abrir/cerrar el diálogo (ya la tenías) */
   ::view-transition-group(.vt-element-animation),

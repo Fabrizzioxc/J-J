@@ -1,6 +1,8 @@
 ---
 // src/layouts/Layout.astro
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro'
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -40,5 +42,7 @@ const {
 
     {/* Renderiza el componente del botón de WhatsApp */}
     <WhatsappButton client:load /> 
+    <Analytics />
+    <SpeedInsights />
 </body>
 </html>
