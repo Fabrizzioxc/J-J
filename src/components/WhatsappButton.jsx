@@ -12,12 +12,13 @@ export default function WhatsappButton() {
   href={whatsappLink}
   target="_blank"
   rel="noopener noreferrer"
-  className="fixed bottom-15 right-15 z-50 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out flex items-center justify-center"
+  className="fixed bottom-5 right-5 z-50 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out flex items-center justify-center"
   aria-label="Contactar por WhatsApp"
   title="Contactar por WhatsApp"
   data-astro-transition-persist="whatsapp-button"
 >
   <WhatsappIcon size="w-8 h-8 md:w-10 md:h-10" color="text-white" />
+  
 </a>
 
   );
