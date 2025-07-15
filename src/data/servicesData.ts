@@ -32,27 +32,11 @@ export const servicesCardsData = [
         link: '/servicios/cielorasos'
     },
     {
-        id: 'aire-acondicionado',
-        imageSrc: aireAcondicionadoImage,
-        imageAlt: 'Servicio de Aire Acondicionado',
-        title: 'Aire Acondicionado',
-        paragraph: 'Venta, instalación y mantenimiento de sistemas de aire acondicionado. Confort térmico garantizado para tu hogar u oficina.',
-        link: '/servicios/aireacondicionado'
-    },
-    {
         id: 'electricidad',
         imageSrc: electricidadImage,
         imageAlt: 'Servicio de Instalaciones Eléctricas',
         title: 'Instalaciones Eléctricas',
         paragraph: 'Proyectos eléctricos seguros y eficientes. Desde nuevas instalaciones hasta mantenimiento, reparaciones y certificaciones.',
         link: '/servicios/electricidad'
-    },
-    {
-        id: 'melamina',
-        imageSrc: melaminaImage,
-        imageAlt: 'Servicio de Trabajos en Melamina',
-        title: 'Trabajos en Melamina',
-        paragraph: 'Diseño y fabricación de muebles a medida en melamina. Soluciones prácticas y estéticas para cocinas, closets, escritorios y más.',
-        link: '/servicios/melamina'
     }
 ];
