@@ -3,10 +3,10 @@
 import WhatsAppOut from '@components/icons/WhatsAppOut.astro';
 import LinkedinIcon from '@components/icons/LinkedinIcon.astro';
 import FacebookIcon from '@components/icons/FacebookIcon.astro';
+import ContactForm from './ContactForm.jsx'; // Importa el nuevo componente de Preact
 
-
-const iconBaseClass = 'w-10 h-10'; 
-const iconColorClass = 'text-[var(--color-jj-dark)]'
+const iconBaseClass = 'w-10 h-10';
+const iconColorClass = 'text-[var(--color-jj-dark)]';
 const iconHoverClass = 'hover:opacity-80 transition-opacity';
 
 // Combina todas las clases de iconos
@@ -16,57 +16,10 @@ const combinedIconClasses = `${iconBaseClass} ${iconColorClass} ${iconHoverClass
 <div class="container mx-auto px-4 py-4">
     {/* Contenedor principal del grid */}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
-        {/* Columna Izquierda: Formulario de Contacto */}
+        {/* Columna Izquierda: Formulario de Contacto (AHORA ES UN COMPONENTE DE PREACT) */}
         <div class="flex flex-col justify-between">
-            <form action="https://formspree.io/f/xjkobgya" method="POST" class="bg-white flex flex-col h-full justify-between" style="border-radius: 0;"> 
-                <div>
-                    <div class="mb-6">
-                        <label for="fullName" class="sr-only">Nombre Completo *</label>
-                        <input
-                            type="text"
-                            id="fullName"
-                            name="fullName"
-                            placeholder="Nombre Completo *"
-                            required
-                            class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none"
-                            style="border-radius: 0;"
-                        />
-                    </div>
-                    <div class="mb-6">
-                        <label for="phoneNumber" class="sr-only">Número Telefónico *</label>
-                        <input
-                            type="tel"
-                            id="phoneNumber"
-                            name="phoneNumber"
-                            placeholder="Número Telefónico *"
-                            required
-                            class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none"
-                            style="border-radius: 0;"
-                        />
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="sr-only">Mensaje</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            placeholder="Mensaje"
-                            class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none"
-                            style="border-radius: 0;"
-                        ></textarea>
-                    </div>
-                </div>
-
-                <div class="mt-40">
-                    <button
-                        type="submit"
-                        class="w-full bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-6 py-3 border border-transparent text-lg font-semibold shadow-sm hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-jj-accent)]"
-                        style="border-radius: 0;"
-                    >
-                        Solicitar Cotización
-                    </button>
-                </div>
-            </form>
+            {/* Usa el componente de Preact aquí con client:load para que se ejecute en el cliente */}
+            <ContactForm client:load />
         </div>
 
         {/* Columna Derecha: Información de Contacto (Contenedor Amarillo) */}
@@ -80,10 +33,9 @@ const combinedIconClasses = `${iconBaseClass} ${iconColorClass} ${iconHoverClass
                 <p class="text-lg mb-6 max-w-prose break-words"><a href="mailto:s.generales.j.j@gmail.com.pe" class="hover:underline">s.generales.j.j@gmail.com.pe</a></p>
                 <h3 class="text-2xl md:text-3xl font-bold mb-4">Horario de Atención:</h3>
                 <p class="text-lg mb-6 max-w-prose break-words">Lunes - Viernes: 8:00am - 5:00pm</p>
-                              <h3 class="text-2xl md:text-3xl font-bold mb-4">Nuestras Redes</h3>
+                <h3 class="text-2xl md:text-3xl font-bold mb-4">Nuestras Redes</h3>
                 <div class="flex gap-4">
                     <a href="https://www.whatsapp.com/catalog/51992198415/?app_absent=0" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                        {/* CAMBIO AQUI: Usa WhatsAppOut en lugar de WhatsappIcon */}
                         <WhatsAppOut className={combinedIconClasses} />
                     </a>
                     <a href="https://www.linkedin.com/in/invegar-sac-sistema-drywall-11546a10a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -93,6 +45,7 @@ const combinedIconClasses = `${iconBaseClass} ${iconColorClass} ${iconHoverClass
                         <FacebookIcon className={combinedIconClasses} />
                     </a>
                 </div>
+            </div>
         </div>
     </div>
 </div>
