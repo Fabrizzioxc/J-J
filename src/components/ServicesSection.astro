@@ -46,7 +46,7 @@ import SectionTitle from './SectionTitle.astro';
                 - items-center justify-center: Centra el texto en móvil.
                 - md:items-start md:justify-start: Alinea el texto a la izquierda en desktop.
             */}
-            <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] flex flex-col items-center justify-center md:items-start md:justify-start">
+            <h2 class=" text-4xl md:text-5xl font-bold text-[var(--color-jj-dark)] flex flex-col items-center justify-center md:items-start md:justify-start">
                 <span class="block">Soluciones Completas</span>
                 <span class="block">para Cada Rincón</span>
             </h2>
@@ -67,12 +67,12 @@ import SectionTitle from './SectionTitle.astro';
           - grid grid-cols-1 xl:grid-cols-3: Configuración de la grilla (1 columna en móvil, 3 en XL).
           - gap-12: Espaciado entre las cards (48px).
         */}
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 max-w-8xl mx-auto"> 
+        <div class="animate-duration-slow grid grid-cols-1 xl:grid-cols-3 gap-12 max-w-8xl mx-auto"> 
             <ServiceCard
                 title="Pintura"
                 description="Renueva y embellece tus ambientes con colores vibrantes y acabados duraderos que reflejan tu estilo."
                 href="/servicios/pintura"
-                class="min-h-[480px]"
+                class="min-h-[480px] animate-fade-in-up animate-delay-200"
                 icon={PaintBrushIcon}
             />
 
@@ -80,7 +80,7 @@ import SectionTitle from './SectionTitle.astro';
                 title="Drywall"
                 description="Transformamos tus espacios con soluciones rápidas, versátiles y de alta calidad en drywall para interiores y exteriores."
                 href="/servicios/drywall"
-                class="min-h-[480px]"
+                class="min-h-[480px] animate-fade-in-up animate-delay-300"
                 icon={WrenchScrewdriverIcon}
             />
 
@@ -88,7 +88,7 @@ import SectionTitle from './SectionTitle.astro';
                 title={'Electricidad'}
                 description="Garantizamos un sistema eléctrico eficiente y seguro, desde nuevas instalaciones hasta reparaciones y mantenimiento."
                 href="/servicios/electricidad"
-                class="min-h-[480px]"
+                class="min-h-[480px] animate-fade-in-up animate-delay-400"
                 icon={BoltIcon}
             />
         </div>
