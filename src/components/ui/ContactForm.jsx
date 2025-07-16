@@ -78,7 +78,7 @@ export default function ContactForm() {
       {/* Aquí renderizamos nuestro toast personalizado */}
       {toastMessage && (
         <div class={`
-          fixed bottom-4 right-4 p-4 rounded-md shadow-lg text-white z-[9999]
+          animate-slide-in-bottom fixed bottom-4 right-4 p-4 rounded-md shadow-lg text-white z-[9999]
           ${toastType === 'success' ? 'bg-green-500' : 'bg-red-500'}
           transition-all duration-300 ease-in-out
           ${toastMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
