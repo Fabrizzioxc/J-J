@@ -13,14 +13,14 @@ const { class: additionalClass } = Astro.props;
 <section class={`min-h-screen flex items-center overflow-hidden bg-[var(--color-jj-accent)] relative pt-20 ${additionalClass || ''}`}>
     <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
         <div class="lg:w-1/2 w-full text-center lg:text-left py-12 lg:py-0 pr-0 lg:pr-12 z-10">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-[var(--color-jj-dark)] leading-tight">
+            <h1 class="animate-slide-up-fade text-4xl md:text-6xl font-bold mb-6 text-[var(--color-jj-dark)] leading-tight">
                 SOLUCIONES <strong class="inline-block">CONFIABLES</strong> PARA TRANSFORMAR TUS <strong class="inline-block">ESPACIOS</strong>
             </h1>
-            <p class="text-2xl text-[var(--color-jj-dark)] mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 font-semibold">
+            <p class="animate-slide-up-fade animate-delay-200 text-2xl text-[var(--color-jj-dark)] mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 font-semibold">
                 Especialistas en instalación de Drywall, pintura profesional y servicios eléctricos.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 mb-16 justify-center lg:justify-start text-lg">
+            <div class="animate-slide-up-fade animate-delay-300 flex flex-col sm:flex-row gap-4 mb-16 justify-center lg:justify-start text-lg">
                 <a href="/contacto" class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-8 py-4 font-semibold hover:opacity-90 transition-opacity">
                     Cotiza tu Proyecto
                 </a>
@@ -30,21 +30,21 @@ const { class: additionalClass } = Astro.props;
             </div>
 
             <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-y-8 sm:gap-x-12 mt-8">
-                <div class="flex flex-col items-center lg:items-start">
+                <div class="animate-fade-in-left flex flex-col items-center lg:items-start">
                     <span class="text-4xl font-bold text-[var(--color-jj-dark)]">+12</span>
                     <span class="text-lg text-[var(--color-jj-dark)]">Años de Experiencia</span>
                 </div>
 
-                <div class="hidden sm:block w-px bg-[var(--color-jj-dark)] h-20 self-center"></div>
+                <div class="animate-fade-in-left animate-delay-150 hidden sm:block w-px bg-[var(--color-jj-dark)] h-20 self-center"></div>
 
-                <div class="flex flex-col items-center lg:items-start">
+                <div class="animate-fade-in-left animate-delay-150 flex flex-col items-center lg:items-start">
                     <span class="text-4xl font-bold text-[var(--color-jj-dark)]">+500</span>
                     <span class="text-lg text-[var(--color-jj-dark)]">Proyectos Realizados</span>
                 </div>
 
-                <div class="hidden sm:block w-px bg-[var(--color-jj-dark)] h-20 self-center"></div>
+                <div class="animate-fade-in-left animate-delay-150 hidden sm:block w-px bg-[var(--color-jj-dark)] h-20 self-center"></div>
 
-                <div class="flex flex-col items-center lg:items-start">
+                <div class="animate-fade-in-left animate-delay-200 flex flex-col items-center lg:items-start">
                     <span class="text-4xl font-bold text-[var(--color-jj-dark)]">100%</span>
                     <span class="text-lg text-[var(--color-jj-dark)]">Clientes Satisfechos</span>
                 </div>
