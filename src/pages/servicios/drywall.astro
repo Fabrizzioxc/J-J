@@ -1,54 +1,96 @@
 ---
 // src/pages/servicios/drywall.astro
-import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
-// Importa la imagen específica para este servicio
-import drywallImage from '@assets/servicios/drywall.webp';
-// ServicesBanner se elimina de aquí
-// import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import PageLayout from '@layouts/PageLayout.astro';
+import FaqSection from '@components/FaqSection.astro'; // 1. IMPORTAMOS EL NUEVO COMPONENTE
 
+// Importa las imágenes que usaremos
+import mainDrywallImage from '@assets/servicios/drywall.webp';
+import SectionTitle from '@components/SectionTitle.astro';
+import AnimateOnScroll from '@components/ui/AnimateOnScroll.astro';
+
+// 2. DEFINIMOS LOS DATOS PARA LAS PREGUNTAS FRECUENTES
+const drywallFaqs = [
+  {
+    question: "¿Qué es el Drywall y cuáles son sus principales ventajas?",
+    answer: "El Drywall, o sistema de construcción en seco, utiliza placas de yeso y perfiles metálicos. Sus ventajas son la rapidez de instalación, la limpieza en obra, su versatilidad para diseños y su excelente acabado liso."
+  },
+  {
+    question: "¿Es resistente el agua?",
+    answer: "Existen placas de Drywall especiales (de color verde) que son resistentes a la humedad y al moho. Son ideales para baños, cocinas y otros ambientes con alta condensación."
+  },
+  {
+    question: "¿Qué tipo de proyectos de Drywall realiza J&J Servicios Generales?",
+    answer: "Realizamos todo tipo de proyectos, desde tabiques divisorios y falsos techos hasta muebles, estanterías y complejos diseños decorativos para residencias y locales comerciales."
+  },
+  {
+    question: "¿Cuánto tiempo se tarda en instalar Drywall y cuánto desorden genera?",
+    answer: "La instalación es significativamente más rápida que la albañilería tradicional. Al ser un sistema en seco, el desorden es mínimo, limitándose principalmente al polvo del lijado, que controlamos para mantener la limpieza."
+  },
+  {
+    question: "¿Cómo aseguran la calidad del acabado final?",
+    answer: "Utilizamos masilla de alta calidad y un proceso de lijado meticuloso en varias etapas para garantizar que las juntas queden invisibles y la superficie totalmente lisa, lista para recibir la pintura."
+  }
+];
 ---
 
 <PageLayout
-    title="Servicio de Drywall Profesional | J&J Servicios Generales"
-    description="Especialistas en instalación y reparación de Drywall en Lima. Soluciones rápidas, limpias y eficientes para divisiones, techos y diseños personalizados. ¡Pide tu presupuesto!"
-    pageHeroTitle="Drywall"
-    breadcrumbs={[ // Breadcrumbs para el PageHero
-        { label: 'Inicio' },
-        { label: 'Servicios' },
-        { label: 'Drywall' },
-    ]}
+  title="Servicio de Drywall Profesional | J&J Servicios Generales"
+  description="Especialistas en instalación y reparación de Drywall en Lima. Soluciones rápidas, limpias y eficientes para divisiones, techos y diseños personalizados."
+  pageHeroTitle="Drywall"
+  breadcrumbs={[
+    { label: 'Inicio' }, { label: 'Servicios' }, { label: 'Drywall' },
+  ]}
 >
-    <section class="py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            {/* Aquí va la imagen principal del servicio con el view-transition-name */}
-            <img
-                src={drywallImage.src}
-                alt="Servicio de Drywall de J&J Servicios Generales"
-                class="w-full max-w-4xl mx-auto shadow-lg mb-12"
-                data-astro-transition-name="service-image-drywall"
-                style="view-transition-name: service-image-drywall;"
-            />
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="w-full max-w-4xl mx-auto mb-16">
+        <img
+          src={mainDrywallImage.src}
+          alt="Servicio de Drywall de J&J Servicios Generales"
+          class="w-full h-auto shadow-lg"
+          style={`view-transition-name: service-image-drywall;`}
+        />
+      </div>
+      
+      <div class="max-w-4xl mx-auto text-[var(--color-jj-dark)] text-xl space-y-6 leading-relaxed">
+        <p>
+          En J&J Servicios Generales, transformamos tus espacios con la versatilidad y eficiencia del sistema Drywall. Nos especializamos en la construcción de interiores, desde la creación de tabiques divisorios que redefinen ambientes hasta la instalación de falsos techos que ocultan instalaciones y mejoran la estética. Nuestro equipo de profesionales garantiza un montaje preciso de las estructuras metálicas y una colocación impecable de las placas de yeso.
+        </p>
+        <p>
+          Nuestro enfoque se centra en el acabado perfecto. Entendemos que la calidad final es lo que define un trabajo excepcional, por lo que aplicamos un tratamiento de juntas meticuloso y un masillado profesional. El resultado es una superficie completamente lisa y uniforme, sin imperfecciones, preparada para recibir el acabado de pintura que desees. Confía en nosotros para un servicio rápido, limpio y con resultados duraderos.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Drywall Profesional</h1>
-            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
-                En J&J Servicios Generales, somos expertos en la instalación y reparación de Drywall, ofreciendo soluciones rápidas, limpias y versátiles para la creación de nuevos espacios, divisiones de ambientes, cielorrasos y diseños personalizados. Trabajamos con los más altos estándares de calidad y seguridad para garantizar estructuras resistentes y acabados impecables.
-            </p>
+  <FaqSection 
+    title="Preguntas Frecuentes sobre Drywall"
+    faqData={drywallFaqs}
+  />
 
-            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">¿Por qué elegir nuestro servicio de Drywall?</h2>
-            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
-                <li>Instalación rápida y eficiente con mínimo desorden.</li>
-                <li>Materiales de Drywall de primera calidad, resistentes y duraderos.</li>
-                <li>Equipo especializado en montaje de estructuras y acabados finos.</li>
-                <li>Soluciones versátiles para cualquier diseño y necesidad de espacio.</li>
-                <li>Asesoramiento experto en diseño y funcionalidad de tus ambientes.</li>
-                <li>Cumplimiento estricto de plazos y presupuesto acordado.</li>
-            </ul>
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
+      
+      <AnimateOnScroll style="--animation-delay: 100ms">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            Tu Próximo Proyecto<br>Comienza Aquí
+          </h2>
 
-            <div class="mt-16">
-                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity">
-                    ¡Cotiza tu proyecto de Drywall!
-                </a>
-            </div>
+          <div>
+            <a
+              href="/contacto"
+              class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] font-semibold hover:opacity-90 transition-opacity shadow-lg text-lg px-8 py-4 md:text-2xl md:px-10 md:py-5"
+            >
+              Solicitar Cotización Gratuita
+            </a>
+          </div>
         </div>
-    </section>
+      </AnimateOnScroll>
+    </div>
+  </div>
+</section>
+
 </PageLayout>
