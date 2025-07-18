@@ -10,7 +10,7 @@ const { class: className, style } = Astro.props;
   <slot />
 </div>
 
-<script>
+<script is:inline>
   // 1. Envuelve toda la lógica en una función.
   function setupAnimations() {
     const animatedElements = document.querySelectorAll(".scroll-animate");
