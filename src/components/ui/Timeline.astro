@@ -1,68 +1,70 @@
 ---
+// Imports de íconos
 import DocumentIcon from '../icons/DocumentIcon.astro';
 import RulerPencilIcon from '../icons/RulerPencilIcon.astro';
 import WrenchHammerIcon from '../icons/WrenchHammerIcon.astro';
 import SmilingFaceIcon from '../icons/SmilingFaceIcon.astro';
+import AnimateOnScroll from './AnimateOnScroll.astro';
 
 const processSteps = [
-    {
-        number: '01',
-        icon: DocumentIcon,
-        title: 'Cotización',
-        description: 'Te ofrecemos un presupuesto claro y detallado, adaptado a tus necesidades y sin compromiso.',
-    },
-    {
-        number: '02',
-        icon: RulerPencilIcon,
-        title: 'Planificación',
-        description: 'Juntos, definimos cada detalle. Desarrollamos un plan de trabajo y cronograma para tu tranquilidad.'
-    },
-    {
-        number: '03',
-        icon: WrenchHammerIcon,
-        title: 'Construcción',
-        description: 'Nuestro equipo experto ejecuta el proyecto con máxima calidad y seguridad, supervisando cada fase.'
-    },
-    {
-        number: '04',
-        icon: SmilingFaceIcon,
-        title: 'Entrega',
-        description: 'Recibe un espacio transformado, listo para disfrutar. Tu completa satisfacción es nuestra garantía.'
-    }
+  {
+    number: '01',
+    icon: DocumentIcon,
+    title: 'Cotización',
+    description: 'Te ofrecemos un presupuesto claro y detallado, adaptado a tus necesidades y sin compromiso.',
+  },
+  {
+    number: '02',
+    icon: RulerPencilIcon,
+    title: 'Planificación',
+    description: 'Juntos, definimos cada detalle. Desarrollamos un plan de trabajo y cronograma para tu tranquilidad.'
+  },
+  {
+    number: '03',
+    icon: WrenchHammerIcon,
+    title: 'Construcción',
+    description: 'Nuestro equipo experto ejecuta el proyecto con máxima calidad y seguridad, supervisando cada fase.'
+  },
+  {
+    number: '04',
+    icon: SmilingFaceIcon,
+    title: 'Entrega',
+    description: 'Recibe un espacio transformado, listo para disfrutar. Tu completa satisfacción es nuestra garantía.'
+  }
 ];
 ---
 <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-12 relative">
   {processSteps.map((step, index) => {
     const IconComponent = step.icon;
-    const delayClass = `animate-delay-${(index + 1) * 100}`; // 100, 200, 300, 400
+    const delay = index * 200;
 
     return (
-      <div class={`animate-fade-in-right ${delayClass} flex flex-col items-center text-center relative`}>
-        {/* Círculo del ícono con sombra */}
-        <div class="relative w-24 h-24 bg-[var(--color-jj-accent)] rounded-full flex items-center justify-center shadow-md mb-6">
-          <IconComponent className="text-[var(--color-jj-dark)] w-12 h-12"/>
-          
-          {/* Badge con número */}
-          <div class="absolute top-1/2 -translate-y-1/2 right-[-1rem] w-8 h-8 bg-black border-2 border-[var(--color-jj-light-bg)] rounded-full flex items-center justify-center text-sm font-bold text-[var(--color-jj-light-bg)]">
-            {step.number}
+      <AnimateOnScroll style={`--animation-delay: ${delay}ms`}>
+        <div class="flex flex-col items-center text-center relative">
+          {/* Ícono circular */}
+          <div class="relative w-24 h-24 bg-[var(--color-jj-accent)] rounded-full flex items-center justify-center shadow-md mb-6">
+            <IconComponent className="text-[var(--color-jj-dark)] w-12 h-12" />
+            <div class="absolute top-1/2 -translate-y-1/2 right-[-1rem] w-8 h-8 bg-black border-2 border-[var(--color-jj-light-bg)] rounded-full flex items-center justify-center text-sm font-bold text-[var(--color-jj-light-bg)]">
+              {step.number}
+            </div>
           </div>
+
+          {/* Título */}
+          <h3 class="text-xl md:text-2xl font-extrabold text-[var(--color-jj-dark)] mb-3">
+            {step.title}
+          </h3>
+
+          {/* Descripción */}
+          <p class="text-[var(--color-jj-dark)] text-lg leading-relaxed lg:px-10">
+            {step.description}
+          </p>
+
+          {/* Línea entre items */}
+          {index < processSteps.length - 1 && (
+            <div class="hidden lg:block absolute top-12 right-[-50px] h-[5px] w-[80px] bg-[var(--color-jj-dark)]"></div>
+          )}
         </div>
-
-        {/* Título */}
-        <h3 class="text-xl md:text-2xl font-extrabold text-[var(--color-jj-dark)] mb-3">
-          {step.title}
-        </h3>
-
-        {/* Descripción */}
-        <p class="text-[var(--color-jj-dark)] text-lg leading-relaxed lg:px-10">
-          {step.description}
-        </p>
-
-        {/* Línea divisora horizontal entre items */}
-        {index < processSteps.length - 1 && (
-          <div class="hidden lg:block absolute top-12 right-[-50px] h-[5px] w-[80px] bg-[var(--color-jj-dark)] animate-fade-in-right"></div>
-        )}
-      </div>
+      </AnimateOnScroll>
     );
   })}
-</div> 
+</div>
