@@ -3,7 +3,7 @@ import WhatsappIcon from './icons/WhatsappIcon.jsx';
 
 export default function WhatsappButton() {
   // Reemplaza con el número de WhatsApp de tu empresa (si aún no lo hiciste)
-  const whatsappNumber = '51992198315'; // Ejemplo: Cambia esto al número de J&J
+  const whatsappNumber = '51992198415';
   const whatsappMessage = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
