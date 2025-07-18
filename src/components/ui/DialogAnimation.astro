@@ -9,8 +9,7 @@ const { dialogId, title } = Astro.props;
 ---
 
 <script>
-  // --- SCRIPT SIMPLIFICADO ---
-  // Se ha eliminado toda la lógica de 'expandir/contraer' (la función toggleDialogSize)
+  // --- SCRIPT ACTUALIZADO CON BLOQUEO DE SCROLL ---
 
   const ViewTransitionClass = "vt-element-animation";
   const ViewTransitionClassClosing = "vt-element-animation-closing";
@@ -21,6 +20,9 @@ const { dialogId, title } = Astro.props;
       if (!openDialog) return false;
 
       const originElement = document.querySelector("[origin-element]") as HTMLElement;
+
+      // ---> AÑADIDO: Rehabilita el scroll del body al cerrar
+      document.body.style.overflow = '';
 
       openDialog.style.viewTransitionName = "vt-shared";
       openDialog.style.viewTransitionClass = ViewTransitionClassClosing;
@@ -60,6 +62,9 @@ const { dialogId, title } = Astro.props;
     const viewTransition = document.startViewTransition(() => {
       originElement.style.viewTransitionName = "";
       originElement.style.viewTransitionClass = "";
+      
+      // ---> AÑADIDO: Deshabilita el scroll del body al abrir
+      document.body.style.overflow = 'hidden';
       dialog.showModal();
     });
 
@@ -98,6 +103,7 @@ const { dialogId, title } = Astro.props;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
   }
+  
 
   /* --- CSS DE VIEW TRANSITIONS SIMPLIFICADO ---
     Se han eliminado todas las reglas de '.expanded' y 'vt-dialog-size'
