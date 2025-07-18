@@ -1,21 +1,25 @@
 ---
 // src/components/AboutSection.astro
-import { Image } from 'astro:assets';
-import aboutImage from '../assets/about-drywall-worker.webp';
+import { Image } from "astro:assets";
+import aboutImage from "../assets/about-drywall-worker.webp";
 
-import SectionTitle from './SectionTitle.astro';
-import CheckCircleIcon from './icons/CheckCircleIcon.astro';
-import ClockIcon from './icons/ClockIcon.astro';
-import ShieldIcon from './icons/ShieldIcon.astro';
+import SectionTitle from "./SectionTitle.astro";
+import CheckCircleIcon from "./icons/CheckCircleIcon.astro";
+import ClockIcon from "./icons/ClockIcon.astro";
+import ShieldIcon from "./icons/ShieldIcon.astro";
+import AnimateOnScroll from "./ui/AnimateOnScroll.astro";
 ---
 
 {/* Sección principal */}
-<section class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-20 lg:py-24 min-h-screen flex items-center">
+<section
+  class="bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] py-20 lg:py-24 min-h-screen flex items-center"
+>
   <div class="container mx-auto px-4">
     <div class="flex flex-col lg:flex-row items-center gap-12">
-
       {/* Contenedor de la Imagen */}
-      <div class="relative w-full lg:w-1/2 hidden lg:flex justify-center lg:justify-start items-center mb-12 lg:mb-0">
+      <div
+        class="relative w-full lg:w-1/2 hidden lg:flex justify-center lg:justify-start items-center mb-12 lg:mb-0"
+      >
         {/* Contenedor interno para la imagen con tamaño controlado */}
         <div class="relative z-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <Image
@@ -40,40 +44,51 @@ import ShieldIcon from './icons/ShieldIcon.astro';
 
         {/* H2 (Título principal) */}
         <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-            <span class="block">Expertos que</span>
-            <span class="block">Construyen Confianza.</span>
+          <span class="block">Expertos que</span>
+          <span class="block">Construyen Confianza.</span>
         </h2>
 
         {/* Párrafo de Descripción */}
-        <p class="text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-          En J&J Servicios Generales, contamos con más de 12 años de experiencia transformando espacios. Somos especialistas en Drywall, pintura y electricidad, garantizando soluciones integrales que se adaptan a tu proyecto, con acabados duraderos y seguros.
+        <p
+          class="text-lg md:text-xl mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+        >
+          En J&J Servicios Generales, contamos con más de 12 años de experiencia
+          transformando espacios. Somos especialistas en Drywall, pintura y
+          electricidad, garantizando soluciones integrales que se adaptan a tu
+          proyecto, con acabados duraderos y seguros.
         </p>
 
         {/* Lista de Puntos */}
-        <ul class="space-y-4 mb-12 text-xl font-semibold mx-auto lg:mx-0 max-w-max lg:max-w-none">
+        <ul
+          class="space-y-4 mb-12 text-xl font-semibold mx-auto lg:mx-0 max-w-max lg:max-w-none"
+        >
           <li class="flex items-center gap-3 justify-center lg:justify-start">
-            <CheckCircleIcon className="text-[var(--color-jj-accent)] w-8 h-15"/>
+            <CheckCircleIcon
+              className="text-[var(--color-jj-accent)] w-8 h-15"
+            />
             <span>Excelencia en cada acabado</span>
           </li>
           <li class="flex items-center gap-3 justify-center lg:justify-start">
-            <ClockIcon className="text-[var(--color-jj-accent)] w-8 h-15"/>
+            <ClockIcon className="text-[var(--color-jj-accent)] w-8 h-15" />
             <span>Cumplimiento en cada Plazo</span>
           </li>
           <li class="flex items-center gap-3 justify-center lg:justify-start">
-            <ShieldIcon className="text-[var(--color-jj-accent)] w-8 h-15"/>
+            <ShieldIcon className="text-[var(--color-jj-accent)] w-8 h-15" />
             <span>Cuidado Integral en cada Paso</span>
           </li>
         </ul>
 
         {/* Contenedor del Botón */}
-        <div class="flex justify-center lg:justify-start">
-          <a
-            href="/nosotros"
-            class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity w-full max-w-xs md:max-w-sm rounded-none text-center"
-          >
-            Ver más
-          </a>
-        </div>
+        <AnimateOnScroll>
+          <div class="flex justify-center lg:justify-start">
+            <a
+              href="/nosotros"
+              class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity w-full max-w-xs md:max-w-sm rounded-none text-center"
+            >
+              Ver más
+            </a>
+          </div>
+        </AnimateOnScroll>
       </div>
     </div>
   </div>

@@ -1,46 +1,44 @@
 ---
-
 import SectionTitle from './SectionTitle.astro';
-
+import AnimateOnScroll from './ui/AnimateOnScroll.astro';
 ---
 
 <section class="py-16">
-    <div class="container mx-auto px-4">
-        <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-8 md:px-16 lg:px-24 overflow-hidden">
-            
-            {/* Contenido centrado de la CTA */}
-            <div class="relative z-10 max-w-3xl mx-auto text-center">
-                {/* Label de la sección "Contacto" */}
-                <div class="mb-4 flex justify-center">
-                    <SectionTitle
-                        title="Contacto"
-                        iconColorClass="text-[var(--color-jj-dark)]"
-                        textColorClass="text-[var(--color-jj-dark)]"
-                        containerClass="flex items-center gap-2 py-[5px]"
-                        iconSize={24}
-                    />
-                </div>
+  <div class="container mx-auto px-4">
+    <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-8 md:px-16 lg:px-24 overflow-hidden">
+      
+      {/* 🎯 Animación scroll envolviendo todo el contenido */}
+      <AnimateOnScroll style="--animation-delay: 100ms">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          
+          <div class="mb-4 flex justify-center">
+            <SectionTitle
+              title="Contacto"
+              iconColorClass="text-[var(--color-jj-dark)]"
+              textColorClass="text-[var(--color-jj-dark)]"
+              containerClass="flex items-center gap-2 py-[5px]"
+              iconSize={24}
+            />
+          </div>
 
-                {/* Título principal de la CTA */}
-                <h2 class="text-4xl md:text-7xl font-bold mb-4 leading-tight">
-                    Consulta Totalmente Gratis
-                </h2>
+          <h2 class="text-4xl md:text-7xl font-bold mb-4 leading-tight">
+            Consulta Totalmente Gratis
+          </h2>
 
-                {/* Párrafo descriptivo */}
-                <p class="text-lg md:text-2xl leading-relaxed mb-8">
-                    Nuestro equipo te asesorará para hacer realidad tu visión con la calidad y experiencia.
-                </p>
+          <p class="text-lg md:text-2xl leading-relaxed mb-8">
+            Nuestro equipo te asesorará para hacer realidad tu visión con la calidad y experiencia.
+          </p>
 
-                {/* Botón de llamada a la acción */}
-                <div>
-                    <a
-                        href="/contacto"
-                        class="animate-blurred-fade-in animate-delay-150 inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-10 py-5 text-2xl font-semibold hover:opacity-90 transition-opacity shadow-lg"
-                    >
-                        Solicitar Cotización Gratuita
-                    </a>
-                </div>
-            </div>
+          <div>
+            <a
+              href="/contacto"
+              class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-10 py-5 text-2xl font-semibold hover:opacity-90 transition-opacity shadow-lg"
+            >
+              Solicitar Cotización Gratuita
+            </a>
+          </div>
         </div>
+      </AnimateOnScroll>
     </div>
+  </div>
 </section>
