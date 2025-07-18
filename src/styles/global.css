@@ -23,3 +23,7 @@ body {
 ::view-transition-group(header) {
   z-index: 1000; /* más alto que cualquier otro contenido */
 }
+
+::view-transition-group(vt-shared) {
+  z-index: 2000; /* Un valor más alto que el del header */
+}
