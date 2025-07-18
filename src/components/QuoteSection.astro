@@ -1,4 +1,6 @@
 ---
+import AnimateOnScroll from './ui/AnimateOnScroll.astro';
+
 // src/components/QuoteSection.astro
 interface Props {
     quote: string; // La frase a destacar
@@ -11,6 +13,7 @@ const { quote, author } = Astro.props;
 <section class="py-16 md:py-16 text-center">
     <div class="container mx-auto px-4">
         <div class="bg-[var(--color-jj-accent)] py-10 px-8 md:py-12 md:px-16">
+            <AnimateOnScroll style="--animation-delay: 100ms">
             <blockquote class="text-[var(--color-jj-dark)] font-bold text-4xl md:text-5xl leading-tight mb-4 max-w-lg mx-auto">
                 "{quote}"
             </blockquote>
@@ -19,6 +22,7 @@ const { quote, author } = Astro.props;
                     {author}
                 </p>
             )}
+            </AnimateOnScroll>
         </div>
     </div>
 </section>
