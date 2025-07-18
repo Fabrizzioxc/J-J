@@ -6,6 +6,7 @@ import PaintBrushIcon from './icons/PaintBrushIcon.astro';
 import WrenchScrewdriverIcon from './icons/WrenchScrewdriverIcon.astro';
 import BoltIcon from './icons/BoltIcon.astro';
 import SectionTitle from './SectionTitle.astro'; 
+import AnimateOnScroll from './ui/AnimateOnScroll.astro'; // <-- 1. IMPORTA EL COMPONENTE
 ---
 {/* Sección de Servicios:
   - pt-16: Padding superior de la sección (64px).
@@ -67,30 +68,38 @@ import SectionTitle from './SectionTitle.astro';
           - grid grid-cols-1 xl:grid-cols-3: Configuración de la grilla (1 columna en móvil, 3 en XL).
           - gap-12: Espaciado entre las cards (48px).
         */}
-        <div class="animate-duration-slow grid grid-cols-1 xl:grid-cols-3 gap-12 max-w-8xl mx-auto"> 
-            <ServiceCard
-                title="Pintura"
-                description="Renueva y embellece tus ambientes con colores vibrantes y acabados duraderos que reflejan tu estilo."
-                href="/servicios/pintura"
-                class="min-h-[480px] animate-fade-in-up animate-delay-200"
-                icon={PaintBrushIcon}
-            />
+        
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 max-w-8xl mx-auto">
+            <AnimateOnScroll client:visible style="--animation-delay: 0ms;">
+        <ServiceCard
+            title="Pintura"
+            description="Renueva y embellece tus ambientes con colores vibrantes y acabados duraderos que reflejan tu estilo."
+            href="/servicios/pintura"
+            class="min-h-[480px]" 
+            icon={PaintBrushIcon}
+        />
+    </AnimateOnScroll>
 
-            <ServiceCard
-                title="Drywall"
-                description="Transformamos tus espacios con soluciones rápidas, versátiles y de alta calidad en drywall para interiores y exteriores."
-                href="/servicios/drywall"
-                class="min-h-[480px] animate-fade-in-up animate-delay-300"
-                icon={WrenchScrewdriverIcon}
-            />
+    <AnimateOnScroll client:visible style="--animation-delay: 200ms;">
+        <ServiceCard
+            title="Drywall"
+            description="Transformamos tus espacios con soluciones rápidas, versátiles y de alta calidad en drywall para interiores y exteriores."
+            href="/servicios/drywall"
+            class="min-h-[480px]" 
+            icon={WrenchScrewdriverIcon}
+        />
+    </AnimateOnScroll>
 
-            <ServiceCard
-                title={'Electricidad'}
-                description="Garantizamos un sistema eléctrico eficiente y seguro, desde nuevas instalaciones hasta reparaciones y mantenimiento."
-                href="/servicios/electricidad"
-                class="min-h-[480px] animate-fade-in-up animate-delay-400"
-                icon={BoltIcon}
-            />
+    <AnimateOnScroll client:visible style="--animation-delay: 400ms;">
+        <ServiceCard
+            title={'Electricidad'}
+            description="Garantizamos un sistema eléctrico eficiente y seguro, desde nuevas instalaciones hasta reparaciones y mantenimiento."
+            href="/servicios/electricidad"
+            class="min-h-[480px]" 
+            icon={BoltIcon}
+        />
+    </AnimateOnScroll>
         </div>
+        
     </div>
 </section>
