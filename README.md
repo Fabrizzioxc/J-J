@@ -1,6 +1,6 @@
 # J&J Servicios Generales 🛠️
 
-![Vista previa del sitio de J&J Servicios Generales](./src/assets/254shots_so.png)
+![Vista previa del sitio de J&J Servicios Generales](./src/assets/jyjweb.png)
 
 ## 📌 Descripción del Proyecto
 
@@ -25,7 +25,7 @@ El proyecto está construido con **Astro** para un rendimiento web de vanguardia
 - 🧩 **Componentización Modular**: Estructura de componentes reutilizables como `Header`, `Footer`, `PageHero`, `ServiceCard`, `SectionTitle`, etc.
 - 📄 **Páginas de Servicio Dedicadas**: Cada servicio (Drywall, Pintura, Electricidad) tiene su propia página detallada.
 
-- 🔍 **SEO Amigable**: Implementación de títulos y descripciones dinámicos con etiquetas `<meta name="description">`.
+- 🔍 **SEO Amigable**: Implementación de títulos y descripciones dinámicas.
 - 🧵 **Breadcrumbs Simplificados**: Mostrados en el componente `PageHero` como texto plano para mejor guía visual.
 
 ---
@@ -33,35 +33,40 @@ El proyecto está construido con **Astro** para un rendimiento web de vanguardia
 ## 📁 Estructura del Proyecto
 
 ```bash
-├── public/                 # Archivos estáticos (imágenes, favicons, etc.)
-│   └── images/             # Imágenes del sitio
-├── assets/                 # Otros assets como la preview
-│   └── 254shots_so.png
-├── src/                    # Código fuente de Astro
-│   ├── components/         # Componentes reutilizables de UI
+.
+├── dist/                   # Carpeta de salida de la compilación para producción
+├── public/                 # Archivos estáticos (imágenes, fuentes, favicons)
+│   └── images/
+├── src/                    # Código fuente del proyecto
+│   ├── assets/             # Assets procesados por Astro (imágenes, etc.)
+│   │   └── jyjweb.png
+│   ├── components/         # Componentes reutilizables de Astro (.astro)
 │   │   ├── Header.astro
 │   │   ├── Footer.astro
 │   │   ├── PageHero.astro
 │   │   ├── ServiceCard.astro
 │   │   └── SectionTitle.astro
-│   ├── layouts/            # Layouts principales
-│   │   └── layout.astro
-│   ├── pages/              # Páginas (rutas)
-│   │   ├── index.astro         # Página de inicio
-│   │   ├── nosotros.astro      # Página "Sobre Nosotros"
-│   │   ├── contacto.astro      # Página de Contacto
-│   │   ├── proyectos.astro     # Página de Proyectos
+│   ├── layouts/    
+│   │   ├── layout.astro        # Plantillas de página (.astro)
+│   │   └── Pagelayout.astro
+│   ├── pages/              # Páginas y rutas del sitio (.astro)
+│   │   ├── index.astro
+│   │   ├── nosotros.astro
+│   │   ├── contacto.astro
+│   │   ├── proyectos.astro
 │   │   └── servicios/
-│   │       ├── index.astro         # Página principal de Servicios
-│   │       ├── drywall.astro       # Detalle del servicio de Drywall
-│   │       ├── electricidad.astro  # Detalle del servicio de Electricidad
-│   │       └── pintura.astro       # Detalle del servicio de Pintura
-│   └── styles/             # Estilos globales
+│   │       ├── index.astro
+│   │       ├── drywall.astro
+│   │       ├── electricidad.astro
+│   │       └── pintura.astro
+│   └── styles/             # Estilos globales CSS
 │       └── global.css
-├── astro.config.mjs        # Configuración de Astro
-├── tailwind.config.mjs     # Configuración de Tailwind CSS
-├── package.json            # Dependencias y scripts
+├── .gitignore              # Archivos y carpetas ignorados por Git
+├── astro.config.mjs        # Archivo de configuración de Astro
+├── package.json            # Metadatos y dependencias del proyecto
 └── README.md               # Este archivo
+├── tailwind.config.mjs     # Archivo de configuración de Tailwind CSS
+└── tsconfig.json           # Archivo de configuración de TypeScript
 ```
 
 
