@@ -1,4 +1,6 @@
 ---
+import AnimateOnScroll from './ui/AnimateOnScroll.astro';
+
 // src/components/CTABanner.astro
 interface Props {
     title: string;
@@ -18,6 +20,7 @@ const buttonTextColorClass = 'text-white';
 <section class="py-16 md:py-20 text-center">
     <div class="container mx-auto px-4">
         <div class={`py-10 px-8 md:py-12 md:px-16 ${bgColorClass}`}>
+            <AnimateOnScroll style="--animation-delay: 100ms">
             <h2 class={`font-bold text-4xl md:text-5xl leading-tight mb-8 max-w-lg mx-auto ${titleColorClass}`}>
                 {title}
             </h2>
@@ -25,6 +28,7 @@ const buttonTextColorClass = 'text-white';
             <a href={buttonLink} class={`inline-block px-10 py-4 font-semibold text-lg ${buttonBgClass} ${buttonTextColorClass} hover:opacity-90 transition-opacity`} style="border-radius: 0;">
                 {buttonText}
             </a>
+            </AnimateOnScroll>
         </div>
     </div>
 </section>
