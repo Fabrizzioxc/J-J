@@ -1,0 +1,44 @@
+---
+// src/components/FaqSection.astro
+// Definimos los 'props' que el componente aceptará (sin la imagen)
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  faqData: FaqItem[];
+}
+
+const { title, faqData } = Astro.props;
+---
+
+<section class="py-16 md:py-4 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-[var(--color-jj-dark)]">{title}</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="space-y-4">
+        {faqData.map((faq, index) => (
+          <details class="group border-b border-gray-200 pb-4">
+            <summary class="flex justify-between items-center cursor-pointer list-none">
+              <span class="font-semibold text-xl text-[var(--color-jj-dark)]">
+                {faq.question}
+              </span>
+              <span class="text-[var(--color-jj-accent)] transition-transform transform group-open:-rotate-180">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-gray-600 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+    
+  </div>
+</section>
