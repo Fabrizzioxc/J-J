@@ -59,9 +59,9 @@ export default function ContactForm() {
     <>
       <form action="https://formspree.io/f/xjkobgya" method="POST" onSubmit={handleSubmit} class="bg-white flex flex-col h-full justify-between" style="border-radius: 0;">
         {/* Tus campos de formulario */}
-        <input type="text" name="fullName" placeholder="Nombre Completo *" required class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none" style="border-radius: 0;" />
-        <input type="tel" name="phoneNumber" placeholder="Número Telefónico *" required class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none" style="border-radius: 0;" />
-        <textarea name="message" rows="6" placeholder="Mensaje" class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none" style="border-radius: 0;"></textarea>
+        <input type="text" name="fullName" placeholder="Nombre Completo *" required class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none mb-4" style="border-radius: 0;" />
+        <input type="tel" name="phoneNumber" placeholder="Número Telefónico *" required class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none mb-4" style="border-radius: 0;" />
+        <textarea name="message" rows="6" placeholder="Mensaje" class="block w-full px-4 py-3 border border-gray-300 shadow-sm focus:ring-[var(--color-jj-accent)] focus:border-[var(--color-jj-accent)] outline-none mb-4" style="border-radius: 0;"></textarea>
 
         <div class="mt-40">
           <button
