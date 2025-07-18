@@ -1,50 +1,89 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+// src/pages/servicios/cielorasos.astro
+import PageLayout from '@layouts/PageLayout.astro';
+import FaqSection from '@components/FaqSection.astro';
 import cielorasosImage from '@assets/servicios/cielorasos.webp';
-// ServicesBanner se elimina de aquí
-// import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import AnimateOnScroll from '@components/ui/AnimateOnScroll.astro';
+
+// Datos para las preguntas frecuentes de Cielo Rasos
+const cielosRasosFaqs = [
+  {
+    question: "¿Qué tipos de cielo raso instalan?",
+    answer: "Instalamos una amplia variedad, incluyendo cielo rasos de Drywall lisos, suspendidos con baldosas (ideales para oficinas), y diseños decorativos con iluminación integrada para crear ambientes únicos."
+  },
+  {
+    question: "¿Cuáles son los beneficios de un cielo raso suspendido?",
+    answer: "Permiten ocultar de forma accesible instalaciones eléctricas, tuberías y sistemas de aire acondicionado. Además, ofrecen excelentes propiedades de aislamiento acústico y térmico, y su mantenimiento es muy sencillo."
+  },
+  {
+    question: "¿Pueden ayudarme con el diseño de la iluminación?",
+    answer: "Sí, por supuesto. Parte de nuestro servicio es asesorarte en el diseño de la iluminación, distribuyendo los puntos de luz de manera estratégica para lograr la atmósfera y funcionalidad que deseas en tu espacio."
+  },
+  {
+    question: "¿Cuánto tiempo toma la instalación?",
+    answer: "La instalación es relativamente rápida. Un ambiente de tamaño estándar puede completarse en pocos días, dependiendo de la complejidad del diseño. Es un proceso mucho más limpio y rápido que los métodos tradicionales."
+  }
+];
 ---
 
 <PageLayout
-    title="Instalación y Diseño de Cielo Rasos | J&J Servicios Generales"
-    description="Expertos en instalación y diseño de cielorrasos modernos y funcionales. Soluciones estéticas y acústicas para todo tipo de ambientes."
-    pageHeroTitle="Cielo Rasos"
-    breadcrumbs={[ // Breadcrumbs para el PageHero
-        { label: 'Inicio' },
-        { label: 'Servicios' },
-        { label: 'Cielo Rasos' },
-    ]}
+  title="Instalación y Diseño de Cielo Rasos | J&J Servicios Generales"
+  description="Expertos en instalación y diseño de cielorrasos modernos y funcionales. Soluciones estéticas y acústicas para todo tipo de ambientes."
+  pageHeroTitle="Cielo Rasos"
+  breadcrumbs={[
+    { label: 'Inicio' }, { label: 'Servicios' }, { label: 'Cielo Rasos' },
+  ]}
 >
-    <section class="py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <img
-                src={cielorasosImage.src}
-                alt="Servicio de Instalación y Diseño de Cielo Rasos de J&J Servicios Generales"
-                class="w-full max-w-4xl mx-auto shadow-lg mb-12"
-                data-astro-transition-name="service-image-cielo-rasos"
-                style="view-transition-name: service-image-cielo-rasos;"
-            />
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="w-full max-w-4xl mx-auto mb-12">
+        <img
+          src={cielorasosImage.src}
+          alt="Servicio de Instalación y Diseño de Cielo Rasos"
+          class="w-full h-auto shadow-lg"
+          style={`view-transition-name: service-image-cielo-rasos;`}
+        />
+      </div>
+      
+      <div class="max-w-4xl mx-auto text-[var(--color-jj-dark)] text-xl space-y-6 leading-relaxed">
+        <p>
+          En J&J Servicios Generales, elevamos el diseño de tus interiores con soluciones de cielo rasos que combinan estética y funcionalidad. Un cielo raso bien diseñado no solo mejora la apariencia de un espacio, sino que también contribuye al confort acústico y térmico, y permite una distribución de iluminación limpia y moderna.
+        </p>
+        <p>
+          Nos especializamos en una variedad de sistemas, desde los versátiles cielo rasos de Drywall hasta los prácticos suspendidos. Nuestro equipo se encarga de todo el proceso, desde el asesoramiento en el diseño hasta la instalación precisa de la estructura y el acabado final, garantizando superficies perfectas y una integración impecable con el resto de tu ambiente.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Instalación y Diseño de Cielo Rasos</h1>
-            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
-                Ofrecemos soluciones innovadoras en cielorrasos para mejorar la estética y funcionalidad de tus espacios. Desde cielorrasos suspendidos, drywall, decorativos o acústicos, nuestro equipo garantiza una instalación precisa y acabados de primera para todo tipo de ambientes, sean residenciales o comerciales.
-            </p>
+  <FaqSection 
+    title="Preguntas Frecuentes sobre Cielo Rasos"
+    faqData={cielosRasosFaqs}
+  />
 
-            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">Ventajas de Nuestros Cielo Rasos:</h2>
-            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
-                <li>Mejora estética y valor del inmueble.</li>
-                <li>Aislamiento térmico y acústico.</li>
-                <li>Ocultamiento de instalaciones eléctricas y de tuberías.</li>
-                <li>Variedad de diseños y materiales.</li>
-                <li>Instalación rápida y limpia.</li>
-                <li>Mantenimiento sencillo.</li>
-            </ul>
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
+      
+      <AnimateOnScroll style="--animation-delay: 100ms">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            ¿Listo para darle un acabado superior a tu techo?
+          </h2>
 
-            <div class="mt-16">
-                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity">
-                    ¡Diseña tu Cielo Raso ideal!
-                </a>
-            </div>
+          <div>
+            <a
+              href="/contacto"
+              class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] font-semibold hover:opacity-90 transition-opacity shadow-lg text-lg px-8 py-4 md:text-2xl md:px-10 md:py-5"
+            >
+              Pide tu Presupuesto
+            </a>
+          </div>
         </div>
-    </section>
+      </AnimateOnScroll>
+    </div>
+  </div>
+</section>
+
 </PageLayout>

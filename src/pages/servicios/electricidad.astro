@@ -1,50 +1,90 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+// src/pages/servicios/electricidad.astro
+import PageLayout from '@layouts/PageLayout.astro';
+import FaqSection from '@components/FaqSection.astro';
 import electricidadImage from '@assets/servicios/electricidad.webp';
-// ServicesBanner se elimina de aquí
-// import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import AnimateOnScroll from '@components/ui/AnimateOnScroll.astro';
+
+// Datos para las preguntas frecuentes de Electricidad
+const electricidadFaqs = [
+  {
+    question: "¿Realizan instalaciones eléctricas desde cero?",
+    answer: "Sí, nos especializamos en el diseño y ejecución de sistemas eléctricos completos para construcciones nuevas y remodelaciones, asegurando que cumplan con todas las normativas de seguridad vigentes."
+  },
+  {
+    question: "¿Pueden solucionar problemas de cortocircuitos o fallas eléctricas?",
+    answer: "Absolutamente. Contamos con un equipo de diagnóstico para identificar rápidamente la causa de fallas, cortocircuitos o sobrecargas, y realizamos las reparaciones necesarias para restaurar la seguridad y funcionalidad de tu sistema."
+  },
+  {
+    question: "¿Instalan todo tipo de luminarias?",
+    answer: "Sí, instalamos todo tipo de iluminación, desde lámparas colgantes y spots empotrados hasta sistemas de tiras LED y luces de emergencia. Te asesoramos para lograr la mejor iluminación para cada ambiente."
+  },
+  {
+    question: "¿Qué es el mantenimiento eléctrico preventivo?",
+    answer: "Es una revisión periódica de tu sistema eléctrico para detectar y corregir posibles problemas antes de que se conviertan en fallas graves. Incluye la revisión de tableros, cableado, conexiones y puestas a tierra para garantizar la máxima seguridad."
+  }
+];
 ---
 
 <PageLayout
-    title="Servicio de Instalaciones Eléctricas | J&J Servicios Generales"
-    description="Instalaciones y mantenimiento eléctrico seguro y confiable en Lima. Soluciones para hogares y empresas, reparaciones, iluminación y más. ¡Garantizamos tu seguridad!"
-    pageHeroTitle="Instalaciones Eléctricas"
-    breadcrumbs={[ // Breadcrumbs para el PageHero
-        { label: 'Inicio' },
-        { label: 'Servicios' },
-        { label: 'Instalaciones Eléctricas' },
-    ]}
+  title="Servicio de Instalaciones Eléctricas | J&J Servicios Generales"
+  description="Instalaciones y mantenimiento eléctrico seguro y confiable en Lima. Soluciones para hogares y empresas, reparaciones, iluminación y más."
+  pageHeroTitle="Instalaciones Eléctricas"
+  breadcrumbs={[
+    { label: 'Inicio' }, { label: 'Servicios' }, { label: 'Instalaciones Eléctricas' },
+  ]}
 >
-    <section class="py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <img
-                src={electricidadImage.src}
-                alt="Servicio de Instalaciones Eléctricas de J&J Servicios Generales"
-                class="w-full max-w-4xl mx-auto shadow-lg mb-12"
-                data-astro-transition-name="service-image-electricidad"
-                style="view-transition-name: service-image-electricidad;"
-            />
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="w-full max-w-4xl mx-auto mb-12">
+        <img
+          src={electricidadImage.src}
+          alt="Servicio de Instalaciones Eléctricas de J&J Servicios Generales"
+          class="w-full h-auto shadow-lg"
+          style={`view-transition-name: service-image-electricidad;`}
+        />
+      </div>
+      
+      <div class="max-w-4xl mx-auto text-[var(--color-jj-dark)] text-xl space-y-6 leading-relaxed">
+        <p>
+          En J&J Servicios Generales, la seguridad y la eficiencia son la base de todos nuestros trabajos eléctricos. Ofrecemos un servicio integral que abarca desde la planificación e instalación de sistemas eléctricos nuevos en residencias y comercios, hasta el mantenimiento preventivo y correctivo para garantizar un funcionamiento óptimo y seguro a largo plazo.
+        </p>
+        <p>
+          Nuestro equipo de técnicos calificados está preparado para diagnosticar y reparar cualquier tipo de avería, instalar nuevos puntos de luz y tomacorrientes, y asegurar que toda tu infraestructura cumpla con los estándares de seguridad más exigentes. Entendemos que la electricidad es vital, por lo que trabajamos con precisión, responsabilidad y los mejores materiales del mercado.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Instalaciones Eléctricas</h1>
-            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
-                En J&J Servicios Generales, ofrecemos soluciones eléctricas completas y seguras. Desde el diseño e instalación de sistemas eléctricos nuevos hasta el mantenimiento, reparación de averías y la certificación de instalaciones existentes, garantizamos la funcionalidad y seguridad de tu infraestructura eléctrica.
-            </p>
+  <FaqSection 
+    title="Preguntas Frecuentes sobre Electricidad"
+    faqData={electricidadFaqs}
+  />
 
-            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">Nuestros Servicios Eléctricos Incluyen:</h2>
-            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
-                <li>Diseño y ejecución de nuevas instalaciones.</li>
-                <li>Mantenimiento preventivo y correctivo.</li>
-                <li>Reparación de fallas y cortocircuitos.</li>
-                <li>Instalación de luminarias y tomas.</li>
-                <li>Asesoramiento en eficiencia energética.</li>
-                <li>Certificaciones eléctricas.</li>
-            </ul>
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
+      
+      <AnimateOnScroll style="--animation-delay: 100ms">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            ¿Necesitas una instalación<br/>
+            eléctrica segura?
+          </h2>
 
-            <div class="mt-16">
-                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity">
-                    ¡Consulta por tu Proyecto Eléctrico!
-                </a>
-            </div>
+          <div>
+            <a
+              href="/contacto"
+              class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] font-semibold hover:opacity-90 transition-opacity shadow-lg text-lg px-8 py-4 md:text-2xl md:px-10 md:py-5"
+            >
+              Pide tu Presupuesto
+            </a>
+          </div>
         </div>
-    </section>
+      </AnimateOnScroll>
+    </div>
+  </div>
+</section>
+
 </PageLayout>

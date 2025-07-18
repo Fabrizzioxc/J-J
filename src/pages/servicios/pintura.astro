@@ -1,50 +1,90 @@
 ---
-import PageLayout from '@layouts/PageLayout.astro'; // Importa el nuevo PageLayout
+// src/pages/servicios/pintura.astro
+import PageLayout from '@layouts/PageLayout.astro';
+import FaqSection from '@components/FaqSection.astro';
 import pinturaImage from '@assets/servicios/pintura.webp';
-// ServicesBanner se elimina de aquí
-// import ServicesBanner from '@components/ui/ServicesBanner.astro';
+import AnimateOnScroll from '@components/ui/AnimateOnScroll.astro';
+
+// Datos para las preguntas frecuentes de Pintura
+const pinturaFaqs = [
+  {
+    question: "¿Qué incluye el servicio de preparación de superficies?",
+    answer: "La preparación es clave para un buen acabado. Incluye el resanado de grietas y agujeros con masilla, el lijado de toda la superficie para asegurar la adherencia, y la aplicación de una capa de imprimante o sellador."
+  },
+  {
+    question: "¿Cómo protegen mis muebles y pisos durante el trabajo?",
+    answer: "Cubrimos completamente todos los muebles, pisos, zócalos e interruptores con plásticos protectores y cintas especiales. Nuestro objetivo es dejar tu espacio tan limpio o más de como lo encontramos."
+  },
+  {
+    question: "¿Qué tipo de pintura utilizan?",
+    answer: "Trabajamos con las mejores marcas del mercado, utilizando pinturas de alta calidad (látex, esmalte, epóxicas) según la superficie y el ambiente. Te asesoramos para elegir la pintura con la durabilidad y el acabado que necesitas."
+  },
+  {
+    question: "¿Pueden aplicar acabados especiales o texturas?",
+    answer: "Sí, además de la pintura lisa, somos expertos en la aplicación de diversas texturas decorativas como el grafiado, texturado o microcemento, para darle un toque único y personalizado a tus paredes."
+  }
+];
 ---
 
 <PageLayout
-    title="Servicio de Pintura General | J&J Servicios Generales"
-    description="Renovamos tus espacios con acabados de alta calidad. Pintura de interiores, exteriores, fachadas y texturas decorativas."
-    pageHeroTitle="Pintura General" 
-    breadcrumbs={[ // Breadcrumbs para el PageHero
-        { label: 'Inicio' },
-        { label: 'Servicios' },
-        { label: 'Pintura General' },
-    ]}
+  title="Servicio de Pintura General | J&J Servicios Generales"
+  description="Renovamos tus espacios con acabados de alta calidad. Pintura de interiores, exteriores, fachadas y texturas decorativas."
+  pageHeroTitle="Pintura General" 
+  breadcrumbs={[
+    { label: 'Inicio' }, { label: 'Servicios' }, { label: 'Pintura General' },
+  ]}
 >
-    <section class="py-16 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <img
-                src={pinturaImage.src}
-                alt="Servicio de Pintura General de J&J Servicios Generales"
-                class="w-full max-w-4xl mx-auto shadow-lg mb-12"
-                data-astro-transition-name="service-image-pintura"
-                style="view-transition-name: service-image-pintura;"
-            />
+  <section class="py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="w-full max-w-4xl mx-auto mb-12">
+        <img
+          src={pinturaImage.src}
+          alt="Servicio de Pintura General de J&J Servicios Generales"
+          class="w-full h-auto shadow-lg"
+          style={`view-transition-name: service-image-pintura;`}
+        />
+      </div>
+      
+      <div class="max-w-4xl mx-auto text-[var(--color-jj-dark)] text-xl space-y-6 leading-relaxed">
+        <p>
+          En J&J Servicios Generales, creemos que una capa de pintura es mucho más que color: es renovación, protección y la materialización de un estilo. Nuestro servicio de pintura general abarca desde interiores de residencias hasta exteriores de edificios comerciales, garantizando siempre un acabado profesional y duradero que superará tus expectativas.
+        </p>
+        <p>
+          La clave de nuestro trabajo reside en la meticulosa preparación de cada superficie. Nos encargamos de lijar, masillar y aplicar imprimantes de alta calidad para asegurar una adherencia perfecta y un resultado final impecable. Utilizamos solo las mejores marcas de pintura y las técnicas más adecuadas para cada material, protegiendo tus espacios y entregándote un trabajo limpio y profesional.
+        </p>
+      </div>
+    </div>
+  </section>
 
-            <h1 class="text-5xl font-bold text-[var(--color-jj-dark)] mb-8 hidden">Servicio de Pintura General</h1>
-            <p class="text-lg text-[var(--color-jj-dark)] max-w-3xl mx-auto mb-12 leading-relaxed">
-                Transforma y protege tus propiedades con nuestros servicios de pintura general. Ofrecemos soluciones para interiores y exteriores, fachadas, y la aplicación de diversas texturas decorativas. Utilizamos pinturas de alta calidad y técnicas profesionales para garantizar un acabado impecable y duradero.
-            </p>
+  <FaqSection 
+    title="Preguntas Frecuentes sobre Pintura"
+    faqData={pinturaFaqs}
+  />
 
-            <h2 class="text-4xl font-bold text-[var(--color-jj-dark)] mb-6 mt-12">Nuestros Servicios de Pintura Incluyen:</h2>
-            <ul class="list-disc list-inside text-left max-w-2xl mx-auto space-y-3 text-[var(--color-jj-dark)] text-lg">
-                <li>Pintura de interiores y exteriores.</li>
-                <li>Preparación de superficies (lijado, masillado, imprimación).</li>
-                <li>Aplicación de texturas y acabados decorativos.</li>
-                <li>Protección de áreas y mobiliario.</li>
-                <li>Limpieza post-servicio.</li>
-                <li>Asesoramiento en selección de colores y tipos de pintura.</li>
-            </ul>
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="relative bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] py-16 px-6 md:px-16 lg:px-24 overflow-hidden">
+      
+      <AnimateOnScroll style="--animation-delay: 100ms">
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+          
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            ¿Quieres renovar tus espacios<br/>
+            con un color nuevo?
+          </h2>
 
-            <div class="mt-16">
-                <a href="/contacto" class="inline-block bg-[var(--color-jj-accent)] text-[var(--color-jj-dark)] px-10 py-5 text-xl font-semibold hover:opacity-90 transition-opacity">
-                    ¡Solicita tu presupuesto de Pintura!
-                </a>
-            </div>
+          <div>
+            <a
+              href="/contacto"
+              class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] font-semibold hover:opacity-90 transition-opacity shadow-lg text-lg px-8 py-4 md:text-2xl md:px-10 md:py-5"
+            >
+              Pide tu Presupuesto
+            </a>
+          </div>
         </div>
-    </section>
+      </AnimateOnScroll>
+    </div>
+  </div>
+</section>
+
 </PageLayout>
