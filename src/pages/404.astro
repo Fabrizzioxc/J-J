@@ -1,0 +1,42 @@
+---
+// src/pages/404.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404: Página No Encontrada"
+  description="La página que buscas no pudo ser encontrada en J&J Servicios Generales."
+>
+  <section class="bg-white text-center py-20 lg:py-32">
+    <div class="container mx-auto px-4 flex flex-col items-center">
+
+      <img 
+        src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2lmNTh1OWlwcnQ0MnJuZGswbnM1aWxoYjBoNHVma21mM2JzaWpwaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QMHoU66sBXqqLqYvGO/giphy.gif"
+        alt="Animación de trabajador de construcción confundido"
+        class="w-48 h-auto mb-8"
+        width="240"
+        height="240"
+      />
+
+      <h1 class="text-6xl md:text-8xl font-extrabold text-[var(--color-jj-accent)] leading-tight">
+        404
+      </h1>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-jj-dark)] mt-4 mb-6">
+        Página No Encontrada
+      </h2>
+
+      <p class="max-w-md text-lg text-gray-600 mb-8">
+        Lo sentimos, parece que esta dirección no existe o la página ha sido movida.
+      </p>
+
+      <a 
+        href="/" 
+        class="inline-block bg-[var(--color-jj-dark)] text-[var(--color-jj-text-light)] px-8 py-4 text-lg font-semibold hover:opacity-90 transition-opacity"
+      >
+        Volver al Inicio
+      </a>
+
+    </div>
+  </section>
+</Layout>
